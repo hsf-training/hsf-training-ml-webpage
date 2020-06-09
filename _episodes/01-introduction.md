@@ -1,15 +1,23 @@
 ---
 title: "Introduction"
-teaching: 0
+teaching: 10
 exercises: 0
 questions:
-- "Key question (FIXME)"
+- "What is machine learning?"
+- "What role does machine learning have in particle physics?"
+- "Where should I start if I want to become fluent using machine learning techniques?"
 objectives:
-- "First learning objective. (FIXME)"
+- "Discuss the possibilities and limitations of machine learning."
+- "Classification"
+- "Regression"
 keypoints:
-- "First key point. Brief Answer to questions. (FIXME)"
+- "Machine learning ..."
+- "can be used for ..."
+- "If you want to become proficient in machine learning, sit down with the textbook ... and spend 30 mins every day coding through the book"
 ---
-FIXME
+
+
+body text lkdfgjdlkfgjkdflgjdflkgj dfkl gjdflkg jdfklgjdflkgjdfl gjdflkg jdfkl gjfdlkj
 
 {% include links.md %}
 
