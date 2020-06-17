@@ -3,20 +3,22 @@ title: "Code Example"
 teaching: 5
 exercises: 10
 questions:
-- "What is machine learning?"
-- "What role does machine learning have in particle physics?"
-- "What should I do if I want to get good at machine learning?"
+- "How do you use the sci-kit learn and tensorflow packages for machine learning?"
 objectives:
-- "Discuss the general learning task in machine learning."
-- "Provide examples of machine learning in particle physics."
-- "Give resources to people who want to become proficient in machine learning."
+- "Train a support vector machine for classification."
+- "Train a random forest for classification."
+- "Train a simple neural network for classification."
 keypoints:
-- "In general, machine learning is about designing a function $$f$$ such that $$y=f(x)$$ fits a dataset $$(x_i,y_i)$$. The domain and range of $$f$$ aren't necessarily real numbers: in fact, they are often much more complicated."
-- "Machine learning has many applications in particle physics."
-- "If you want to become proficient in machine learning, you need to practice."
+- "The basic features of sci-kit learn and tensorflow are very simple to use."
+- "To perform more sophisticated model construction, one should carefully read the textbook."
 ---
 
-The data set we will be using for this example is the titanic dataset from kaggle. Data can be downloaded at https://www.kaggle.com/c/titanic/data.
+The data set we will be using for this example is the titanic dataset from kaggle. The goal of this task is to predict whether or not somebody survived on the titanic based on their attributes. The data is thus as follows:
+
+* $$x_i$$ A vector consisting of age, sex, ticket class, number of siblings/spouses aboard the titanic, number of parents/children on the titanic, ticket number, passenger fare, cabin number, and port of embarkation.
+* $$y_i$$ A number representing survival (0=no and 1=yes).
+
+We will examine 3 different machine learning models $$f$$ for classification: the support vector classifier (SVC) the random forest (RF) and the fully connected neural network (NN).  Data can be downloaded at https://www.kaggle.com/c/titanic/data.
 
 There are two files we'll need: `train.csv` and `test.csv`. We will configure our model $$f$$ on `train.csv` and then evaluate its performance on `test.csv`. This is standard protocol in machine learning: it is possible that a model $$f$$ might work really well for modelling some training data $$(x_i,y_i)$$ (think of a very high order polynomial wiggling through every data point), but it may not generalize well to new data points. Thus we always train our model on one subset of $$(x_i, y_i)$$ and evaluate on another subset of $$(x_i, y_i)$$; this allows us to ensure that our model is not overfitting.
 
