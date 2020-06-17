@@ -21,9 +21,16 @@ keypoints:
 General definition
 
 <ul>
-My indented text goes here, and it can be long and wrap if you like.
-And you can have multiple lines if you want.
+[Machine Learning is the] field of study that gives computers the ability to learn without being explicitly programmed
+  <ul>
+    -Arthur Samuel, 1959
+  </ul>
 </ul>
 
+In a **traditional approach** to solving problems, one would study a problem, write rules (i.e. laws of physics) to solve that problem, analyze errors, then modify the rules. A **machine learning approach** automates this process: *a machine learning model modifies its rules based on the errors it measures*.
+
+<ul>
+  For example, consider fitting some data $(x_i, y_i)$ to a quadratic curve $y=ax^2+bx+c$. In this case, one might define the error to be the difference of squares: namely $\sum_i (y_i-(ax_i^2+bx_i+c))$. This error function depends on 3 input parameters $a$, $b$ and $c$. Once can tweak these parameters to **minimize the loss function**.
+</ul>
 {% include links.md %}
 
