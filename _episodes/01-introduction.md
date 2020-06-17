@@ -11,7 +11,7 @@ objectives:
 - "Provide examples of machine learning in particle physics."
 - "Give resources to people who want to become proficient in machine learning."
 keypoints:
-- "In general, machine learning is about designing a function $$f$$ such that $$y=f(x)$$ fits a dataset $$(x_i,y_i)$$."
+- "In general, machine learning is about designing a function $$f$$ such that $$y=f(x)$$ fits a dataset $$(x_i,y_i)$$. The domain and range of $$f$$ aren't necessarily real numbers: in fact, they are often much more complicated."
 - "Machine learning has many applications in particle physics."
 - "If you want to become proficient in machine learning, you need to practice."
 ---
