@@ -33,11 +33,25 @@ In a **traditional approach** to solving problems, one would study a problem, wr
   
 * **Model**: Some abstract function $$f$$ such that $$y=f(x)$$ is used to model the individual $$(x_i, y_i)$$ pairs. For example, if the $$(x_i, y_i)$$ are approximately related through a quadratic function, then an adequate model might be $$y=ax^2+bx+c$$. Note that one could also use the model $$y=ax^3+b\sin(x)+ce^x + ...$$ to model the data set; a model is just *some* function; it doesn't need to model the data well necessarily.
 
-* **Loss Function**: A function that determines *how well the model $$y=f(x)$$ predicts the data $$(x_i, y_i)$$*. Some models work better than others. One such loss function might be $$\sum_i (y_i-(ax_i^2+bx_i+c))^2$$: the mean-squared error. One doesn't need to use the mean-squared error as a loss function, however; one could also use the mean-absolute error, or the mean-cubed error, etc.  
+* **Loss Function**: A function that determines *how well the model $$y=f(x)$$ predicts the data $$(x_i, y_i)$$*. Some models work better than others. One such loss function might be $$\sum_i (y_i-f(x_i))^2$$: the mean-squared error. For the quadratic function this would be $$\sum_i (y_i-(ax_i^2+bx_i+c))^2$$. One doesn't need to use the mean-squared error as a loss function, however; one could also use the mean-absolute error, or the mean-cubed error, etc.  
 
 What's important to note is that once the data and model are specified, then the loss function depends on the parameters of the model. For example, the loss function for the data set $$(x_i, y_i)$$ and the model $$y=ax^2+bx+c$$ depends on $$a$$, $$b$$, and $$c$$.
 
-The goal of machine learning is to optimize a loss function with respect to the parameters of a model given a data set and a model. Lets suppose we have the dataset $$(x_i, y_i)$$, the model $$y=ax^2+bx+c$$, and the loss function $$L(a, b, c) = \sum_i (y_i-(ax_i^2+bx_i+c))^2$$ to determine the validity of the model and we want to minimize the loss function with respect to $$a$$, $$b$$, and $$c$$ (thus creating the best model). One such way to do this is to compute the gradient $$(\frac{\partial L}{\partial a}, \frac{\partial L}{\partial b}, \frac{\partial L}{\partial c})$$
+The goal of machine learning is to optimize a loss function with respect to the parameters of a model given a data set and a model. Lets suppose we have the dataset $$(x_i, y_i)$$, the model $$y=ax^2+bx+c$$, and the loss function $$L(a, b, c) = \sum_i (y_i-(ax_i^2+bx_i+c))^2$$ to determine the validity of the model. We want to minimize the loss function with respect to $$a$$, $$b$$, and $$c$$ (thus creating the best model). One such way to do this is to pick some random initial values for $a$, $b$, and $c$ and then do then repeat the following two steps until we reach a minimum for $$L(a,b,c)$$
+
+1. Evaluate the gradient $$\vec{G} = (\frac{\partial L}{\partial a}, \frac{\partial L}{\partial b}, \frac{\partial L}{\partial c})$$. The negative gradients points to where the function $$L(a,b,c)$$ is decreasing.
+
+2. Update $$(a, b, c) \to (a, b, c) - \alpha \vec{G}$$ The parameter $$\alpha$$ is known as the **learning rate** in machine learning.
+
+This procedure is known as **gradient descent** in machine learning. It's sort of like being on a mountain, and only looking at your feet to try and reach the bottom. You'll likely move in the direction where the slope is decreasing the fastest. The problem with this technique is that it may lead you into local minima (places where the mountain has "pits" but you're note quite at the bottom). Another issue with gradient descent is that the gradient $$\vec{G} = (\frac{\partial L}{\partial a}, \frac{\partial L}{\partial b}, \frac{\partial L}{\partial c})$$ depends on *all the data points* $$(x_i, y_i)$$. This is often computationally expensive for datasets that include many data points. A solution to this is to sample a different small subset of points each time the gradient is computed. This is known as **batch gradient descent**.  
+
+A few common functions $f$ in machine learning:
+* Support Vector Machines
+* Decision Trees
+* Random Forests
+* Neural networks (Artifical, Convolutional, Recurrent, ...)
+
+
 
 {% include links.md %}
 
