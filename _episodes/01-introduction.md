@@ -35,7 +35,7 @@ In a **traditional approach** to solving problems, one would study a problem, wr
 
 * **Loss Function**: A function that determines *how well the model $$y=f(x)$$ predicts the data $$(x_i, y_i)$$*. Some models work better than others. One such loss function might be $$\sum_i (y_i-f(x_i))^2$$: the mean-squared error. For the quadratic function this would be $$\sum_i (y_i-(ax_i^2+bx_i+c))^2$$. One doesn't need to use the mean-squared error as a loss function, however; one could also use the mean-absolute error, or the mean-cubed error, etc. 
 
-![Quadratic model and data points](../plots/intro_image.png =250x)
+![Quadratic model and data points](../plots/intro_image.png){height=200px}
 
 
 What's important to note is that once the data and model are specified, then the loss function depends on the parameters of the model. For example, the loss function for the data set $$(x_i, y_i)$$ and the model $$y=ax^2+bx+c$$ depends on $$a$$, $$b$$, and $$c$$.
