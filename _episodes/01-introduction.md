@@ -58,7 +58,7 @@ There are two main types of learning tasks in machine learning; the type of lear
 
 1. **Regression**. The data in this case is $$(x_i, y_i)$$ where the $$y_i$$ are real numbers. For example each instance $$x_i$$ might specify the height and weight of a person and $$y_i$$ the corresponding resting heart rate of the person. A common loss function for this type of problem is the MSE.
 
-2. **Classification**. The data in this case is $$(x_i, y_i)$$ where $$y_i$$ are discrete values that represent classes. For example each instance $$x_i$$ might specify the petal width and height of a flower and each $$y_i$$ would then specify the corresponding type of flower. A common loss function for this type of problem is cross entropy. In these learning tasks, a machine learning model typically predicts the *probability* that a given $$x_i$$ corresponds to a certain class. Hence if the possible classes in the problem are $$(C_1, C_2, C_3, C_4)$$ then the model would output an array $$(p_1, p_2, p_3, p_4)$$ where $$\sum_ p_i = 1$$ *for each $$y_i$$.
+2. **Classification**. The data in this case is $$(x_i, y_i)$$ where $$y_i$$ are discrete values that represent classes. For example each instance $$x_i$$ might specify the petal width and height of a flower and each $$y_i$$ would then specify the corresponding type of flower. A common loss function for this type of problem is cross entropy. In these learning tasks, a machine learning model typically predicts the *probability* that a given $$x_i$$ corresponds to a certain class. Hence if the possible classes in the problem are $$(C_1, C_2, C_3, C_4)$$ then the model would output an array $$(p_1, p_2, p_3, p_4)$$ where $$\sum_i p_i = 1$$ for each $$y_i$$.
 
 
 # What Role Does Machine Learning have in Particle Physics?
