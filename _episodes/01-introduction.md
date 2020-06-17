@@ -48,7 +48,7 @@ The goal of machine learning is to optimize a loss function with respect to the 
 
 This procedure is known as **gradient descent** in machine learning. It's sort of like being on a mountain, and only looking at your feet to try and reach the bottom. You'll likely move in the direction where the slope is decreasing the fastest. The problem with this technique is that it may lead you into local minima (places where the mountain has "pits" but you're note quite at the bottom). Another issue with gradient descent is that the gradient $$\vec{G} = (\frac{\partial L}{\partial a}, \frac{\partial L}{\partial b}, \frac{\partial L}{\partial c})$$ depends on *all the data points* $$(x_i, y_i)$$. This is often computationally expensive for datasets that include many data points. A solution to this is to sample a different small subset of points each time the gradient is computed. This is known as **batch gradient descent**.  
 
-A few common functions $f$ in machine learning:
+A few common model functions $$f$$ in machine learning:
 * Support Vector Machines
 * Decision Trees
 * Random Forests
