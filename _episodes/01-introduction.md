@@ -16,8 +16,7 @@ keypoints:
 - "If you want to become proficient in machine learning, sit down with the textbook ... and spend 30 mins every day coding through the book"
 ---
 
-
-body text lkdfgjdlkfgjkdflgjdflkgj dfkl gjdflkg jdfklgjdflkgjdfl gjdflkg jdfkl gjfdlkj
+# What is Machine Learning
 
 {% include links.md %}
 
