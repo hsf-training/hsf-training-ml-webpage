@@ -22,4 +22,9 @@ The data set we will be using for this example is the titanic dataset from kaggl
 
 In the previous section I spoke about $$(x_i,y_i)$$ being the data set. Here I will show how to format the data set so we can input it to a machine learning function in sci-kit learn.
 
+~~~
+df = pd.read_csv('train.csv')
+df.head()
+~~~
+{: .language-python}
 
