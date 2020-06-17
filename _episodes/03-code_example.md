@@ -80,6 +80,14 @@ X_test = full_pipeline.transform(df_test).toarray()
 y_test = df_test['Survived'].values
 ~~~
 
+I'll walk through each part of the code:
+
+1. A special `DataFrameSelector` class is defined. Don't worry that it looks complicated; all that matters is that its in a format that communicates with sci-kit learn pipeline functionality and that *it takes in a pandas DataFrame and outputs a numpy array*.  
+2. A numerical pipeline is created. This takes in `df_train` or `df_test` and spits out a numpy array consisting of only the numerical attributes of the DataFrame. Note also the `StandardScaler`: this ensures that all numerical attributes are scaled to have a mean of 0 and a standard deviation of 1 before they are fed to the machine learning model. This type of preprocessing is common before feeding data into machine learning models. This is especially import for neural networks.
+3. A categorical pipeline is created. This takes in `df_train` or `df_test`, selects only the categorical attributes of the DataFrame applies the `OneHotEncoder` (to create numerical values for categorical variables), and then spits out a numpy array consisting of these values.
+4. The full pipeline concatenates these two numpy arrays.
+5. The pipeline is used to generate the subset $$(x_i, y_i)$$ used for training and the subset $$(x_i, y_i)$$ used for testing the model.
+
 
 
 
