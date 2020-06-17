@@ -5,15 +5,15 @@ exercises: 0
 questions:
 - "What is machine learning?"
 - "What role does machine learning have in particle physics?"
-- "Where should I start if I want to become fluent using machine learning techniques?"
+- "What should I do if I want to get good at machine learning?"
 objectives:
-- "Discuss the possibilities and limitations of machine learning."
-- "Classification"
-- "Regression"
+- "Discuss the general learning task in machine learning."
+- "Provide examples of machine learning in particle physics."
+- "Give resources to people who want to become proficient in machine learning."
 keypoints:
-- "Machine learning ..."
-- "can be used for ..."
-- "If you want to become proficient in machine learning, sit down with the textbook ... and spend 30 mins every day coding through the book"
+- "In general, machine learning is about designing a function $$f$$ such that $$y=f(x)$$ fits a dataset $$(x_i,y_i)$$."
+- "Machine learning has many applications in particle physics."
+- "If you want to become proficient in machine learning, you need to practice."
 ---
 
 # What is Machine Learning?
@@ -42,11 +42,11 @@ What's important to note is that once the data and model are specified, then the
 
 For most applications, the goal of machine learning is to optimize a loss function with respect to the parameters of a model given a data set and a model. Lets suppose we have the dataset $$(x_i, y_i)$$, the model $$y=ax^2+bx+c$$, and the loss function $$L(a, b, c) = \sum_i (y_i-(ax_i^2+bx_i+c))^2$$ to determine the validity of the model. We want to minimize the loss function with respect to $$a$$, $$b$$, and $$c$$ (thus creating the best model). One such way to do this is to pick some random initial values for $$a$$, $$b$$, and $$c$$ and then do then repeat the following two steps until we reach a minimum for $$L(a,b,c)$$
 
-1. Evaluate the gradient $$\vec{G} = (\frac{\partial L}{\partial a}, \frac{\partial L}{\partial b}, \frac{\partial L}{\partial c})$$. The negative gradients points to where the function $$L(a,b,c)$$ is decreasing.
+1. Evaluate the gradient $$\nabla L = (\frac{\partial L}{\partial a}, \frac{\partial L}{\partial b}, \frac{\partial L}{\partial c})$$. The negative gradients points to where the function $$L(a,b,c)$$ is decreasing.
 
-2. Update $$(a, b, c) \to (a, b, c) - \alpha \vec{G}$$ The parameter $$\alpha$$ is known as the **learning rate** in machine learning.
+2. Update $$(a, b, c) \to (a, b, c) - \alpha \nabla L$$ The parameter $$\alpha$$ is known as the **learning rate** in machine learning.
 
-This procedure is known as **gradient descent** in machine learning. It's sort of like being on a mountain, and only looking at your feet to try and reach the bottom. You'll likely move in the direction where the slope is decreasing the fastest. The problem with this technique is that it may lead you into local minima (places where the mountain has "pits" but you're not at the base of the mountain). Another issue with gradient descent is that the gradient $$\vec{G} = (\frac{\partial L}{\partial a}, \frac{\partial L}{\partial b}, \frac{\partial L}{\partial c})$$ depends on *all the data points* $$(x_i, y_i)$$. This is often computationally expensive for datasets that include many data points. A solution to this is to sample a different small subset of points each time the gradient is computed. This is known as **batch gradient descent**.  
+This procedure is known as **gradient descent** in machine learning. It's sort of like being on a mountain, and only looking at your feet to try and reach the bottom. You'll likely move in the direction where the slope is decreasing the fastest. The problem with this technique is that it may lead you into local minima (places where the mountain has "pits" but you're not at the base of the mountain). Another issue with gradient descent is that the gradient $$\nabla L = (\frac{\partial L}{\partial a}, \frac{\partial L}{\partial b}, \frac{\partial L}{\partial c})$$ depends on *all the data points* $$(x_i, y_i)$$. This is often computationally expensive for datasets that include many data points. A solution to this is to sample a different small subset of points each time the gradient is computed. This is known as **batch gradient descent**.  
 
 A few common model functions $$f$$ in machine learning:
 * Support Vector Machines
@@ -61,7 +61,16 @@ There are two main types of learning tasks in machine learning; the type of lear
 2. **Classification**. The data in this case is $$(x_i, y_i)$$ where $$y_i$$ are discrete values that represent classes. For example each instance $$x_i$$ might specify the petal width and height of a flower and each $$y_i$$ would then specify the corresponding type of flower. A common loss function for this type of problem is cross entropy. In these learning tasks, a machine learning model typically predicts the *probability* that a given $$x_i$$ corresponds to a certain class. Hence if the possible classes in the problem are $$(C_1, C_2, C_3, C_4)$$ then the model would output an array $$(p_1, p_2, p_3, p_4)$$ where $$\sum_ p_i = 1$$ *for each $$y_i$$.
 
 
+# What Role Does Machine Learning have in Particle Physics?
 
+Machine learning is useful whenever you have a dataset $$(x_i, y_i)$$ and the relationship $$y=f(x)$$ is difficult to determine through a traditional approach. In such a case, one would use one of the common machine learning model functions (such as a neural network) as a model $$f$$ (which generalizes quite nicely) and then use a form of gradient descent to tune the neural network parameters. Lets examine a few cases where this shows up in particle physics
+
+* One wants to classify detected particles as signal or background events (the $$y_i$$) based on their energy, momentum, charge, etc... (the $$x_i$$). This specific problem was featured on Kaggle 6 years ago: https://www.kaggle.com/c/higgs-boson/data. 
+* (My Research) Particle energy is measured in the liquid argon calotimeter by studying the current flowing through the electronics. When a particle deposits energy in one of the cells, a unique pulse shape is seen in the current. One wants to determine the energy of the incident particles (the $$y_i$$) based on the form of the current time series (the $$x_i$$). The traditional approach was to use a signal processing technique known as the optimal filter, but as the lumonisity of the LHC increases, these pulse shapes are littered with more and more deposited energy from background events.
+
+# Where Should I Go if I Want to Get Good At Machine Learning
+
+Machine Learning is not something you'll learn in an hour. It's a skill you need to develop over time, and like any skill you need to practice a little bit every day. If you want to reall *excel* at machine learning, my recommendation is to order https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/ and to **read and code along with each chapter**. Don't go crazy: just do 30 minutes a day. You'd be surprised how much you could learn in a couple months. 
 
 
 {% include links.md %}
