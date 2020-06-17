@@ -29,7 +29,7 @@ General definition
 
 In a **traditional approach** to solving problems, one would study a problem, write rules (i.e. laws of physics) to solve that problem, analyze errors, then modify the rules. A **machine learning approach** automates this process: *a machine learning model modifies its rules based on the errors it measures*. We'll now define some important terms in machine learning.
 
-  * **Data** $$(x_i, y_i)$$. The $$x_i$$ are typically referred to as **instances** and the $$y_i$$ as **labels**. In general the $$x_i$$ and $$y_i$$ don't need to be numbers. For example, in a dataset consisting of pictures of animals, the $$x_i$$ might be images (consisting of height, width, and color channel) and the $$y_i$$ might be a string which states the type of animal.  
+  * **Data** $$(x_i, y_i)$$ where $$i$$ represents the ith data point. The $$x_i$$ are typically referred to as **instances** and the $$y_i$$ as **labels**. In general the $$x_i$$ and $$y_i$$ don't need to be numbers. For example, in a dataset consisting of pictures of animals, the $$x_i$$ might be images (consisting of height, width, and color channel) and the $$y_i$$ might be a string which states the type of animal.  
   
 * **Model**: Some abstract function $$f$$ such that $$y=f(x)$$ is used to model the individual $$(x_i, y_i)$$ pairs. For example, if the $$(x_i, y_i)$$ are approximately related through a quadratic function, then an adequate model might be $$y=ax^2+bx+c$$. Note that one could also use the model $$y=ax^3+b\sin(x)+ce^x + ...$$ to model the data set; a model is just *some* function; it doesn't need to model the data well necessarily.
 
