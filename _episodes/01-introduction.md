@@ -31,7 +31,7 @@ In a **traditional approach** to solving problems, one would study a problem, wr
 
   * **Data**`(x_i, y_i)`. The `x_i` are typically referred to as **instances** and the `y_i` as **labels**. In general the `x_i` and `y_i` don't need to be numbers. For example, in a dataset consisting of pictures of animals, the `x_i` might be images (consisting of height, width, and color channel) and the `y_i` might be a string which states the type of animal.  
   
-* **Model**: Some abstract function `f` such that `y=f(x)` is used to model the individual `(x_i, y_i)` pairs. For example, if the `(x_i, y_i)` are approximately related through a quadratic function, then an adequate model might be `y=ax^2+bx+c`. Note that one could also use the model `$y=ax^3+b\sin(x)+ce^x + ...$` to model the data set; a model is just *some* function; it doesn't need to model the data well necessarily.
+* **Model**: Some abstract function `f` such that `y=f(x)` is used to model the individual `(x_i, y_i)` pairs. For example, if the `(x_i, y_i)` are approximately related through a quadratic function, then an adequate model might be $y=ax^2+bx+c$. Note that one could also use the model $`y=ax^3+b\sin(x)+ce^x + ...`$ to model the data set; a model is just *some* function; it doesn't need to model the data well necessarily.
 
 * **Loss Function**: A function that determines *how well the model `y=f(x)` predicts the data `(x_i, y_i)`*. Some models work better than others. One such loss function might be `\sum_i (y_i-(ax_i^2+bx_i+c))^2`: the mean-squared error. One doesn't need to use the mean-squared error as a loss function, however; one could also use the mean-absolute error, or the mean-cubed error, etc.  
 
