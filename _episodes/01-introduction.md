@@ -38,7 +38,7 @@ In a **traditional approach** to solving problems, one would study a problem, wr
 ![Quadratic model and data points](../plots/intro_image.png){:width="80%"}
 
 
-What's important to note is that once the data and model are specified, then the loss function depends on the parameters of the model. For example, the loss function for the data set $$(x_i, y_i)$$ and the model $$y=ax^2+bx+c$$ depends on $$a$$, $$b$$, and $$c$$.
+What's important to note is that once the data and model are specified, then the loss function depends on the parameters of the model. For example, consider the data points $$(x_i, y_i)$$ in the plot above and the MSE loss function.  For the left hand plot the model is $$y=ax^2+bx+c$$ and so the MSE depends on $$a$$, $$b$$, and $$c$$. For the right hand plot, however, the model is $$y=ae^{bx}$$ and so in this case the MSE only depends on two parameters: $$a$$ and $$b$$.
 
 The goal of machine learning is to optimize a loss function with respect to the parameters of a model given a data set and a model. Lets suppose we have the dataset $$(x_i, y_i)$$, the model $$y=ax^2+bx+c$$, and the loss function $$L(a, b, c) = \sum_i (y_i-(ax_i^2+bx_i+c))^2$$ to determine the validity of the model. We want to minimize the loss function with respect to $$a$$, $$b$$, and $$c$$ (thus creating the best model). One such way to do this is to pick some random initial values for $$a$$, $$b$$, and $$c$$ and then do then repeat the following two steps until we reach a minimum for $$L(a,b,c)$$
 
