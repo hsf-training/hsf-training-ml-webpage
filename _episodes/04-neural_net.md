@@ -13,6 +13,7 @@ keypoints:
 - "To perform more sophisticated model construction, one should carefully read the textbook."
 ---
 
+# Neural Network Theory Introduction
 Here we will introduce the mathematics of a neural network. You are likely familiar with the linear transform $$y=Ax+b$$ where $$A$$ is a matrix (not necessarily square) and $$y$$ and $$b$$ have the same dimensions and $$x$$ may have a different dimension. For example, if $$x$$ has dimension $$n$$ and $$y$$ and $$b$$ have dimensions $$m$$ then the matrix $$A$$ has dimension $$m$$ by $$n$$.
 
 Now suppose we have some vector $$x_i$$ listing some features (height, weight, body fat) and $$y_i$$ contains blood pressure and resting heart rate. A simple linear model to predict the label features given the input features is then  $$y=Ax+b$$ or $$f(x)=Ax+b$$. But we can go further. Suppose we also apply a *simple* but *non-linear* function $$g$$ to the output so that $$f(x) = g(Ax+b)$$. This function $$g$$ does not change the dimension of $$Ax+b$$ as it is an *element-wise* operation. This function $$g$$ is known as an **activation function**; a few activation functions $$g$$ are shown below.
@@ -29,8 +30,12 @@ For example, suppose we have an image (which we flatten into a 1d array). This a
 
 ![Quadratic model and data points](../plots/nn.png){:width="80%"}
 
-Neural networks have a very specific way they are trained. Suppose we are performing a regression task (for example we are given temperature, wind speed, wind direction, pressure and asked to predict relative humidity). The finaly output of the neural network will be a single value. During training, we compare the outputs of the neural network $$f(x_i)$$ to the true values of the data $$y_i$$ using some loss function $$L$$. We need to tune the parameters of the model so that $$L$$ is as small as possible. What are the parameters of the model in this case? The parameters are the elements of the matrices $$A_1, A_2, ...$$ and the vectors $$b_1, b_2, ...$. We also need to adjust them in an appropriate fashion so we are moving closer to the minmimum of $$L$$. For this we need to compute $$\nabla L$$, and using a clever technique (known as back-propagation), we can determine exactly how much each parameter (i.e. each entry in matrix $$A_i$$) contributes to $$\nabla L$$. Then we slightly adjust each parameter such that $$\vec{L} \to \vec{L}-\alpha \nabla{L}$$ where, like before, $$alpha$$ is the learning rate. Through this iterative procedure, we slowly minimize the loss function.
+Neural networks have a very specific way they are trained. Suppose we are performing a regression task (for example we are given temperature, wind speed, wind direction, pressure and asked to predict relative humidity). The finaly output of the neural network will be a single value. During training, we compare the outputs of the neural network $$f(x_i)$$ to the true values of the data $$y_i$$ using some loss function $$L$$. We need to tune the parameters of the model so that $$L$$ is as small as possible. What are the parameters of the model in this case? The parameters are the elements of the matrices $$A_1, A_2, ...$$ and the vectors $$b_1, b_2, ...$$. We also need to adjust them in an appropriate fashion so we are moving closer to the minmimum of $$L$$. For this we need to compute $$\nabla L$$, and using a clever technique (known as back-propagation), we can determine exactly how much each parameter (i.e. each entry in matrix $$A_i$$) contributes to $$\nabla L$$. Then we slightly adjust each parameter such that $$\vec{L} \to \vec{L}-\alpha \nabla{L}$$ where, like before, $$alpha$$ is the learning rate. Through this iterative procedure, we slowly minimize the loss function.
 
 * The vector $$x$$ is referred to as the **input layer** of the network
 * Intermediate quantities (such as $$g_1(A_1x+b_1)$$) are referred to as **hidden layers**. Each element of the vector $$g_1(A_1x+b_1)$$ is referred to as a **neuron**.
 * The model output $$f(x)$$ is referred to as the **output layer**
+
+# Tensorflow Playground
+
+See [here](https://playground.tensorflow.org/) 
