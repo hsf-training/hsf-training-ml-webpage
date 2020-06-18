@@ -34,7 +34,7 @@ Neural networks have a very specific way they are trained. Suppose we are perfor
 
 * The vector $$x$$ is referred to as the **input layer** of the network
 * Intermediate quantities (such as $$g_1(A_1x+b_1)$$) are referred to as **hidden layers**. Each element of the vector $$g_1(A_1x+b_1)$$ is referred to as a **neuron**.
-* The model output $$f(x)$$ is referred to as the **output layer**
+* The model output $$f(x)$$ is referred to as the **output layer**. Note that *activation functions are generally not used in the output layer*.
 
 # Tensorflow Playground
 
