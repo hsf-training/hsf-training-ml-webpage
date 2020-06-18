@@ -24,9 +24,10 @@ There are two files we'll need: `train.csv` and `test.csv`. We will configure ou
 
 # Setting up the data set for machine learning
 
-In the previous section I spoke about $$(x_i,y_i)$$ being the data set. Here I will show how to format the data set so we can input it to a machine learning function in sci-kit learn.
+Here we show how to format the data set $$(x_i, y_i)$$ so we can input it to a machine learning function in sci-kit learn.
 
 ~~~
+import pandas as pd
 df_train = pd.read_csv('train.csv')
 df_test = pd.read_csv('train.csv')
 df.head()
@@ -48,9 +49,16 @@ cat_attribs = ['Sex', 'Embarked']
 ~~~
 {: .language-python}
 
-The following procedure to turn the DataFrame into a numpy array is discussed in more detail in the textbook Hands-On Machine Learning With SciKit-Learn, Keras, and Tensorflow. The DataFrame is passed through a pipeline that turns it into a numpy array. The most noteworthy part of the pipeline is the `OneHotEncoder`. This converts anything which is a categorical attribute (such as sex: "M"/"F") into numerical values so that it they can be considered in a mathematical model
+The following procedure to turn the DataFrame into a numpy array is discussed in more detail in the textbook Hands-On Machine Learning With SciKit-Learn, Keras, and Tensorflow. The DataFrame is passed through a pipeline that turns it into a numpy array. The most noteworthy part of the pipeline is the `OneHotEncoder`. This converts anything which is a categorical attribute (such as sex: "M"/"F") into numerical values so that it they can be considered in a mathematical model.
 
 ~~~
+from sklearn.base import BaseEstimator, TransformerMixin, RegressorMixin, clone
+from sklearn.pipeline import Pipeline
+from sklearn import impute
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.pipeline import FeatureUnion
+
 class DataFrameSelector(BaseEstimator, TransformerMixin):
     def __init__(self, attribute_names):
         self.attribute_names = attribute_names
@@ -102,6 +110,9 @@ In this section we will examine 3 different machine learning models $$f$$ for cl
 The support vector machine is discussed in chapter 5 of the textbook. The following code is used fit the model $$f$$
 
 ~~~
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score
+
 SVC_clf = SVC(C=4.0, kernel='rbf', gamma=0.06)
 SVC_clf.fit(X_train, y_train)
 y_pred = SVC_clf.predict(X_test)
@@ -122,6 +133,8 @@ You should see that the accuracy of this model is around 75-80%; it correctly pr
 A random forest (Chapter 7) is based off of the predictions of decision trees (Chapter 6). For this particular model, there is not a concept of a loss function; training is completed using the *Classification and Regression Tree* (CART) algorithm to train decision trees, and then decision trees are used together to make predictions: this is known as a random forest. They can be trained in sci-kit learn as follows
 
 ~~~
+from sklearn.ensemble import RandomForestClassifier
+
 RF_clf = RandomForestClassifier(criterion='gini', max_depth=8, n_estimators=30)
 RF_clf.fit(X_train, y_train)
 y_pred = SVC_clf.predict(X_test)
@@ -137,6 +150,10 @@ Note that the code is very similar to the SVM. In this situation we have three h
 A neural network is a very complex model with many hyperparameters. It is unlikely you will understand the code for how the network is built today, but if you are interested in neural networks, I would highly recommend reading Chapter 10 of the text (and Chapters 11-18 as well, for that matter). A neural network can be built as follows:
 
 ~~~
+import tensorflow as tf
+from tensorflow import keras
+
+
 def build_model(n_hidden=1, n_neurons=5, learning_rate=1e-3):
     # Build
     model = keras.models.Sequential()
