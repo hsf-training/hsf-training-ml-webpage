@@ -26,7 +26,7 @@ $$f(x) = g_2(A_2(g_1(A_1x+b_1))+b_2) $$
 
 We first perform a linear transformation, then apply activation function $$g_1$$, then perform another linear transformation, then apply activation function $$g_2$$. The input $$x$$ and the output $$f(x)$$ are not necessarily the same dimension.
 
-For example, suppose we have an image (which we flatten into a 1d array). This array might be 40000 long. We can perform one iteration of $$g_1(A_1x+b_1)$$ to reduce this to a size of 2000. We can apply this over and over again until eventually only a single value is output. This is the foundation of a  **fully connected neural network**. 
+For example, suppose we have an image (which we flatten into a 1d array). This array might be 40000 long. We can perform one iteration of $$g_1(A_1x+b_1)$$ to reduce this to a size of 2000. We can apply this over and over again until eventually only a single value is output. This is the foundation of a  **fully connected neural network**. Note we can also increase the dimensions throughout the process, as seen in the image below. We start with a vector $$x$$ of size 3, perform the transformation $$g_1(A_1x+b_1)$$ so the vector is size 4, then perform one final transformation so the vector is size 2.
 
 ![Quadratic model and data points](../plots/nn.PNG){:width="80%"}
 
