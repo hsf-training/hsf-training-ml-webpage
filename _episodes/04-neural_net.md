@@ -13,7 +13,7 @@ keypoints:
 - "To perform more sophisticated model construction, one should carefully read the textbook."
 ---
 
-Here we will introduce the mathematics of a neural network. You are likely familiar with the linear transform $$y=Ax+b$$ where $$A$$ is a matrix (not necessarily square) and $$y$$ and $b$$ have the same dimensions and $$x$$ may have a different dimension. For example, if $$x$$ has dimension $$n$$ and $$y$$ and $$b$$ have dimensions $$m$$ then the matrix $$A$$ has dimension $$m$$ by $$n$$.
+Here we will introduce the mathematics of a neural network. You are likely familiar with the linear transform $$y=Ax+b$$ where $$A$$ is a matrix (not necessarily square) and $$y$$ and $$b$$ have the same dimensions and $$x$$ may have a different dimension. For example, if $$x$$ has dimension $$n$$ and $$y$$ and $$b$$ have dimensions $$m$$ then the matrix $$A$$ has dimension $$m$$ by $$n$$.
 
 Now suppose we have some vector $$x_i$$ listing some features (height, weight, body fat) and $$y_i$$ contains blood pressure and resting heart rate. A simple linear model to predict the label features given the input features is then  $$y=Ax+b$$ or $$f(x)=Ax+b$$. But we can go further. Suppose we also apply a *simple* but *non-linear* function $$g$$ to the output so that $$f(x) = g(Ax+b)$$. This function $$g$$ does not change the dimension of $$Ax+b$$ as it is an *element-wise* operation. This function $$g$$ is known as an **activation function**; a few activation functions $$g$$ are shown below.
 
