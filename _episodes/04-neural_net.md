@@ -28,7 +28,7 @@ We first perform a linear transformation, then apply activation function $$g_1$$
 
 For example, suppose we have an image (which we flatten into a 1d array). This array might be 40000 long. We can perform one iteration of $$g_1(A_1x+b_1)$$ to reduce this to a size of 2000. We can apply this over and over again until eventually only a single value is output. This is the foundation of a  **fully connected neural network**. 
 
-![Quadratic model and data points](../plots/nn.png){:width="80%"}
+![Quadratic model and data points](../plots/nn.PNG){:width="80%"}
 
 Neural networks have a very specific way they are trained. Suppose we are performing a regression task (for example we are given temperature, wind speed, wind direction, pressure and asked to predict relative humidity). The finaly output of the neural network will be a single value. During training, we compare the outputs of the neural network $$f(x_i)$$ to the true values of the data $$y_i$$ using some loss function $$L$$. We need to tune the parameters of the model so that $$L$$ is as small as possible. What are the parameters of the model in this case? The parameters are the elements of the matrices $$A_1, A_2, ...$$ and the vectors $$b_1, b_2, ...$$. We also need to adjust them in an appropriate fashion so we are moving closer to the minmimum of $$L$$. For this we need to compute $$\nabla L$$, and using a clever technique (known as back-propagation), we can determine exactly how much each parameter (i.e. each entry in matrix $$A_i$$) contributes to $$\nabla L$$. Then we slightly adjust each parameter such that $$\vec{L} \to \vec{L}-\alpha \nabla{L}$$ where, like before, $$alpha$$ is the learning rate. Through this iterative procedure, we slowly minimize the loss function.
 
