@@ -1,4 +1,4 @@
- ---
+---
 title: "TechnicalDetails"
 teaching: 10
 exercises: 0
