@@ -57,11 +57,7 @@ This phenomenon is known as overfitting in machine learning. In general you want
 
 The main way to avoid this phenomenon in machine learning is by using what is known as a **training** set $$(x_i, y_i)_t$$ and a **validation** set $$(x_i, y_i)_v$$. The training set typically consists of 60%-80% of your data and the validation set consists of the rest of the data. During training, one only uses the the the training set to tune $$\theta$$. One can then determine if the model is overfitting by comparing $$L(\theta)$$ for the training set and the validation set. Typically the model will start to overfit after a certain number of gradient descent steps: a straightforward way to stop overfitting is to stop adjusting $$\theta$$ using gradient descent when the loss function starts to significantly differ to training and validation.
 
-A few common model functions $$f$$ in machine learning:
-* Support Vector Machines
-* Decision Trees
-* Random Forests
-* Neural networks (Artifical, Convolutional, Recurrent, ...)
+# Regression and Classification
 
 The two main tasks of machine learning can now be revsisted with the mathematical formulation.
 
