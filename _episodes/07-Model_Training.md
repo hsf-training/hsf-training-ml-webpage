@@ -22,6 +22,7 @@ A random forest (Chapter 7) uses decision trees (Chapter 6) to make predictions.
 ![Random Forest](../plots/tree.png){:width="80%"}
 
 
+### Wisdom of the Crowd
 Suppose you pose a complex question to thousands of random people, then aggregrate their answers. In many cases you will find that this aggregreated answer is better than an expert's answer. This phenomenon is  known as *wisdom of the crowd*. Similarily, if you aggregrate the predictions from a group of predictors (such as classifiers or reggressors), you will often get better predictions than with the individual predictor. A group of predictors is called an *ensemble*.
 {: .callout}
 
