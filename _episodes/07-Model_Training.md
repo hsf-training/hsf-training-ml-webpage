@@ -24,7 +24,7 @@ A random forest (Chapter 7) uses decision trees (Chapter 6) to make predictions.
 
 ~~~
 Suppose you pose a complex question to thousands of random people, then aggregrate their answers. In many cases you will find that this aggregreated answer is better than an expert's answer. This phenomenon is  known as *wisdom of the crowd*. Similarily, if you aggregrate the predictions from a group of predictors (such as classifiers or reggressors), you will often get better predictions than with the individual predictor. A group of predictors is called an *ensemble*.
-
+~~~
 {: .callout}
 
 ~~~
@@ -37,6 +37,7 @@ y_pred = SVC_clf.predict(X_test)
 # See how well the classifier does
 print(accuracy_score(y_test, y_pred))
 ~~~
+{: .language-python}
 
 
 1. The classifier is created. In this situation we have three hyperparameters specified: `criterion`, `max_depth` (max number of consecutive cuts an individual tree cab make), and `n_estimators` (number of decision trees used). These **are not altered** during training. 
