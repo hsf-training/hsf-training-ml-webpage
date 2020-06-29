@@ -30,7 +30,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 RF_clf = RandomForestClassifier(criterion='gini', max_depth=8, n_estimators=30)
 RF_clf.fit(X_train, y_train)
-y_pred = SVC_clf.predict(X_test)
+y_pred = RF_clf.predict(X_test)
 
 # See how well the classifier does
 print(accuracy_score(y_test, y_pred))
