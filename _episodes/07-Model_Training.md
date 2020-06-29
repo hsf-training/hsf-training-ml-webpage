@@ -4,7 +4,15 @@ In this section we will examine 2 different machine learning models $$f$$ for cl
 
 
 ## Random Forest
-A random forest (Chapter 7) is based off of the predictions of decision trees (Chapter 6). For this particular model, there is not a concept of a loss function; training is completed using the *Classification and Regression Tree* (CART) algorithm to train each decision tree. Decision trees are very simple models that make predictions by performing cuts on regions in the data set. While each decision tree is a simple algorithm, a random forest combines the predictions of many decision trees for better selection.
+A random forest (Chapter 7) uses decision trees (Chapter 6) to make predictions. For a decision tree, there is not a concept of a loss function; training is completed using the *Classification and Regression Tree* (CART) algorithm to train each decision tree. Decision trees are very simple models that make predictions by performing cuts on regions in the data set. While each decision tree is a simple algorithm, a random forest uses **ensemble learning** with many decision trees to make better predictions. 
+
+![Random Forest](../plots/tree.png){:width="80%"}
+
+
+~~~
+Suppose you pose a complex question to thousands of random people, then aggregrate their answers. In many cases you will find that this aggregreated answer is better than an expert's answer. This phenomenon is  known as *wisdom of the crowd*. Similarily, if you aggregrate the predictions from a group of predictors (such as classifiers or reggressors), you will often get better predictions than with the individual predictor. A group of predictors is called an *ensemble*.
+
+{: .callout}
 
 ~~~
 from sklearn.ensemble import RandomForestClassifier
@@ -16,9 +24,9 @@ y_pred = SVC_clf.predict(X_test)
 # See how well the classifier does
 print(accuracy_score(y_test, y_pred))
 ~~~
-{: .language-python}
 
-1. The classifier is created. In this situation we have three hyperparameters specified: `criterion`, `max_depth`, and `n_estimators`. These **are not altered** during training.
+
+1. The classifier is created. In this situation we have three hyperparameters specified: `criterion`, `max_depth` (max number of consecutive cuts an individual tree cab make), and `n_estimators` (number of decision trees used). These **are not altered** during training. 
 2. The classifier is trained using the training dataset `X_train` and corresponding labels `y_train`.
 3. The classifier makes predictions on the test dataset `X_test`. The machine learning algorithm was not exposed to this data during training.
 4. An accuracy score between the test dataset `y_test` and machine learning predictions `y_pred` is made. 
