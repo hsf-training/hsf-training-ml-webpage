@@ -1,3 +1,16 @@
+---
+title: "Training Models"
+teaching: 10
+exercises: 0
+questions:
+- "How does one train machine learning models in python?"
+objectives:
+- "Train a Random Forest model."
+- "Train a neural network model."
+keypoints:
+- "Random Forests and neural networks are two viable machine learning models."
+---
+
 # Models
 
 In this section we will examine 2 different machine learning models $$f$$ for classification: the random forest (RF) and the fully connected neural network (NN).
