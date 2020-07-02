@@ -1,5 +1,5 @@
 ---
-title: "TechnicalDetails"
+title: "Mathematical Foundations"
 teaching: 0
 exercises: 0
 questions:
