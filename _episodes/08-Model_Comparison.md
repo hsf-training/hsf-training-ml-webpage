@@ -17,7 +17,7 @@ keypoints:
 
 As seen in the previous section, accuracy is typically not the preferred metric for classifiers. In this section we will define some new metrics. Let TP, FP, TN, FN be the number of true positives, false positives, true negatives, and false negatives classified using a given model.
 
-Before getting into these metrics, it is important to note that a machine learning binary classifier does not predict something as "signal" or "background" but rather gives a probability that a given instance corresponds to a signal or background (i.e. it would output `[0.271, 0.799]` where the first index corresponds to background and the second index as signal). It is then up to a human user to specify the probability threshhold at which something is classified as a signal. For example, you may want the second index to be greater than 0.999 to classify something as a signal. As such, the TP, FP, TN and FN can be altered for a given machine learning classifier based on the threshhold requirement for classifying something as a signal event.
+Before getting into these metrics, it is important to note that a machine learning binary classifier does not predict something as "signal" or "background" but rather gives a probability that a given instance corresponds to a signal or background (i.e. it would output `[0.271, 0.799]` where the first index corresponds to background and the second index as signal). It is then up to a human user to specify the probability **threshhold** at which something is classified as a signal. For example, you may want the second index to be greater than 0.999 to classify something as a signal. As such, the TP, FP, TN and FN can be altered for a given machine learning classifier based on the threshhold requirement for classifying something as a signal event.
 
 > ## Classifiers in Law
 > In criminal law, Blackstone's ratio (also known as the Blackstone ratio or Blackstone's formulation) is the idea that it is better that ten guilty persons escape than that one innocent suffer. This corresponds to the minimum threshhold requirement of 91% confidence of a crime being commited for the classification of guilty. It is obviously difficult to get such precise probabilities when dealing with crimes. 
@@ -91,3 +91,34 @@ plt.show()
 ~~~
 {: .language-python}
 
+## What Should My Threshhold Be?
+
+As discussed above, the threshhold depends on the problem at hand. In this specific example of classifying particles as signal or background events, the primary goal is optimizing the discovery region for statistical significance. As discussed [here](https://higgsml.lal.in2p3.fr/files/2014/04/documentation_v1.8.pdf), this metric is the approximate median significance (AMS) defined as 
+
+$$\text{AMS} = \sqrt{2\left((s+b+b_r)\ln\left(\frac{s}{b+b_r}\right)-s \right)} $$
+
+where $$s$$ and $$b$$ are the true and false positive rates and $$b_r$$ is some number chosen to reduce the variance of the AMS such that the selection region is not too small. For the purpose of this tutorial we will choose $$b_r=0.001$. 
+
+~~~
+def AMS(tpr, fpr, b_reg):
+    return np.sqrt(2*(tpr+fpr+b_reg)+np.log(tpr/(fpr+b_reg)) -tpr)
+    
+ams_nn = AMS(tpr_nn, fpr_nn, 0.001)
+ams_rf = AMS(tpr_rf, fpr_rf, 0.001)
+~~~
+{: .language-python}
+
+Then plot:
+
+~~~
+plt.plot(thresholds_nn, ams_nn, label='Neural Network')
+plt.plot(thresholds_rf, ams_rf, label='Random Forest')
+plt.xlabel('Threshhold')
+plt.ylabel('AMS')
+plt.title('AMS with $b_r=0.001$')
+plt.legend()
+plt.show()
+~~~
+{: .language-python}
+
+One should then select the value of the threshhold that maximizes the AMS on these plots.
