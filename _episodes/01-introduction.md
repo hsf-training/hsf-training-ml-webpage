@@ -1,6 +1,6 @@
 ---
 title: "Introduction"
-teaching: 10
+teaching: 0
 exercises: 0
 questions:
 - "What is machine learning?"
@@ -27,7 +27,7 @@ General definition
   </ul>
 </ul>
 
-In a **traditional approach** to solving problems, one would study a problem, write rules (i.e. laws of physics) to solve that problem, analyze errors, then modify the rules. A **machine learning approach** automates this process: *a machine learning model modifies its rules based on the errors it measures*. While this statement is abstract now, it will become more apparent once the mathematical foundations are established. For now, you can think of the following example: 
+In a **traditional approach** to solving problems, one would study a problem, write rules (i.e. laws of physics) to solve that problem, analyze errors, then modify the rules. A **machine learning approach** automates this process: *a machine learning model modifies its rules based on the errors it measures*. This abstract statement becomes more conceptual once the mathematical foundations are established. For now, you can think of the following example: 
 
 * One wishes to fit some data points to a best fit linear line $$y=ax+b$$. One chooses initial "guesses" for $$a$$ and $$b$$ and a machine learning algorithm optimizes for the optimal values of $$a$$ and $$b$$ with respect to the mean-squared error.
 
