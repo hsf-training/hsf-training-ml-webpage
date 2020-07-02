@@ -20,10 +20,10 @@ keypoints:
 
 For non-trivial machine learning tasks that occur in research, one needs to be fairly proficient in python to use the programming packages discussed in the tutorial here. There are three main python libraries for scientific computing:
 
-1. **numpy**: the go-to numerical library in python. numpy's main purpose is the manipulation of multi-dimensional arrays: this includes both
+1. **numpy**: the go-to numerical library in python. See the ([documentation](https://numpy.org/). numpy's main purpose is the manipulation of multi-dimensional arrays: this includes both
 
 * *slicing*: taking "chunks" out of arrays. Slicing in python means taking elements from one given index to another given index. For 1 dimensional arrays this reduces selecting intervals, but these operations can become quite advanced for multidimesional arrays.
-* *functional operatorions*: applying a function to an entire array (https://numpy.org/). This code is highly optimized: there is often a myth that python is slower than languages like C++; while this may be true for things like for-loops, it is not true if you use numpy properly.
+* *functional operatorions*: applying a function to an entire array . This code is highly optimized: there is often a myth that python is slower than languages like C++; while this may be true for things like for-loops, it is not true if you use numpy properly.
 
 2. **pandas**: pandas is a fast, powerful, flexible and easy to use open source data analysis and manipulation tool, built on top of the Python programming language. The most important datatype in the pandas library is the *DataFrame*: a "spreadsheet-type object" with row and column names. It is preferred to use pandas DataFrames than numpy arrays for managing data sets.
 
@@ -33,8 +33,8 @@ If you are unfamiliar with these packages, I would recommend sitting down with [
 
 There are many machine libraries in python, but the two discussed in this tutorial are sci-kit learn and tensorflow.
 
-1. **sci-kit learn**: features various classification, regression and clustering algorithms and is designed to interoperate with the Python numerical and scientific libraries NumPy and SciPy. This library does **not** have gpu support: as such, it should not be used for training neural networks. See https://scikit-learn.org/stable/
-2. **tensorflow**: TensorFlow is an end-to-end open source platform for machine learning. It is used for building and deploying machine learning models and **does** have gpu support. See https://www.tensorflow.org/. Tensorflow is used to train complicated neural network models that require a lot of gpu power.
+1. **sci-kit learn**: features various classification, regression and clustering algorithms and is designed to interoperate with the Python numerical and scientific libraries NumPy and SciPy. This library does **not** have gpu support: as such, it should not be used for training neural networks. See [the documentation](https://scikit-learn.org/stable/)
+2. **tensorflow**: TensorFlow is an end-to-end open source platform for machine learning. It is used for building and deploying machine learning models and **does** have gpu support. See [the documentation](https://www.tensorflow.org/). Tensorflow is used to train complicated neural network models that require a lot of gpu power.
 
 Note that the four python programming packages discussed so far are interoperable: in particular, datatypes from numpy and pandas are often used in packages like sci-kit learn and tensorflow.
 
