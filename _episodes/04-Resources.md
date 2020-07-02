@@ -20,7 +20,7 @@ keypoints:
 
 For non-trivial machine learning tasks that occur in research, one needs to be fairly proficient in python to use the programming packages discussed in the tutorial here. There are three main python libraries for scientific computing:
 
-1. **numpy**: the go-to numerical library in python. See the ([documentation](https://numpy.org/). numpy's main purpose is the manipulation of multi-dimensional arrays: this includes both
+1. **numpy**: the go-to numerical library in python. See the [documentation](https://numpy.org/). numpy's main purpose is the manipulation of multi-dimensional arrays: this includes both
 
 * *slicing*: taking "chunks" out of arrays. Slicing in python means taking elements from one given index to another given index. For 1 dimensional arrays this reduces selecting intervals, but these operations can become quite advanced for multidimesional arrays.
 * *functional operatorions*: applying a function to an entire array . This code is highly optimized: there is often a myth that python is slower than languages like C++; while this may be true for things like for-loops, it is not true if you use numpy properly.
