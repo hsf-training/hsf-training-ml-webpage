@@ -1,6 +1,6 @@
 ---
 title: "Coding Environment"
-teaching: 2
+teaching: 0
 exercises: 
 questions:
 - "What is my coding environment for this tutorial?"
