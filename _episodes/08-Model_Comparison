@@ -13,6 +13,18 @@ keypoints:
 - "To perform more sophisticated model construction, one should carefully read the textbook."
 ---
 
+# Alternative Metrics
+
+As seen in the previous section, accuracy is typically not the preferred metric for classifiers. In this section we will define some new metrics. Let TP, FP, TN, FN be the number of true positives, false positives, true negatives, and false negatives classified using a given model.
+
+## Precision
+Precision is defined as
+
+$$\text{precision}=\frac{\text{TP}}{\text{TP}+\text{FP}}$$
+
+
+
+
 ~~~
 decisions_nn = NN_clf.predict_proba(X_test)[:,1]
 decisions_rf = RF_clf.predict_proba(X_test)[:,1]
