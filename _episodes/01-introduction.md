@@ -42,12 +42,12 @@ The goal of machine learning is to create a function which is fed the input and 
 
 # What Role Does Machine Learning have in Particle Physics?
 
-* One wants to classify detected particles as signal or background events based on their energy, momentum, charge, etc... . This specific problem was featured on Kaggle 6 years ago: https://www.kaggle.com/c/higgs-boson/data. This problem will also be examined in this tutorial.
+* One wants to classify detected particles as signal or background events based on their energy, momentum, charge, etc... . This specific problem was featured on Kaggle 6 years ago [here](https://www.kaggle.com/c/higgs-boson/data). This problem will also be examined in this tutorial.
 * (My Research) Particle energy is measured in the liquid argon calotimeter by studying the output current of the electronics. When a particle deposits energy in a cell, a unique pulse shape is formed. One wants to determine the energy of the incident particles based on the form of the current time series. The traditional approach was to use a signal processing technique known as the optimal filter, but as the lumonisity of the LHC increases, these pulse shapes are littered with more and more deposited energy from background events.
 
 # Where Should I Go if I Want to Get Good At Machine Learning
 
-Machine Learning is not something you'll learn in an hour. It's a skill you need to develop over time, and like any skill you need to practice a little bit every day. If you want to reall *excel* at machine learning, my recommendation is to order https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/ and to **read and code along with each chapter**. Don't go crazy: just do 30 minutes a day. You'd be surprised how much you could learn in a couple months. 
+Machine Learning is not something you'll learn in an hour. It's a skill you need to develop over time, and like any skill you need to practice a little bit every day. If you want to reall *excel* at machine learning, my recommendation is to order [this book](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) and to **read and code along with each chapter**. Don't go crazy: just do 30 minutes a day. You'd be surprised how much you could learn in a couple months. 
 
 
 {% include links.md %}
