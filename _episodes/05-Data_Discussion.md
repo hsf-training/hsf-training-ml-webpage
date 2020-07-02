@@ -1,7 +1,7 @@
 ---
 title: "Data Discussion and Preprocessing"
-teaching: 5
-exercises: 10
+teaching: 10
+exercises: 5
 questions:
 - "What dataset is being used"
 - "How must we organize our data such that it can be used in the machine learning libraries?"
