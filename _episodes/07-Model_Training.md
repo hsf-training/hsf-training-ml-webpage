@@ -1,5 +1,5 @@
 ---
-title: "Training Models"
+title: "Model Training"
 teaching: 10
 exercises: 0
 questions:
