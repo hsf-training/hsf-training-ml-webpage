@@ -23,6 +23,22 @@ Precision is defined as
 
 $$\text{precision}=\frac{\text{TP}}{\text{TP}+\text{FP}}$$
 
+It is the ratio of all things that were **correctly** classified as positive to all things that **were** classified as positive. Precision itself is an imperfect metric: a trivial way to have perfect precision is to make one single positive prediction and ensure it is correct (1/1=100%) but this would not be useful. As such, precision is typically combined with another metric: recall.
+
+## Recall
+
+Recall is defined as 
+
+$$\text{recall}=\frac{\text{TP}}{\text{TP}+\text{FN}}$$
+
+It is the ratio of all things that were **correctly** classified as positive to all things that **should have been** classified as positive. Recall itself is also an imperfect metric: a trivial way to have perfect recall is to classify everything as positive. As such, precision and recall need to be considered together. They can also be combined using a harmonic mean to give a metric that considers both scores.
+
+## F1-Score
+
+The F1-Score is defined as 
+
+$$F_1 = \frac{2}{\frac{1}{\text{precision}}+\frac{1}{\text{recall}}} = \frac{\text{TP}}{\text{TP}+\frac{\text{FN}+\text{TP}}{2}} $$
+
 
 
 
