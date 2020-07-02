@@ -1,6 +1,6 @@
 ---
 title: "TechnicalDetails"
-teaching: 10
+teaching: 0
 exercises: 0
 questions:
 - "What is the common terminology in machine learning?"
