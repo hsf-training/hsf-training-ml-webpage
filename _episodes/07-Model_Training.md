@@ -39,7 +39,7 @@ print(accuracy_score(y_test, y_pred))
 {: .language-python}
 
 
-1. The classifier is created. In this situation we have three hyperparameters specified: `criterion`, `max_depth` (max number of consecutive cuts an individual tree cab make), and `n_estimators` (number of decision trees used). These **are not altered** during training. 
+1. The classifier is created. In this situation we have three hyperparameters specified: `criterion`, `max_depth` (max number of consecutive cuts an individual tree can make), and `n_estimators` (number of decision trees used). These **are not altered** during training. 
 2. The classifier is trained using the training dataset `X_train` and corresponding labels `y_train`.
 3. The classifier makes predictions on the test dataset `X_test`. The machine learning algorithm was not exposed to this data during training.
 4. An accuracy score between the test dataset `y_test` and machine learning predictions `y_pred` is made. 
