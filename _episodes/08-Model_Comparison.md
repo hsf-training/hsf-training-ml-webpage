@@ -99,7 +99,7 @@ As discussed above, the threshhold depends on the problem at hand. In this speci
 
 $$\text{AMS} = \sqrt{2\left((s+b+b_r)\ln\left(\frac{s}{b+b_r}\right)-s \right)} $$
 
-where $$s$$ and $$b$$ are the true and false positive rates and $$b_r$$ is some number chosen to reduce the variance of the AMS such that the selection region is not too small. For the purpose of this tutorial we will choose $$b_r=0.001$. 
+where $$s$$ and $$b$$ are the true and false positive rates and $$b_r$$ is some number chosen to reduce the variance of the AMS such that the selection region is not too small. For the purpose of this tutorial we will choose $$b_r=0.001$$. 
 
 ~~~
 def AMS(tpr, fpr, b_reg):
