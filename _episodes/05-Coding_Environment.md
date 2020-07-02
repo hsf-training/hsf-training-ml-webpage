@@ -1,5 +1,5 @@
 ---
-title: "Code Example"
+title: "Coding Environment"
 teaching: 2
 exercises: 
 questions:
