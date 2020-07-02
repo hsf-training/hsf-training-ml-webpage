@@ -65,7 +65,7 @@ print (classification_report(y_test, y_pred_NN,
 
 
 # The ROC Curve
-The ROC curve is a plot of the recall (or true positive rate) vs. the false positive rate: the ratio of negative instances incorrectly classified as positive. A classifier may classify many instances as positive (i.e. has a low tolerance for classifying something as positive), but in such an example it will probably also incorrectly classify many negative instances as positive as well. The ROC curve is a plot with the false positive rate on the x-axis and the true negative rate on the y-axis; the threshhold is varied to give a parameteric curve. A random classifier results in a line.
+The ROC curve is a plot of the recall (or true positive rate) vs. the false positive rate: the ratio of negative instances incorrectly classified as positive. A classifier may classify many instances as positive (i.e. has a low tolerance for classifying something as positive), but in such an example it will probably also incorrectly classify many negative instances as positive as well. The ROC curve is a plot with the false positive rate on the x-axis and the true positive rate on the y-axis; the threshhold is varied to give a parameteric curve. A random classifier results in a line.
 
 To plot the ROC curve, we need to obtain the probabilities that something is classified as a signal (rather than the signal/background prediction itself). This can be done as follows:
 
@@ -90,6 +90,8 @@ plt.ylabel('True Positive Rate')
 plt.show()
 ~~~
 {: .language-python}
+
+From this curve it should be clear: we can make the true positive rate larger (such that almost all signal events are classified correctly) but as a sacrifice we will also classify more background events as signals. We need to decide on an appropriate threshhold.
 
 ## What Should My Threshhold Be?
 
