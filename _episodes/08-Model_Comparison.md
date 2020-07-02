@@ -1,7 +1,7 @@
 ---
 title: "Model Comparison"
 teaching: 5
-exercises: 10
+exercises: 15
 questions:
 - "How do you use the sci-kit learn and tensorflow packages for machine learning?"
 objectives:
