@@ -1,5 +1,5 @@
 ---
-title: "Code Example"
+title: "Model Comparison"
 teaching: 5
 exercises: 10
 questions:
@@ -33,7 +33,7 @@ $$\text{precision}=\frac{\text{TP}}{\text{TP}+\text{FP}}$$
 
 It is the ratio of all things that were **correctly** classified as positive to all things that **were** classified as positive. Precision itself is an imperfect metric: a trivial way to have perfect precision is to make one single positive prediction and ensure it is correct (1/1=100%) but this would not be useful. This is equivalent to having a very high threshhold. As such, precision is typically combined with another metric: recall.
 
-## Recall / True Positive Rate
+## Recall (True Positive Rate)
 
 Recall is defined as 
 
