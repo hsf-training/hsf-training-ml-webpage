@@ -17,12 +17,12 @@ In this section we will examine 2 different machine learning models $$f$$ for cl
 
 
 ## Random Forest
-A random forest (Chapter 7) uses decision trees (Chapter 6) to make predictions. For a decision tree, there is not a concept of a loss function; training is completed using the *Classification and Regression Tree* (CART) algorithm to train each decision tree. Decision trees are very simple models that make predictions by performing cuts on regions in the data set. While each decision tree is a simple algorithm, a random forest uses **ensemble learning** with many decision trees to make better predictions. 
+A random forest (Chapter 7) uses decision trees (Chapter 6) to make predictions. A decision tree is a unique machine learning model that is not trained using gradient descent and a loss function; training is completed using the *Classification and Regression Tree* (CART) algorithm to train each decision tree. Decision trees are very simple models that make predictions by performing cuts on regions in the data set. While each decision tree is a simple algorithm, a random forest uses **ensemble learning** with many decision trees to make better predictions. 
 
 ![Random Forest](../plots/tree.png){:width="80%"}
 
 
-> ## Wisdom of the Crowd
+> ## Wisdom of the Crowd (Ensemble Learning)
 > Suppose you pose a complex question to thousands of random people, then aggregrate their answers. In many cases you will find that this aggregreated answer is better than an expert's answer. This phenomenon is  known as *wisdom of the crowd*. Similarily, if you aggregrate the predictions from a group of predictors (such as classifiers or reggressors), you will often get better predictions than with the individual predictor. A group of predictors is called an *ensemble*.
 {: .callout}
 
@@ -73,11 +73,15 @@ y_valid, y_train_nn = y_train[:100], y_train[100:]
 
 NN_clf = keras.wrappers.scikit_learn.KerasClassifier(build_model)
 NN_clf.fit(X_train, y_train, validation_data=(X_valid, y_valid))
-y_pred = NN_clf.predict(X_test)
+y_pred_NN = NN_clf.predict(X_test)
 
 # See how well the classifier does
-print(accuracy_score(y_test, y_pred))
+print(accuracy_score(y_test, y_pred_NN))
 ~~~
 {: .language-python}
 
-The neural network should also have a similar accuracy score to the random forest.
+The neural network should also have a similar accuracy score to the random forest. Note that while the accuracy is one metric for the strength of a classifier, many other metrics exist as well. We will examine these metrics in the next section.
+
+> ## Accuracy: The Naive Metric
+> Suppose you have a data set consisting of pictures of the numbers 0-9 and the goal is to classify each image as "five" or "not-five". Now suppose we have a dumb classifier that classifies every single image as a 5. If 10% of the data set consists of pictures of 5s, then the classifier will have 90% accuracy!This demonstrates why accuracy is generall not the preferred performance measure for classifiers, especially when you are dealing with *skewed* datasets. Skewed datasets show up all the time in particle physics where one has access to many more background than signal events. In this particular tutorial, we have a data set with 520000 background events and 370000 signal events.
+{: .callout}
