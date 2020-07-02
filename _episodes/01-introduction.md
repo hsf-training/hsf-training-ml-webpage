@@ -42,10 +42,8 @@ The goal of machine learning is to create a function which is fed the input and 
 
 # What Role Does Machine Learning have in Particle Physics?
 
-Machine learning is useful whenever you have a dataset $$(x_i, y_i)$$ and the relationship $$y=f(x)$$ is difficult to determine through a traditional approach. In such a case, one would use one of the common machine learning model functions (such as a neural network) as a model $$f$$ (which generalizes quite nicely) and then use a form of gradient descent to tune the neural network parameters. Lets examine a few cases where this shows up in particle physics
-
-* One wants to classify detected particles as signal or background events (the $$y_i$$) based on their energy, momentum, charge, etc... (the $$x_i$$). This specific problem was featured on Kaggle 6 years ago: https://www.kaggle.com/c/higgs-boson/data. 
-* (My Research) Particle energy is measured in the liquid argon calotimeter by studying the current flowing through the electronics. When a particle deposits energy in one of the cells, a unique pulse shape is seen in the current. One wants to determine the energy of the incident particles (the $$y_i$$) based on the form of the current time series (the $$x_i$$). The traditional approach was to use a signal processing technique known as the optimal filter, but as the lumonisity of the LHC increases, these pulse shapes are littered with more and more deposited energy from background events.
+* One wants to classify detected particles as signal or background events based on their energy, momentum, charge, etc... . This specific problem was featured on Kaggle 6 years ago: https://www.kaggle.com/c/higgs-boson/data. This problem will also be examined in this tutorial.
+* (My Research) Particle energy is measured in the liquid argon calotimeter by studying the output current of the electronics. When a particle deposits energy in a cell, a unique pulse shape is formed. One wants to determine the energy of the incident particles based on the form of the current time series. The traditional approach was to use a signal processing technique known as the optimal filter, but as the lumonisity of the LHC increases, these pulse shapes are littered with more and more deposited energy from background events.
 
 # Where Should I Go if I Want to Get Good At Machine Learning
 
