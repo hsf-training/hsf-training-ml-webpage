@@ -20,8 +20,10 @@ As seen in the previous section, accuracy is typically not the preferred metric 
 Before getting into these metrics, it is important to note that a machine learning binary classifier does not predict something as "signal" or "background" but rather gives a probability that a given instance corresponds to a signal or background (i.e. it would output `[0.271, 0.799]` where the first index corresponds to background and the second index as signal). It is then up to a human user to specify the probability threshhold at which something is classified as a signal. For example, you may want the second index to be greater than 0.999 to classify something as a signal. As such, the TP, FP, TN and FN can be altered for a given machine learning classifier based on the threshhold requirement for classifying something as a signal event.
 
 > ## Classifiers in Law
-> In criminal law, Blackstone's ratio (also known as the Blackstone ratio or Blackstone's formulation) is the idea that it is better that ten guilty persons escape than that one innocent suffer. If background = person is innocent and signal = person is guilty, then this corresponds to the requirement that one needs to be at least 90% confidence that somebody commited a crime in order to classify them as guilty in a court of law. It is obviously difficult to get such precise probabilities when dealing with probabilities of crimes being commited. 
+> In criminal law, Blackstone's ratio (also known as the Blackstone ratio or Blackstone's formulation) is the idea that it is better that ten guilty persons escape than that one innocent suffer. This corresponds to the minimum threshhold requirement of 91% confidence of a crime being commited for the classification of guilty. It is obviously difficult to get such precise probabilities when dealing with crimes. 
 {: .callout}
+
+Since TP, FP, TN, and FN all depend on the threshhold of a classifier, each of these metrics can be considered functions of threshhold.
 
 ## Precision
 
@@ -29,7 +31,7 @@ Precision is defined as
 
 $$\text{precision}=\frac{\text{TP}}{\text{TP}+\text{FP}}$$
 
-It is the ratio of all things that were **correctly** classified as positive to all things that **were** classified as positive. Precision itself is an imperfect metric: a trivial way to have perfect precision is to make one single positive prediction and ensure it is correct (1/1=100%) but this would not be useful. As such, precision is typically combined with another metric: recall.
+It is the ratio of all things that were **correctly** classified as positive to all things that **were** classified as positive. Precision itself is an imperfect metric: a trivial way to have perfect precision is to make one single positive prediction and ensure it is correct (1/1=100%) but this would not be useful. This is equivalent to having a very high threshhold. As such, precision is typically combined with another metric: recall.
 
 ## Recall / True Positive Rate
 
@@ -37,7 +39,7 @@ Recall is defined as
 
 $$\text{recall}=\frac{\text{TP}}{\text{TP}+\text{FN}}$$
 
-It is the ratio of all things that were **correctly** classified as positive to all things that **should have been** classified as positive. Recall itself is also an imperfect metric: a trivial way to have perfect recall is to classify everything as positive; doing so, however, would result in a poor precision score. As such, precision and recall need to be considered together. They can also be combined using a harmonic mean to give a metric that considers both scores.
+It is the ratio of all things that were **correctly** classified as positive to all things that **should have been** classified as positive. Recall itself is also an imperfect metric: a trivial way to have perfect recall is to classify everything as positive; doing so, however, would result in a poor precision score. This is equivalent to having a very low threshhold. As such, precision and recall need to be considered together. They can also be combined using a harmonic mean to give a metric that considers both scores.
 
 ## F1-Score
 
@@ -46,15 +48,26 @@ The F1-Score is defined as
 $$F_1 = \frac{2}{\frac{1}{\text{precision}}+\frac{1}{\text{recall}}} = \frac{\text{TP}}{\text{TP}+\frac{\text{FN}+\text{TP}}{2}} $$
 
 
-## The ROC Curve
-The ROC curve is a plot of the recall (or true positive rate) vs. the false positive rate: the ratio of negative instances incorrectly classified as positive. A classifier may classify many instances as positive (i.e. has a low tolerance for classifying something as positive), but in such an example it will probably also incorrectly classify many negative instances as positive as well
+## Metrics for our Classifier
+
+By default, the threshhold is set to 50% when we made the predictions eariler when computing the accuracy score. As such, the threshhold is set to 50% here.
+
+~~~
+from sklearn.metrics import classification_report, roc_auc_score
+# Random Forest Report
+print (classification_report(y_test, y_pred_RF,
+                            target_names=["background", "signal"]))
+# Neural Network Report
+print (classification_report(y_test, y_pred_NN,
+                            target_names=["background", "signal"]))                      
+~~~
+{: .language-python}
 
 
+# The ROC Curve
+The ROC curve is a plot of the recall (or true positive rate) vs. the false positive rate: the ratio of negative instances incorrectly classified as positive. A classifier may classify many instances as positive (i.e. has a low tolerance for classifying something as positive), but in such an example it will probably also incorrectly classify many negative instances as positive as well. The ROC curve is a plot with the false positive rate on the x-axis and the true negative rate on the y-axis; the threshhold is varied to give a parameteric curve. A random classifier results in a line.
 
-
-
-
-
+To plot the ROC curve, we need to obtain the probabilities that something is classified as a signal (rather than the signal/background prediction itself). This can be done as follows:
 
 ~~~
 decisions_nn = NN_clf.predict_proba(X_test)[:,1]
@@ -63,6 +76,8 @@ fpr_nn, tpr_nn, thresholds = roc_curve(y_test, decisions_nn)
 fpr_rf, tpr_rf, thresholds = roc_curve(y_test, decisions_rf)
 ~~~
 {: .language-python}
+
+Now we plot the ROC curve:
 
 ~~~
 plt.plot(fpr_rf,tpr_rf, label='Random Forest')
