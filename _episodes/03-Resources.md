@@ -18,7 +18,12 @@ keypoints:
 
 # Proficiency in python
 
-For non-trivial machine learning tasks that occur in research, one needs to be fairly proficient in python to use the programming packages discussed in the tutorial here. There are three main python libraries for scientific computing:
+If you are unfamiliar with python, the following tutorials will be useful:
+
+* [python novice inflammation](https://swcarpentry.github.io/python-novice-inflammation/)
+* [python novice gapfinder](http://swcarpentry.github.io/python-novice-gapminder/)
+
+For non-trivial machine learning tasks that occur in research, one needs to be proficient in the programming libraries discussed in the tutorial here. There are three main python libraries for scientific computing:
 
 1. **numpy**: the go-to numerical library in python. See the [documentation](https://numpy.org/). numpy's main purpose is the manipulation of multi-dimensional arrays: this includes both
 
@@ -38,14 +43,7 @@ There are many machine libraries in python, but the two discussed in this tutori
 
 Note that the four python programming packages discussed so far are interoperable: in particular, datatypes from numpy and pandas are often used in packages like sci-kit learn and tensorflow.
 
-# Where to Become Proficient in Machine Learning
 
-It is one thing to have access to the websites and documentation of these libraries; you also need to know how to *use them properly*. This is especially important in python as reverting to common practices like for-loops in your code can result in poor optimization. There are two sources you should both read and code along with if you want to excel at machine learning.
-
-* **For Learning Essential python libraries**: [this textbook](https://www.amazon.ca/Python-Data-Analysis-Wrangling-IPython-ebook/dp/B075X4LT6K/ref=sr_1_1?crid=WLIHOCVH891S&dchild=1&keywords=python+for+data+analysis%2C+2nd+edition&qid=1593460237&sprefix=python+for+data+%2Caps%2C196&sr=8-1)
-* **For Learning Machine Learning Libraries**: [this textbook](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/)
-
-Just for a bit of perspective, I started learning python in September 2017 and began learning about machine learning in December 2018. I am finished the first textbook and am still working through the machine learning textbook. Don't expect the learning process to be a quick one: read each textbook thoroughly and make sure you code along with each textbook.
 
 
 
