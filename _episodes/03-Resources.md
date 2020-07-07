@@ -43,7 +43,25 @@ There are many machine libraries in python, but the two discussed in this tutori
 
 Note that the four python programming packages discussed so far are interoperable: in particular, datatypes from numpy and pandas are often used in packages like sci-kit learn and tensorflow.
 
+# Code Example
 
+Here we will import all the required libraries for the rest of the tutorial. All sci-kit learn functions will be imported later on when they are required.
+
+~~~
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt 
+import tensorflow as tf
+from tensorflow import keras
+~~~
+{: .language-python}
+
+You can check the version of these packages by checking the `__version__` attribute.
+
+~~~
+np.__version__
+~~~
+{: .language-python}
 
 
 
