@@ -38,7 +38,7 @@ What's important to note is that once the data and model are specified, then the
 
 For most applications, the goal of machine learning is to optimize a loss function with respect to the parameters of a model given a data set and a model. Lets suppose we have the dataset $$(x_i, y_i)$$, the model $$y=ax^2+bx+c$$, and the loss function $$L(\theta) = L(a, b, c) = \sum_i (y_i-(ax_i^2+bx_i+c))^2$$ to determine the validity of the model. We want to minimize the loss function with respect to $$a$$, $$b$$, and $$c$$ (thus creating the best model). One such way to do this is to pick some random initial values for $$a$$, $$b$$, and $$c$$ and then do then repeat the following two steps until we reach a minimum for $$L(a,b,c)$$
 
-1. Evaluate the gradient $$\nabla L_{\theta}$$. The negative gradients points to where the function $$L(\theta)$$ is decreasing.
+1. Evaluate the gradient $$\nabla_{\theta} L$$. The negative gradients points to where the function $$L(\theta)$$ is decreasing.
 
 2. Update $$\theta \to \theta - \alpha \nabla_{\theta} L$$ The parameter $$\alpha$$ is known as the **learning rate** in machine learning.
 
