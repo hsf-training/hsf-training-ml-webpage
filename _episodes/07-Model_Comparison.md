@@ -15,9 +15,20 @@ keypoints:
 
 # Alternative Metrics
 
-As seen in the previous section, accuracy is typically not the preferred metric for classifiers. In this section we will define some new metrics. Let TP, FP, TN, FN be the number of true positives, false positives, true negatives, and false negatives classified using a given model.
+As seen in the previous section, accuracy is typically not the preferred metric for classifiers. In this section we will define some new metrics. Let TP, FP, TN, FN be the number of true positives, false positives, true negatives, and false negatives classified using a given model. **Note that in this terminology, a background event is considered negative while a signal event is considered positive**.
 
-Before getting into these metrics, it is important to note that a machine learning binary classifier does not predict something as "signal" or "background" but rather gives a probability that a given instance corresponds to a signal or background (i.e. it would output `[0.271, 0.799]` where the first index corresponds to background and the second index as signal). It is then up to a human user to specify the probability **threshhold** at which something is classified as a signal. For example, you may want the second index to be greater than 0.999 to classify something as a signal. As such, the TP, FP, TN and FN can be altered for a given machine learning classifier based on the threshhold requirement for classifying something as a signal event.
+* TP: Signal events correctly identified as signal events
+* FP: Background events incorrectly identified as signal events
+* TN: Background events correctly identified as background events
+* FN: Signal events incorrectly identified as background events
+
+Before getting into these metrics, it is important to note that a machine learning binary classifier is capable of providing a probability that a given instance corresponds to a signal or background (i.e. it would output `[0.2, 0.8]` where the first index corresponds to background and the second index as signal).
+
+> ## Probability or not?
+> There is some debate as to whether the numbers in the output of a machine learning classifier (such as `[0.2, 0.8]`) actually represent probabilities. For more information read [the following sci-kit learn documentation](https://scikit-learn.org/stable/modules/calibration.html). In general, for a *well calibrated classifier*, these do in fact represent probabilities in the frequentist interpretation. It can be difficult, however, to assess whether or not a classifier is indeed *well calibrated*. As such, it may be better to interpret these as confidence levels rather than probabilities.
+{: .callout}
+
+It is then up to a human user to specify the probability **threshhold** at which something is classified as a signal. For example, you may want the second index to be greater than 0.999 to classify something as a signal. As such, the TP, FP, TN and FN can be altered for a given machine learning classifier based on the threshhold requirement for classifying something as a signal event.
 
 > ## Classifiers in Law
 > In criminal law, Blackstone's ratio (also known as the Blackstone ratio or Blackstone's formulation) is the idea that it is better that ten guilty persons escape than that one innocent suffer. This corresponds to the minimum threshhold requirement of 91% confidence of a crime being commited for the classification of guilty. It is obviously difficult to get such precise probabilities when dealing with crimes. 
@@ -39,13 +50,7 @@ Recall is defined as
 
 $$\text{recall}=\frac{\text{TP}}{\text{TP}+\text{FN}}$$
 
-It is the ratio of all things that were **correctly** classified as positive to all things that **should have been** classified as positive. Recall itself is also an imperfect metric: a trivial way to have perfect recall is to classify everything as positive; doing so, however, would result in a poor precision score. This is equivalent to having a very low threshhold. As such, precision and recall need to be considered together. They can also be combined using a harmonic mean to give a metric that considers both scores.
-
-## F1-Score
-
-The F1-Score is defined as 
-
-$$F_1 = \frac{2}{\frac{1}{\text{precision}}+\frac{1}{\text{recall}}} = \frac{\text{TP}}{\text{TP}+\frac{\text{FN}+\text{TP}}{2}} $$
+It is the ratio of all things that were **correctly** classified as positive to all things that **should have been** classified as positive. Recall itself is also an imperfect metric: a trivial way to have perfect recall is to classify everything as positive; doing so, however, would result in a poor precision score. This is equivalent to having a very low threshhold. As such, precision and recall need to be considered together.
 
 
 ## Metrics for our Classifier
