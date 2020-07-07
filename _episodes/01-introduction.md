@@ -47,7 +47,7 @@ The goal of machine learning is to create a function which is fed the input and 
 * One wants to classify detected particles as signal or background events based on their energy, momentum, charge, etc... . This specific problem was featured on Kaggle 6 years ago [here](https://www.kaggle.com/c/higgs-boson/data). This problem will also be examined in this tutorial.
 * (My Research) Particle energy is measured in the liquid argon calotimeter by studying the output current of the electronics. When a particle deposits energy in a cell, a unique pulse shape is formed. One wants to determine the energy of the incident particles based on the form of the current time series. The traditional approach was to use a signal processing technique known as the optimal filter, but as the lumonisity of the LHC increases, these pulse shapes are littered with more and more deposited energy from background events.
 
-Machine learning has become quite popular in scientific fields in the past few years. The following plot from [MIT Technical Review](https://www.technologyreview.com/2019/01/25/1436/we-analyzed-16625-papers-to-figure-out-where-ai-is-headed-next/) examines ll of the papers available in the “artificial intelligence” section of arXiv through November 18, 2018.
+Machine learning has become quite popular in scientific fields in the past few years. The following plot from [MIT Technical Review](https://www.technologyreview.com/2019/01/25/1436/we-analyzed-16625-papers-to-figure-out-where-ai-is-headed-next/) examines the of the papers available in the “artificial intelligence” section of arXiv through November 18, 2018.
 
 ![ML Popularity](../plots/ml_populatir.PNG){:width="80%"}
 
