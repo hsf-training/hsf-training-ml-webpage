@@ -31,13 +31,17 @@ df.head()
 
  The data type is currently a pandas DataFrame: we now need to convert it into a numpy array so that it can be used in sci-kit learn and tensorflow during the machine learning process. Note that there are many ways that this can be done: in this tutorial we will use the sci-kit learn **pipeline** functionality to format our data set. For more information, please see Chapter 2 of Geron (pg 70-71) and [the sci-kit learn documentation](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html) We will briefly walk through the code in this tutorial.
 
+First we import all required modules from sci-kit learn.
 ~~~
-# Part 1
 from sklearn.base import BaseEstimator, TransformerMixin, RegressorMixin, clone
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
+~~~
+{: .language-python}
 
-# Part 2
+Next a special `DataFrameSelector` class is defined. This class is defined such that it can operate with sci-kit learn **pipeline** functionality; specifically, *it takes in a pandas DataFrame and outputs a numpy array*. Some essential class methods are defined here such that the class can operate in the OOP framework of sci-kit learn: specifically, the `fit` and `transform` methods are defined. For detailed information on **transformers** in sci-kit learn see [Chapter 2](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) or [the sci-kit learn documentation](https://scikit-learn.org/stable/data_transforms.html).
+
+~~~
 class DataFrameSelector(BaseEstimator, TransformerMixin):
     def __init__(self, attribute_names):
         self.attribute_names = attribute_names
@@ -45,15 +49,24 @@ class DataFrameSelector(BaseEstimator, TransformerMixin):
         return self
     def transform(self, X):
         return X[self.attribute_names].values
+~~~
+{: .language-python}
 
-# Part 3
+Now a **pipeline** is created. This takes in `df_train` or `df_test` and spits out a numpy array consisting of only the columns of the DataFrame corresponding to headers in `attribs`. Note also the `StandardScaler`: this ensures that all numerical attributes are scaled to have a mean of 0 and a standard deviation of 1 before they are fed to the machine learning model. This type of preprocessing is common before feeding data into machine learning models and is especially important for neural networks.
+
+~~~
 attribs = ['lep_pt_1', 'lep_pt_2', 'mllll']
 pipeline = Pipeline([
     ('selector', DataFrameSelector(attribs)),
     ('std_scaler', StandardScaler())
 ])
 
-# Part 4
+Now we will use the pipeline to generate the subset $$(x_i, y_i)$$ used for training and the subset $$(x_i, y_i)$$ used for testing the model. Note that `fit_transform` is called on the training dataset but `transform` is called on the test data set. 
+
+~~~
+{: .language-python}
+
+~~~
 X_train = full_pipeline.fit_transform(df_train)
 y_train = df_train['type'].values
 
@@ -62,11 +75,5 @@ y_test = df_test['type'].values
 ~~~
 {: .language-python}
 
-Lets walk through each part of the code. 
-
-1. Appropriate packages are imported
-2. A special `DataFrameSelector` class is defined. This class is defined such that it can operate with sci-kit learn **pipeline** functionality; specifically, *it takes in a pandas DataFrame and outputs a numpy array*.  
-3. A **pipeline** is created. This takes in `df_train` or `df_test` and spits out a numpy array consisting of only the columns of the DataFrame corresponding to headers in `attribs`. Note also the `StandardScaler`: this ensures that all numerical attributes are scaled to have a mean of 0 and a standard deviation of 1 before they are fed to the machine learning model. This type of preprocessing is common before feeding data into machine learning models and is especially important for neural networks.
-4. The pipeline is used to generate the subset $$(x_i, y_i)$$ used for training and the subset $$(x_i, y_i)$$ used for testing the model. Note that `fit_transform` is called on the training dataset but `transform` is called on the test data set. 
 
 Now we are ready to examine various models $$f$$ for predicting whether or not an event corresponds to a Higgs decay or a background event.
