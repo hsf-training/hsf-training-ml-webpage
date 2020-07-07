@@ -56,16 +56,14 @@ The following are a few recent articles on machine learning in particle physics
 * [Machine and Deep Learning Applications in Particle Physics](https://arxiv.org/abs/1912.08245)
 * [Machine learning at the energy and intensity frontiers of particle physics](https://www.nature.com/articles/s41586-018-0361-2)
 
+# Where to Become Proficient in Machine Learning
 
-# Where Should I Go if I Want to Get Good At Machine Learning
+Machine Learning is not something you'll learn in an hour. It's a skill you need to develop over time, and like any skill you need to practice a little bit every day. If you want to reall *excel* at machine learning, my recommendation is to order [this book](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) and to **read and code along with each chapter**. Alternatively, you could also try an online course such as [this one](https://www.coursera.org/learn/machine-learning). Don't go crazy: just do 30 minutes a day. You'd be surprised how much you could learn in a couple months. In summary:
 
-Machine Learning is not something you'll learn in an hour. It's a skill you need to develop over time, and like any skill you need to practice a little bit every day. If you want to reall *excel* at machine learning, my recommendation is to order [this book](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) and to **read and code along with each chapter**. Don't go crazy: just do 30 minutes a day. You'd be surprised how much you could learn in a couple months. 
+* **For Learning Essential python libraries**: [this textbook](https://www.amazon.ca/Python-Data-Analysis-Wrangling-IPython-ebook/dp/B075X4LT6K/ref=sr_1_1?crid=WLIHOCVH891S&dchild=1&keywords=python+for+data+analysis%2C+2nd+edition&qid=1593460237&sprefix=python+for+data+%2Caps%2C196&sr=8-1)
+* **For Learning Machine Learning Libraries**: [this textbook](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/)
 
-My list of machine learning resources, ranked:
-
-1. [Hands on Machine Learning; Geron](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/)
-2. Alternatively, you could also try an online course such as [this one](https://www.coursera.org/learn/machine-learning)
-
+Just for a bit of perspective, I started learning python in September 2017 and began learning about machine learning in December 2018. I am finished the first textbook and am still working through the machine learning textbook. Don't expect the learning process to be a quick one: read each textbook thoroughly and make sure you code along with each textbook.
 
 {% include links.md %}
 
