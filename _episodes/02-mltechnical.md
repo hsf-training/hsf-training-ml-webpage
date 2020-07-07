@@ -12,7 +12,7 @@ keypoints:
 - "Gradient descent is a procedure used to optimize a loss function corresponding to a specific model and data set."
 ---
  
- In this section we will establish the mathematical foundations of machine learning. We will define three important quantities: **data**, **models**, and **loss functions**. We will then discuss the optimization procedure known as **gradient descent**.
+
  
  # Definitions
  
