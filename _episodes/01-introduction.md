@@ -39,9 +39,6 @@ There are three main tasks in machine learning:
 
 3. **Generation**: The input is noise and the output is something sensible. A few concrete examples include training a machine learning algorithm to take in a *random seed* and generate images of peoples faces.
 
-The goal of machine learning is to create a function which is fed the input and spits out the output. There **are many many** different functions one can use and in general they will look very different depending on the data set used.
-
-
 # What Role Does Machine Learning have in Particle Physics?
 
 * One wants to classify detected particles as signal or background events based on their energy, momentum, charge, etc... . This specific problem was featured on Kaggle 6 years ago [here](https://www.kaggle.com/c/higgs-boson/data). This problem will also be examined in this tutorial.
