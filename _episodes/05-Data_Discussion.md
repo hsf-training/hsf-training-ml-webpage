@@ -10,6 +10,7 @@ objectives:
 - "Prepare the dataset for machine learning."
 keypoints:
 - "One must properly format data before any machine learning takes place."
+- "Data can be formatted using sci-kit learn functionality; using it effectively may take time to master."
 ---
 
 # Data Set Used
