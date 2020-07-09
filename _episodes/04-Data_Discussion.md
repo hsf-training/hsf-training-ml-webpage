@@ -67,6 +67,8 @@ Now we will use the pipeline to generate the subset $$(x_i, y_i)$$ used for trai
 ~~~
 {: .language-python}
 
+Now we use the pipeline to create a training and test dataset. We keep the labels $$x_i$$ seperate from the targets (i.e. signal/background) $$y_i$$.
+
 ~~~
 X_train = full_pipeline.fit_transform(df_train)
 y_train = df_train['type'].values
