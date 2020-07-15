@@ -62,12 +62,10 @@ pipeline = Pipeline([
     ('std_scaler', StandardScaler())
 ])
 
-Now we will use the pipeline to generate the subset $$(x_i, y_i)$$ used for training and the subset $$(x_i, y_i)$$ used for testing the model. Note that `fit_transform` is called on the training dataset but `transform` is called on the test data set. 
-
 ~~~
 {: .language-python}
 
-Now we use the pipeline to create a training and test dataset. We keep the labels $$x_i$$ seperate from the targets (i.e. signal/background) $$y_i$$.
+Now we will use the pipeline to generate the subset $$(x_i, y_i)$$ used for training and the subset $$(x_i, y_i)$$ used for testing the model. Note that `fit_transform` is called on the training dataset but `transform` is called on the test data set. We keep the labels $$x_i$$ seperate from the targets (i.e. signal/background) $$y_i$$.
 
 ~~~
 X_train = full_pipeline.fit_transform(df_train)
