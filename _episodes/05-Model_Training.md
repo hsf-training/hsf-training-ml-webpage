@@ -58,7 +58,7 @@ print(accuracy_score(y_test, y_pred))
 4. An accuracy score between the test dataset `y_test` and machine learning predictions `y_pred` is made. The accuracy score is defined as the ratio of correctly identified data points to all data points.
  
 ## Neural Network
-A neural network is a black-box model with many hyperparameters. We will discuss the mathematical structure of neural networks later on in the tutorial. If you are interested in neural networks, I would highly recommend reading [Chapter 10](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) of the text (and [Chapters 11-18](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) as well, for that matter). To use a neural network with sci-kit learn, we must modularize its construction using a function. We will later pass this function into a keras wrapper.
+A neural network is a black-box model with many hyperparameters. We will discuss the mathematical structure of neural networks later on in the tutorial. If you are interested in neural networks, I would highly recommend reading [Chapter 10](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) of the text (and [Chapters 11-18](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) as well, for that matter). It is also discussed [here](https://lukepolson.github.io/HEP_ML_Lessons/07-nn/index.html) in the tutorial. To use a neural network with sci-kit learn, we must modularize its construction using a function. We will later pass this function into a keras wrapper.
 
 ~~~
 def build_model(n_hidden=1, n_neurons=5, learning_rate=1e-3):
