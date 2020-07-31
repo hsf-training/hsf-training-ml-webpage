@@ -27,10 +27,10 @@ For non-trivial machine learning tasks that occur in research, one needs to be p
 
 1. **numpy**: the go-to numerical library in python. See the [documentation](https://numpy.org/). numpy's main purpose is the manipulation of multi-dimensional arrays: this includes both
 
-* *slicing*: taking "chunks" out of arrays. Slicing in python means taking elements from one given index to another given index. For 1 dimensional arrays this reduces selecting intervals, but these operations can become quite advanced for multidimesional arrays.
-* *functional operatorions*: applying a function to an entire array . This code is highly optimized: there is often a myth that python is slower than languages like C++; while this may be true for things like for-loops, it is not true if you use numpy properly.
+   * *slicing*: taking "chunks" out of arrays. Slicing in python means taking elements from one given index to another given index. For 1 dimensional arrays this reduces to selecting intervals, but these operations can become quite advanced for multidimesional arrays.
+   * *functional operatorions*: applying a function to an entire array. This code is highly optimized: there is often a myth that python is slower than languages like C++; while this may be true for things like for-loops, it is not true if you use numpy properly.
 
-2. **pandas**: pandas is a fast, powerful, flexible and easy to use open source data analysis and manipulation tool, built on top of the Python programming language. The most important datatype in the pandas library is the *DataFrame*: a "spreadsheet-type object" with row and column names. It is preferred to use pandas DataFrames than numpy arrays for managing data sets.
+2. **pandas**: pandas is a fast, powerful, flexible and easy to use open source data analysis and manipulation tool, built on top of the Python programming language. The most important datatype in the pandas library is the *DataFrame*: a "spreadsheet-type object" with row and column names. It is preferred to use pandas DataFrames rather than numpy arrays for managing data sets.
 
 If you are unfamiliar with these packages, I would recommend sitting down with [this textbook](https://www.amazon.ca/Python-Data-Analysis-Wrangling-IPython-ebook/dp/B075X4LT6K/ref=sr_1_1?crid=WLIHOCVH891S&dchild=1&keywords=python+for+data+analysis%2C+2nd+edition&qid=1593460237&sprefix=python+for+data+%2Caps%2C196&sr=8-1) and reading/coding along with chapters 4 and 5. In a few hours, you should have a good idea of how these packages work.
 
