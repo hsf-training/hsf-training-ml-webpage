@@ -10,7 +10,7 @@ This tutorial explores machine learning using sci-kit learn and tensorflow for a
 {% comment %} This is a comment in Liquid {% endcomment %}
 
 > ## Prerequisites
->
+> For this tutorial we will be using [kaggle](https://www.kaggle.com/). Make sure you have [created an account](https://www.kaggle.com/account/login?phase=startRegisterTab&returnUrl=%2F)
 > Please read the first three sections before coming to the tutorial:
 > * [Introduction](https://lukepolson.github.io/HEP_ML_Lessons/01-introduction/index.html)
 > * [Mathematical Foundations](https://lukepolson.github.io/HEP_ML_Lessons/02-mltechnical/index.html)
