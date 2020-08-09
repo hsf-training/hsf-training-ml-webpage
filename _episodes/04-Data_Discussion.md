@@ -68,10 +68,10 @@ pipeline = Pipeline([
 Now we will use the pipeline to generate the subset $$(x_i, y_i)$$ used for training and the subset $$(x_i, y_i)$$ used for testing the model. Note that `fit_transform` is called on the training dataset but `transform` is called on the test data set. We keep the labels $$x_i$$ separate from the targets (i.e. signal/background) $$y_i$$.
 
 ~~~
-X_train = full_pipeline.fit_transform(df_train)
+X_train = pipeline.fit_transform(df_train)
 y_train = df_train['type'].values
 
-X_test = full_pipeline.transform(df_test)
+X_test = pipeline.transform(df_test)
 y_test = df_test['type'].values
 ~~~
 {: .language-python}
