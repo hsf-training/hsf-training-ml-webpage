@@ -70,9 +70,23 @@ print (classification_report(y_test, y_pred_NN,
 
 
 # The ROC Curve
-The ROC curve is a plot of the recall (or true positive rate) vs. the false positive rate: the ratio of negative instances incorrectly classified as positive. A classifier may classify many instances as positive (i.e. has a low tolerance for classifying something as positive), but in such an example it will probably also incorrectly classify many negative instances as positive as well. The ROC curve is a plot with the false positive rate on the x-axis and the true positive rate on the y-axis; the threshhold is varied to give a parameteric curve. A random classifier results in a line.
+The ROC curve is a plot of the recall (or true positive rate) vs. the false positive rate: the ratio of negative instances incorrectly classified as positive. A classifier may classify many instances as positive (i.e. has a low tolerance for classifying something as positive), but in such an example it will probably also incorrectly classify many negative instances as positive as well. The ROC curve is a plot with the false positive rate on the x-axis and the true positive rate on the y-axis; the threshhold is varied to give a parameteric curve. A random classifier results in a line. Before we look at the ROC curve, lets examine the following plot
 
-To plot the ROC curve, we need to obtain the probabilities that something is classified as a signal (rather than the signal/background prediction itself). This can be done as follows:
+~~~
+plt.figure()
+plt.hist(decisions_nn[y_test==1], color='b', histtype='step', bins=50, label='Higgs Events')
+plt.hist(decisions_nn[y_test==0], color='g', histtype='step', bins=50, label='Background Events')
+plt.xlabel('Threshhold')
+plt.ylabel('Number of Events')
+plt.semilogy()
+plt.legend()
+plt.show()
+~~~
+{: .language-python}
+
+We can seperate this plot into two seperate histograms (Higgs vs. non Higgs) because we know beforehand which events correspond to the particular type of event. For real data where the answers aren't provided, it will be one concatenated histogram. The game here is simple: we pick a threshhold (i.e. vertical line on the plot). Once we choose that threshhold, everything to the right of that vertical line is classified as a signal event, and everything to the left is classified as a background event. By moving this vertical line left and right (i.e. altering the threshhold) we effectively change TP, FP, TN and FN. Hence we also change the true positive rate and the false positive rate by moving this line around.
+
+Suppose we move the threshhold from 0 to 1 in steps of 0.01. In doing so, we will get an array of TPRs and FPRs. We can then plot the TPR array vs. the FPR array: this is the ROC curve. To plot the ROC curve, we need to obtain the probabilities that something is classified as a signal (rather than the signal/background prediction itself). This can be done as follows:
 
 ~~~
 decisions_nn = NN_clf.predict_proba(X_test)[:,1]
@@ -96,7 +110,9 @@ plt.show()
 ~~~
 {: .language-python}
 
-From this curve it should be clear: we can make the true positive rate larger (such that almost all signal events are classified correctly) but as a sacrifice we will also classify more background events as signals. We need to decide on an appropriate threshhold.
+
+
+We need to decide on an appropriate threshhold.
 
 ## What Should My Threshhold Be?
 
