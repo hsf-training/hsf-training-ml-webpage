@@ -17,7 +17,7 @@ In this section we will examine 2 different machine learning models $$f$$ for cl
 
 
 ## Random Forest
-A random forest (see [Chapter 7](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/)) uses decision trees (see [Chapter 6](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/)) to make predictions. Decision trees are very simple models that make classification predictions by performing selections on regions in the data set. The diagram below shows a decision tree for classifying three different types of iris flower species.
+A random forest (see [Chapter 7](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) or [Wikipedia](https://en.wikipedia.org/wiki/Random_forest)) uses decision trees (see [Chapter 6](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) or [Wikipedia](https://en.wikipedia.org/wiki/Decision_tree_learning)) to make predictions. Decision trees are very simple models that make classification predictions by performing selections on regions in the data set. The diagram below shows a decision tree for classifying three different types of iris flower species.
 
 ![Decision tree](../plots/flower.jpeg){:width="80%"}
 
