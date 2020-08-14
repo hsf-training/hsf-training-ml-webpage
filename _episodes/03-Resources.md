@@ -11,9 +11,8 @@ objectives:
 - "Give links to machine learning library documentation."
 - "Provide links to machine learning textbooks in python."
 keypoints:
-- "Textbook provided for learning NumPy and pandas."
+- "NumPy and pandas are the main libraries for scientific computing."
 - "Sci-kit learn and Tensorflow are two good options for machine learning in python."
-- "Textbook provided for learning machine learning libraries."
 ---
 
 # Proficiency in python
