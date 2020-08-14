@@ -8,8 +8,8 @@ objectives:
 - "Discuss the role of data, models, and loss functions in machine learning."
 - "Discuss the role of gradient descent when optimizing a model."
 keypoints:
-- "In a particular machine learning problem, one needs an adequate data set, a reasonable model, and a corresponding loss function. The choice of model and arbitrary needs to depend on the data set."
-- "Gradient descent is a procedure used to optimize a loss function corresponding to a specific model and data set."
+- "In a particular machine learning problem, one needs an adequate dataset, a reasonable model, and a corresponding loss function. The choice of model and arbitrary needs to depend on the dataset."
+- "Gradient descent is a procedure used to optimize a loss function corresponding to a specific model and dataset."
 ---
  
  In this section we will establish the mathematical foundations of machine learning. We will define three important quantities: **data**, **models**, and **loss functions**. We will then discuss the optimization procedure known as **gradient descent**.
@@ -20,7 +20,7 @@ keypoints:
  
   * **Data** $$(x_i, y_i)$$ where $$i$$ represents the $$i^{\text{th}}$$ data point. The $$x_i$$ are typically referred to as **instances** and the $$y_i$$ as **labels**. In general the $$x_i$$ and $$y_i$$ don't need to be numbers. For example, in a dataset consisting of pictures of animals, the $$x_i$$ might be images (consisting of height, width, and color channel) and the $$y_i$$ might be a string which states the type of animal.  
   
-* **Model**: Some abstract function $$f$$ such that $$y=f(x;\theta)$$ is used to model the individual $$(x_i, y_i)$$ pairs. $$\theta$$ is used to represent all necessary parameters in the function, so it can be thought of as a vector. For example, if the $$(x_i, y_i)$$ are real numbers and approximately related through a quadratic function, then an adequate model might be $$f(x;a,b,c)=ax^2+bx+c$$. Note that one could also use the model $$f(x;a,b,c,...)=ax^3+b\sin(x)+ce^x + ...$$ to model the data set; a model is just *some* function; it doesn't need to model the data well necessarily. For the case where the $$x_i$$ are pictures of animals and the $$y_i$$ are strings of animal names, the function $$f$$ may need to be quite complex to achieve reasonable accuracy. 
+* **Model**: Some abstract function $$f$$ such that $$y=f(x;\theta)$$ is used to model the individual $$(x_i, y_i)$$ pairs. $$\theta$$ is used to represent all necessary parameters in the function, so it can be thought of as a vector. For example, if the $$(x_i, y_i)$$ are real numbers and approximately related through a quadratic function, then an adequate model might be $$f(x;a,b,c)=ax^2+bx+c$$. Note that one could also use the model $$f(x;a,b,c,...)=ax^3+b\sin(x)+ce^x + ...$$ to model the dataset; a model is just *some* function; it doesn't need to model the data well necessarily. For the case where the $$x_i$$ are pictures of animals and the $$y_i$$ are strings of animal names, the function $$f$$ may need to be quite complex to achieve reasonable accuracy. 
 
 * **Loss Function**: A function that determines *how well the model $$y=f(x)$$ predicts the data $$(x_i, y_i)$$*. Some models work better than others. One such loss function might be $$\sum_i (y_i-f(x_i))^2$$: the mean-squared error. For the quadratic function this would be $$\sum_i (y_i-(ax_i^2+bx_i+c))^2$$. One doesn't need to use the mean-squared error (MSE) as a loss function, however; one could also use the mean-absolute error (MAE), or the mean-cubed error, etc. What about cases where the $$x_i$$ represent pictures of animals and the $$y_i$$ are strings representing the animal in the picture? How can we define a loss funtion to account for the *error* the function made when classifying this picture? In this case one needs to be clever about loss functions as functions like the MSE or MAE don't make sense anymore. A common loss function in this case is the *cross entropy loss function*.
 
@@ -36,7 +36,7 @@ What's important to note is that once the data and model are specified, then the
 
 # Gradient Descent
 
-For most applications, the goal of machine learning is to optimize a loss function with respect to the parameters of a model given a data set and a model. Lets suppose we have the dataset $$(x_i, y_i)$$, the model $$y=ax^2+bx+c$$, and we use the loss function $$L(\theta) = L(a, b, c) = \sum_i (y_i-(ax_i^2+bx_i+c))^2$$ to determine the validity of the model. We want to minimize the loss function with respect to $$a$$, $$b$$, and $$c$$ (thus creating the best model). One such way to do this is to pick some random initial values for $$a$$, $$b$$, and $$c$$, and then repeat the following two steps until we reach a minimum for $$L(a,b,c)$$
+For most applications, the goal of machine learning is to optimize a loss function with respect to the parameters of a model given a dataset and a model. Lets suppose we have the dataset $$(x_i, y_i)$$, the model $$y=ax^2+bx+c$$, and we use the loss function $$L(\theta) = L(a, b, c) = \sum_i (y_i-(ax_i^2+bx_i+c))^2$$ to determine the validity of the model. We want to minimize the loss function with respect to $$a$$, $$b$$, and $$c$$ (thus creating the best model). One such way to do this is to pick some random initial values for $$a$$, $$b$$, and $$c$$, and then repeat the following two steps until we reach a minimum for $$L(a,b,c)$$
 
 1. Evaluate the gradient $$\nabla_{\theta} L$$. The negative gradients points to where the function $$L(\theta)$$ is decreasing.
 
@@ -48,13 +48,13 @@ This procedure is known as **gradient descent** in machine learning. It's sort o
 
 ![Quadratic model and data points](../plots/GradDescent.PNG){:width="80%"}
 
-Note that the models in the plots above have 1 (left) and 2 (right) parameters. A typical neural network can have $$O(10^4)$$ parameters. In such a situation, the gradient is a vector with dimensions $$O(10^4)$$; this can be computational expensive to compute. In addition the gradient $$\nabla_{\theta} L$$ depends on *all the data points* $$(x_i, y_i)$$. This is often computationally expensive for datasets that include many data points. Typical machine learning data sets can have millions of (multi-dimesional) data points. A solution to this is to sample a different small subset of points each time the gradient is computed. This is known as **batch gradient descent**.  
+Note that the models in the plots above have 1 (left) and 2 (right) parameters. A typical neural network can have $$O(10^4)$$ parameters. In such a situation, the gradient is a vector with dimensions $$O(10^4)$$; this can be computational expensive to compute. In addition the gradient $$\nabla_{\theta} L$$ depends on *all the data points* $$(x_i, y_i)$$. This is often computationally expensive for datasets that include many data points. Typical machine learning datasets can have millions of (multi-dimesional) data points. A solution to this is to sample a different small subset of points each time the gradient is computed. This is known as **batch gradient descent**.  
 
 # The Fly in the Ointment: Overfitting
 
 ![Quadratic model and data points](../plots/overfit.png){:width="80%"}
 
-In general, a model with more parameters can fit a more complicated data set. Consider the plot above
+In general, a model with more parameters can fit a more complicated dataset. Consider the plot above
 
 * The red and orange data points are both taken from the same population
 * The model is only trained on the red data points

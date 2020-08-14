@@ -18,9 +18,9 @@ keypoints:
 The dataset we will use in this tutorial is simulated ATLAS data. Each event corresponds to 4 detected leptons: some events correspond to a Higgs Boson decay and others do not (background). Various physical quantities such as lepton charge and transverse momentum are recorded for each event. The analysis in this tutorial loosely follows [the discovery of the Higgs Boson](https://www.sciencedirect.com/science/article/pii/S037026931200857X).
 
 
-# Setting up the data set for machine learning
+# Setting up the dataset for machine learning
 
-Here we will format the dataset $$(x_i, y_i)$$ so we can use it for machine learning sci-kit learn and tensorflow. First we need to open our data set and separate it into a training and test set.
+Here we will format the dataset $$(x_i, y_i)$$ so we can use it for machine learning sci-kit learn and tensorflow. First we need to open our dataset and separate it into a training and test set.
 
 ~~~
 df = pd.read_pickle('data.pkl')
@@ -30,7 +30,7 @@ df.head()
 ~~~
 {: .language-python}
 
- The data type is currently a pandas DataFrame: we now need to convert it into a numpy array so that it can be used in sci-kit learn and tensorflow during the machine learning process. Note that there are many ways that this can be done: in this tutorial we will use the sci-kit learn **pipeline** functionality to format our data set. For more information, please see Chapter 2 of Geron (pg 70-71) and [the sci-kit learn documentation](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html). We will briefly walk through the code in this tutorial.
+ The data type is currently a pandas DataFrame: we now need to convert it into a numpy array so that it can be used in sci-kit learn and tensorflow during the machine learning process. Note that there are many ways that this can be done: in this tutorial we will use the sci-kit learn **pipeline** functionality to format our dataset. For more information, please see Chapter 2 of Geron (pg 70-71) and [the sci-kit learn documentation](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html). We will briefly walk through the code in this tutorial.
 
 First we import all required modules from sci-kit learn.
 ~~~
@@ -65,7 +65,7 @@ pipeline = Pipeline([
 ~~~
 {: .language-python}
 
-Now we will use the pipeline to generate the subset $$(x_i, y_i)$$ used for training and the subset $$(x_i, y_i)$$ used for testing the model. Note that `fit_transform` is called on the training dataset but `transform` is called on the test data set. We keep the labels $$x_i$$ separate from the targets (i.e. signal/background) $$y_i$$.
+Now we will use the pipeline to generate the subset $$(x_i, y_i)$$ used for training and the subset $$(x_i, y_i)$$ used for testing the model. Note that `fit_transform` is called on the training dataset but `transform` is called on the test dataset. We keep the labels $$x_i$$ separate from the targets (i.e. signal/background) $$y_i$$.
 
 ~~~
 X_train = pipeline.fit_transform(df_train)
