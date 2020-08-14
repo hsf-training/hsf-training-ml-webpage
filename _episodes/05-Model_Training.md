@@ -3,12 +3,12 @@ title: "Model Training"
 teaching: 10
 exercises: 10
 questions:
-- "How does one train machine learning models in python?"
+- "How does one train machine learning models in Python?"
 objectives:
-- "Train a Random Forest model."
+- "Train a random forest model."
 - "Train a neural network model."
 keypoints:
-- "Random Forests and neural networks are two viable machine learning models."
+- "Random forests and neural networks are two viable machine learning models."
 ---
 
 # Models
@@ -24,7 +24,7 @@ A random forest (see [Chapter 7](https://www.oreilly.com/library/view/hands-on-m
 A decision tree is not trained using gradient descent and a loss function; training is completed using the *Classification and Regression Tree* (CART) algorithm.  While each decision tree is a simple algorithm, a random forest uses **ensemble learning** with many decision trees to make better predictions. A random forest is considered a **black-box model** while a decision tree is considered a **white-box model**.
 
 > ## Model Interpretation: White Box vs. Black Box
-> Decision trees are intuitive, and their decisions are easy to interpret. Such models are considered white-box models. In constrast, random forests or neural networks are generally considered black-box models. They make great predictions but it is usually hard to explain in simple terms why the predictions were made. For example, if a neural network says that a particular person appears on a picture, it is hard to know what contributed to that prediction. Was it their mouth? Their nose? Their shoes? Or even the couch they were sitting on? Conversely, decision trees provide nice, simple classification rules that can be applied manually if need be.
+> Decision trees are intuitive, and their decisions are easy to interpret. Such models are considered white-box models. In constrast, random forests or neural networks are generally considered black-box models. They can make great predictions but it is usually hard to explain in simple terms why the predictions were made. For example, if a neural network says that a particular person appears on a picture, it is hard to know what contributed to that prediction. Was it their mouth? Their nose? Their shoes? Or even the couch they were sitting on? Conversely, decision trees provide nice, simple classification rules that can be applied manually if need be.
 {: .callout}
 
 The diagram below is a visual representation of random forests; there are $$B$$ decision trees and each decision tree $$\text{tree}_j$$ makes the prediction that a particular data point $$x$$ belongs to the class $$k_j$$. Each decision tree has a varying level of confidence in their prediction. Then, using weighted voting, all the predictions $$k_1,...k_B$$ are considered together to generate a single prediction that the data point $$x$$ belongs to class $$k$$.
@@ -54,11 +54,11 @@ print(accuracy_score(y_test, y_pred_RF))
 
 1. The classifier is created. In this situation we have three hyperparameters specified: `criterion`, `max_depth` (max number of consecutive cuts an individual tree can make), and `n_estimators` (number of decision trees used). These **are not altered** during training (i.e. they are not included in $$\theta$$).
 2. The classifier is trained using the training dataset `X_train` and corresponding labels `y_train`.
-3. The classifier makes predictions on the test dataset `X_test`. The machine learning algorithm was not exposed to this data during training.
+3. The classifier makes predictions on the test dataset `X_test`. The machine learning algorithm was not exposed to these data during training.
 4. An accuracy score between the test dataset `y_test` and machine learning predictions `y_pred` is made. The accuracy score is defined as the ratio of correctly identified data points to all data points.
  
 ## Neural Network
-A neural network is a black-box model with many hyperparameters. We will discuss the mathematical structure of neural networks later on in the tutorial. If you are interested in neural networks, I would highly recommend reading [Chapter 10](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) of the text (and [Chapters 11-18](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) as well, for that matter). It is also discussed [here](https://lukepolson.github.io/HEP_ML_Lessons/07-nn/index.html) in the tutorial. To use a neural network with sci-kit learn, we must modularize its construction using a function. We will later pass this function into a keras wrapper.
+A neural network is a black-box model with many hyperparameters. We will discuss the mathematical structure of neural networks later on in the tutorial. If you are interested in neural networks, I would highly recommend reading [Chapter 10](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) of the textbook (and [Chapters 11-18](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) as well, for that matter). It is also discussed [here](https://lukepolson.github.io/HEP_ML_Lessons/07-nn/index.html) in the tutorial. To use a neural network with scikit-learn, we must modularize its construction using a function. We will later pass this function into a Keras wrapper.
 
 ~~~
 def build_model(n_hidden=1, n_neurons=5, learning_rate=1e-3):
