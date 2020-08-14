@@ -23,7 +23,7 @@ If you are unfamiliar with python, the following tutorials will be useful:
 * [python novice inflammation](https://swcarpentry.github.io/python-novice-inflammation/)
 * [python novice gapfinder](http://swcarpentry.github.io/python-novice-gapminder/)
 
-For non-trivial machine learning tasks that occur in research, one needs to be proficient in the programming libraries discussed in the tutorial here. There are three main python libraries for scientific computing:
+For non-trivial machine learning tasks that occur in research, one needs to be proficient in the programming libraries discussed in the tutorial here. There are two main python libraries for scientific computing:
 
 1. **numpy**: the go-to numerical library in python. See the [documentation](https://numpy.org/). numpy's main purpose is the manipulation of multi-dimensional arrays: this includes both
 
