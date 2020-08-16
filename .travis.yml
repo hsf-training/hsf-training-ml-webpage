@@ -7,18 +7,10 @@ branches:
   - gh-pages
   - /.*/
 before_install:
-  - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
-  - echo "deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/" | sudo tee -a /etc/apt/sources.list
-  - sudo apt-get update -y
-  - sudo apt-get install -y r-base
-  - sudo Rscript -e "install.packages('knitr', repos = 'https://', dependencies = TRUE)"
-  - sudo Rscript -e "install.packages('stringr', repos = 'https://cran.rstudio.com', dependencies = TRUE)"
-  - sudo Rscript -e "install.packages('checkpoint', repos = 'https://cran.rstudio.com', dependencies = TRUE)"
-  - sudo Rscript -e "install.packages('ggplot2', repos = 'https://cran.rstudio.com', dependencies = TRUE)"
   - rvm default
   - gem install json kramdown jekyll bundler
 install:
-  - pip install pyyaml
+  - pip install -U pyyaml
 script:
   - make lesson-check-all
   - make --always-make site
