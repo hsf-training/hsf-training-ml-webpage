@@ -6,7 +6,7 @@
 
 <footer>
   <div class="row">
-    <div class="col-md-6 copyright" align="left">
+    <div class="col-md-6 license" id="license-info" align="left">
 	{% if site.carpentry == "swc" %}
 	Licensed under <a href="{{ site.cc_by_human }}">CC-BY 4.0</a> 2018–{{ 'now' | date: "%Y" }}
 	by <a href="{{ site.carpentries_site }}">The Carpentries</a>
@@ -24,6 +24,12 @@
 	by <a href="{{ site.lc_site }}">Library Carpentry</a>
 	{% elsif site.carpentry == "cp" %}
 	Licensed under <a href="{{ site.cc_by_human }}">CC-BY 4.0</a> 2018–{{ 'now' | date: "%Y" }}
+	by <a href="{{ site.carpentries_site }}">The Carpentries</a>
+    {% elsif site.carpentry == "hsf" %}
+	Content licensed under <a href="{{ site.cc_by_human }}">CC-BY 4.0</a> 2020–{{ 'now' | date: "%Y" }}
+	by <a href="{{ site.hsf_site }}">HEP Software foundation</a>
+    <br>
+	Lesson setup licensed under <a href="{{ site.cc_by_human }}">CC-BY 4.0</a> 2018–{{ 'now' | date: "%Y" }}
 	by <a href="{{ site.carpentries_site }}">The Carpentries</a>
 	{% endif %}
     </div>

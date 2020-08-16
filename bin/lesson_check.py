@@ -82,7 +82,8 @@ KNOWN_CODEBLOCKS = {
     'language-python',
     'language-r',
     'language-shell',
-    'language-sql'
+    'language-sql',
+    'language-yaml',
 }
 
 # What fields are required in teaching episode metadata?
@@ -177,7 +178,7 @@ def check_config(reporter, source_dir):
     reporter.check_field(config_file, 'configuration',
                          config, 'kind', 'lesson')
     reporter.check_field(config_file, 'configuration',
-                         config, 'carpentry', ('swc', 'dc', 'lc', 'cp'))
+                         config, 'carpentry', ('hsf', 'swc', 'dc', 'lc', 'cp'))
     reporter.check_field(config_file, 'configuration', config, 'title')
     reporter.check_field(config_file, 'configuration', config, 'email')
 
