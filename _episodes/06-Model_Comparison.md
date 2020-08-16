@@ -9,8 +9,8 @@ objectives:
 - "Train a random forest for classification."
 - "Train a simple neural network for classification."
 keypoints:
-- "The basic features of sci-kit learn and tensorflow are very simple to use."
-- "To perform more sophisticated model construction, one should carefully read the textbook."
+- "Many metrics exist to assess classifier performance."
+- "Making plots is useful to assess classifier performance."
 ---
 
 # Alternative Metrics
