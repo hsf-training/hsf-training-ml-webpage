@@ -17,7 +17,7 @@ In this section we will examine 2 different machine learning models $$f$$ for cl
 
 
 ## Random Forest
-A random forest (see [Chapter 7](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/)) uses decision trees (see [Chapter 6](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/)) to make predictions. Decision trees are very simple models that make classification predictions by performing selections on regions in the data set. The diagram below shows a decision tree for classifying three different types of iris flower species.
+A random forest (see [Chapter 7](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/)) uses decision trees (see [Chapter 6](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/)) to make predictions. Decision trees are very simple models that make classification predictions by performing selections on regions in the dataset. The diagram below shows a decision tree for classifying three different types of iris flower species.
 
 ![Decision tree](../plots/flower.jpeg){:width="80%"}
 
@@ -37,7 +37,7 @@ The diagram below is a visual representation of random forests; there are $$B$$ 
 > Suppose you pose a complex question to thousands of random people, then aggregrate their answers. In many cases you will find that this aggregreated answer is better than an expert's answer. This phenomenon is  known as *wisdom of the crowd*. Similarily, if you aggregrate the predictions from a group of predictors (such as classifiers or reggressors), you will often get better predictions than with the individual predictor. A group of predictors is called an *ensemble*. For an interesting example of this phenomenon in estimating the weight of an ox, see [this national geographic article](https://www.nationalgeographic.com/science/phenomena/2013/01/31/the-real-wisdom-of-the-crowds/). 
 {: .callout}
 
-In the previous page we created a training and test data set. Lets use these data sets to train a random forest.
+In the previous page we created a training and test dataset. Lets use these datasets to train a random forest.
 
 ~~~
 from sklearn.ensemble import RandomForestClassifier
@@ -92,5 +92,5 @@ print(accuracy_score(y_test, y_pred_NN))
 The neural network should also have a similar accuracy score to the random forest. Note that while the accuracy is one metric for the strength of a classifier, many other metrics exist as well. We will examine these metrics in the next section.
 
 > ## Accuracy: The Naive Metric
-> Suppose you have a data set where 90% of the data set is background and 10% of the data set is signal. Now suppose we have a dumb classifier that classifies every data point as background. In this example, the classifier will have 90% accuracy! This demonstrates why accuracy is generally not the preferred performance measure for classifiers, especially when you are dealing with *skewed* datasets. Skewed datasets show up all the time in particle physics where one has access to many more background than signal events. In this particular tutorial, we have a data set with 520000 background events and 370000 signal events.
+> Suppose you have a dataset where 90% of the dataset is background and 10% of the dataset is signal. Now suppose we have a dumb classifier that classifies every data point as background. In this example, the classifier will have 90% accuracy! This demonstrates why accuracy is generally not the preferred performance measure for classifiers, especially when you are dealing with *skewed* datasets. Skewed datasets show up all the time in particle physics where one has access to many more background than signal events. In this particular tutorial, we have a dataset with 520000 background events and 370000 signal events.
 {: .callout}
