@@ -10,9 +10,8 @@ objectives:
 - "Provide links to tutorials and textbooks that will help you get better at Python."
 - "Provide links to machine learning library documentation."
 keypoints:
-- "Textbook provided for learning NumPy and pandas."
+- "NumPy and pandas are the main libraries for scientific computing."
 - "scikit-learn and TensorFlow are two good options for machine learning in Python."
-- "Textbook provided for learning machine learning libraries."
 ---
 
 # Proficiency in Python
@@ -22,7 +21,7 @@ If you are unfamiliar with Python, the following tutorials will be useful:
 * [Python novice inflammation](https://swcarpentry.github.io/python-novice-inflammation/)
 * [Python novice gapfinder](http://swcarpentry.github.io/python-novice-gapminder/)
 
-For non-trivial machine learning tasks that occur in research, one needs to be proficient in the programming libraries discussed in the tutorial here. There are three main Python libraries for scientific computing:
+For non-trivial machine learning tasks that occur in research, one needs to be proficient in the programming libraries discussed in the tutorial here. There are two main python libraries for scientific computing:
 
 1. **NumPy**: the go-to numerical library in Python. See the [documentation](https://numpy.org/). NumPy's main purpose is the manipulation of multi-dimensional arrays: this includes both
 

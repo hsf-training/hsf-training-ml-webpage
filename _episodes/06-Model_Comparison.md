@@ -8,8 +8,8 @@ objectives:
 - "Train a random forest for classification."
 - "Train a simple neural network for classification."
 keypoints:
-- "The basic features of scikit-learn and TensorFlow are very simple to use."
-- "To perform more sophisticated model construction, one should carefully read the textbook."
+- "Many metrics exist to assess classifier performance."
+- "Making plots is useful to assess classifier performance."
 ---
 
 # Alternative Metrics
@@ -55,7 +55,7 @@ It is the ratio of all things that were **correctly** classified as positive to 
 
 ## Metrics for our Classifier
 
-By default, the threshold was set to 50% when we made the predictions eariler when computing the accuracy score. As such, the threshold is set to 50% here.
+By default, the threshold was set to 50% in computing the accuracy score when we made the predictions earlier. For consistency, the threshold is set to 50% here.
 
 ~~~
 from sklearn.metrics import classification_report, roc_auc_score
@@ -70,10 +70,12 @@ print (classification_report(y_test, y_pred_NN,
 
 
 # The ROC Curve
-The ROC curve is a plot of the recall (or true positive rate) vs. the false positive rate: the ratio of negative instances incorrectly classified as positive. A classifier may classify many instances as positive (i.e. has a low tolerance for classifying something as positive), but in such an example it will probably also incorrectly classify many negative instances as positive as well. The ROC curve is a plot with the false positive rate on the x-axis and the true positive rate on the y-axis; the threshold is varied to give a parameteric curve. A random classifier results in a line. Before we look at the ROC curve, lets examine the following plot
+The ROC curve is a plot of the recall (or true positive rate) vs. the false positive rate: the ratio of negative instances incorrectly classified as positive. A classifier may classify many instances as positive (i.e. has a low tolerance for classifying something as positive), but in such an example it will probably also incorrectly classify many negative instances as positive as well. The false positive rate is plotted on the x-axis of the ROC curve and the true positive rate on the y-axis; the threshold is varied to give a parameteric curve. A random classifier results in a line. Before we look at the ROC curve, let's examine the following plot
 
 ~~~
 decisions_nn = NN_clf.predict_proba(X_test)[:,1]
+decisions_rf = RF_clf.predict_proba(X_test)[:,1]
+
 plt.figure()
 plt.hist(decisions_nn[y_test==1], color='b', histtype='step', bins=50, label='Higgs Events')
 plt.hist(decisions_nn[y_test==0], color='g', histtype='step', bins=50, label='Background Events')
@@ -90,9 +92,8 @@ We can separate this plot into two separate histograms (Higgs vs. non Higgs) bec
 Suppose we move the threshold from 0 to 1 in steps of 0.01. In doing so, we will get an array of TPRs and FPRs. We can then plot the TPR array vs. the FPR array: this is the ROC curve. To plot the ROC curve, we need to obtain the probabilities that something is classified as a signal (rather than the signal/background prediction itself). This can be done as follows:
 
 ~~~
-decisions_rf = RF_clf.predict_proba(X_test)[:,1]
-fpr_nn, tpr_nn, thresholds_nn = roc_curve(y_test, decisions_nn)
-fpr_rf, tpr_rf, thresholds_rf = roc_curve(y_test, decisions_rf)
+fpr_nn, tpr_nn, thresholds = roc_curve(y_test, decisions_nn)
+fpr_rf, tpr_rf, thresholds = roc_curve(y_test, decisions_rf)
 ~~~
 {: .language-python}
 

@@ -13,12 +13,12 @@ keypoints:
 - "Data can be formatted using scikit-learn functionality; using it effectively may take time to master."
 ---
 
-# Data Set Used
+# Dataset Used
 
 The dataset we will use in this tutorial is simulated ATLAS data. Each event corresponds to 4 detected leptons: some events correspond to a Higgs Boson decay and others do not (background). Various physical quantities such as lepton charge and transverse momentum are recorded for each event. The analysis in this tutorial loosely follows [the discovery of the Higgs Boson](https://www.sciencedirect.com/science/article/pii/S037026931200857X).
 
 
-# Setting up the data set for machine learning
+# Setting up the dataset for machine learning
 
 Here we will format the dataset $$(x_i, y_i)$$ so we can use it for machine learning with scikit-learn and TensorFlow. First, we need to open our data set and separate it into a training and test set.
 
@@ -65,7 +65,7 @@ pipeline = Pipeline([
 ~~~
 {: .language-python}
 
-Now we will use the pipeline to generate the subset $$(x_i, y_i)$$ used for training and the subset $$(x_i, y_i)$$ used for testing the model. Note that `fit_transform` is called on the training dataset but `transform` is called on the test data set. We keep the labels $$x_i$$ separate from the targets (i.e. signal/background) $$y_i$$.
+Now we will use the pipeline to generate the subset $$(x_i, y_i)$$ used for training and the subset $$(x_i, y_i)$$ used for testing the model. Note that `fit_transform` is called on the training dataset but `transform` is called on the test dataset. We keep the labels $$x_i$$ separate from the targets (i.e. signal/background) $$y_i$$.
 
 ~~~
 X_train = pipeline.fit_transform(df_train)
