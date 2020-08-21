@@ -4,15 +4,15 @@ teaching: 15
 exercises: 0
 questions:
 - "What is machine learning?"
-- "What role does machine learning have in particle physics?"
+- "What role does machine learning have in high energy physics?"
 - "What should I do if I want to get good at machine learning?"
 objectives:
 - "Discuss the general learning task in machine learning."
-- "Provide examples of machine learning in particle physics."
+- "Provide examples of machine learning in high energy physics."
 - "Give resources to people who want to become proficient in machine learning."
 keypoints:
 - "The 3 main tasks of Machine Learning are regression, classification and generation."
-- "Machine learning has many applications in particle physics."
+- "Machine learning has many applications in high energy physics."
 - "If you want to become proficient in machine learning, you need to practice."
 ---
 
@@ -39,16 +39,16 @@ There are three main tasks in machine learning:
 
 3. **Generation**: The input is noise and the output is something sensible. For example, training a machine learning algorithm to take in a *random seed* and generate images of peoples faces.
 
-# What Role Does Machine Learning have in Particle Physics?
+# What Role Does Machine Learning have in High Energy Physics?
 
-* One wants to classify detected particles as signal or background events based on their energy, momentum, charge, etc... . This specific problem was featured on Kaggle 6 years ago [here](https://www.kaggle.com/c/higgs-boson/data). This problem will also be examined in this tutorial.
-* (My research) I want to make measurements of a rare process. Background processes that look similar to the rare signal process are much more common. A machine learning technique can optimise at the same time the use of many variables that separate signal and background. Not only does a machine learning technique optimise the use of many variables at the same time, but it can find correlations in many dimensions that will give better signal/background classification than individual variables ever could. This is an example of classification in action.
+* One may want to classify detected particles as signal or background events based on their energy, momentum, charge, etc... . This specific problem was featured on Kaggle in 2014 [here](https://www.kaggle.com/c/higgs-boson/data). This problem will also be examined in this tutorial.
+* (My research) I want to make measurements of a rare process. Background processes that look similar to the rare signal process are much more common. A machine learning technique can optimise at the same time the use of many variables that separate signal and background. Not only does a machine learning technique optimise the use of many variables at the same time, but it can find correlations in many dimensions that will give better signal/background classification than individual variables ever could. This is an example of classification in action. Again, this is similar to what we'll be exploring in this tutorial!
 
 Machine learning has become quite popular in scientific fields in the past few years. The following plot from [MIT Technical Review](https://www.technologyreview.com/2019/01/25/1436/we-analyzed-16625-papers-to-figure-out-where-ai-is-headed-next/) examines the number of papers available in the “artificial intelligence” section of arXiv up to November 18, 2018.
 
 ![ML Popularity](../plots/ml_populatir.PNG){:width="80%"}
 
-The following are a few recent articles on machine learning in particle physics
+The following are a few recent articles on machine learning in high energy physics
 
 * [Machine and Deep Learning Applications in Particle Physics](https://arxiv.org/abs/1912.08245)
 * [Machine learning at the energy and intensity frontiers of particle physics](https://www.nature.com/articles/s41586-018-0361-2)
@@ -57,8 +57,8 @@ The following are a few recent articles on machine learning in particle physics
 
 Machine Learning is not something you'll learn in an hour. It's a skill you need to develop over time, and like any skill you need to practice a little bit every day. If you want to really *excel* at machine learning, my recommendation is to try an online course such as [this one](https://www.coursera.org/learn/machine-learning). If textbooks are your thing, try [this book](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/), ensuring to **read and code along with each chapter**. Don't go crazy: just do 30 minutes a day. You'd be surprised how much you could learn in a couple months. In summary:
 
-* **For Learning Essential Python libraries**: [this textbook](https://www.amazon.ca/Python-Data-Analysis-Wrangling-IPython-ebook/dp/B075X4LT6K/ref=sr_1_1?crid=WLIHOCVH891S&dchild=1&keywords=python+for+data+analysis%2C+2nd+edition&qid=1593460237&sprefix=python+for+data+%2Caps%2C196&sr=8-1) or [this online article for an introduction](https://dev.to/marsja/essential-python-libraries-for-data-science-machine-learning-and-statistics-5175)
-* **For Learning Machine Learning libraries**: [this textbook](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) or [this online article for an introduction](https://blog.bitsrc.io/top-5-javascript-machine-learning-libraries-604e52acb548)
+* **For Learning Essential Python libraries**: [this online article for an introduction](https://dev.to/marsja/essential-python-libraries-for-data-science-machine-learning-and-statistics-5175) or [this textbook if you have it available](https://www.amazon.ca/Python-Data-Analysis-Wrangling-IPython-ebook/dp/B075X4LT6K/ref=sr_1_1?crid=WLIHOCVH891S&dchild=1&keywords=python+for+data+analysis%2C+2nd+edition&qid=1593460237&sprefix=python+for+data+%2Caps%2C196&sr=8-1)
+* **For Learning Machine Learning libraries**: [this online article for an introduction](https://blog.bitsrc.io/top-5-javascript-machine-learning-libraries-604e52acb548) or [this textbook if you have it available](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/)
 
 Just for a bit of perspective, I started learning about machine learning in April 2019. Don't expect the learning process to be a quick one: follow online courses and code along with them. If you have a textbook, read through it thoroughly and make sure you code along with the textbook.
 

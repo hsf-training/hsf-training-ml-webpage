@@ -30,7 +30,7 @@ df.head()
 ~~~
 {: .language-python}
 
- The data type is currently a pandas DataFrame: we now need to convert it into a NumPy array so that it can be used in scikit-learn and TensorFlow during the machine learning process. Note that there are many ways that this can be done: in this tutorial we will use the scikit-learn **pipeline** functionality to format our data set. For more information, please see [Chapter 2 of Geron](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/)(pg 70-71) and [the scikit-learn documentation](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html). We will briefly walk through the code in this tutorial.
+ The data type is currently a pandas DataFrame: we now need to convert it into a NumPy array so that it can be used in scikit-learn and TensorFlow during the machine learning process. Note that there are many ways that this can be done: in this tutorial we will use the scikit-learn **pipeline** functionality to format our data set. For more information, please see [the scikit-learn documentation](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html) or [Chapter 2 of Geron](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/)(pg 70-71) if you have it available. We will briefly walk through the code in this tutorial.
 
 First, we import all required modules from scikit-learn.
 ~~~
@@ -40,7 +40,7 @@ from sklearn.preprocessing import StandardScaler
 ~~~
 {: .language-python}
 
-Next, a special `DataFrameSelector` class is defined. This class is defined such that it can operate with scikit-learn **pipeline** functionality; specifically, *it takes in a pandas DataFrame and outputs a NumPy array*. Some essential class methods are defined here such that the class can operate in the OOP framework of scikit-learn: specifically, the `fit` and `transform` methods are defined. For detailed information on **transformers** in scikit-learn see [Chapter 2 of Geron](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) or [the scikit-learn documentation](https://scikit-learn.org/stable/data_transforms.html).
+Next, a special `DataFrameSelector` class is defined. This class is defined such that it can operate with scikit-learn **pipeline** functionality; specifically, *it takes in a pandas DataFrame and outputs a NumPy array*. Some essential class methods are defined here such that the class can operate in the OOP framework of scikit-learn: specifically, the `fit` and `transform` methods are defined. For detailed information on **transformers** in scikit-learn see [the scikit-learn documentation](https://scikit-learn.org/stable/data_transforms.html) or [Chapter 2 of Geron](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) if you have it available.
 
 ~~~
 class DataFrameSelector(BaseEstimator, TransformerMixin):

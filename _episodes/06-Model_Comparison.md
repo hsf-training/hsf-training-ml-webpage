@@ -4,9 +4,10 @@ teaching: 10
 exercises: 20
 questions:
 - "How do you use the scikit-learn and TensorFlow packages for machine learning?"
+- "How do I see whether my machine learning model is doing alright?"
 objectives:
-- "Train a random forest for classification."
-- "Train a simple neural network for classification."
+- "Check how well our random forest is doing."
+- "Check how well our simple neural network is doing."
 keypoints:
 - "Many metrics exist to assess classifier performance."
 - "Making plots is useful to assess classifier performance."

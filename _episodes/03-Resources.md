@@ -5,7 +5,6 @@ exercises: 0
 questions:
 - "Where should I go if I want to get better at Python?"
 - "What are the machine learning libraries in Python?"
-- "Where should I go if I want to get better at machine learning?"
 objectives:
 - "Provide links to tutorials and textbooks that will help you get better at Python."
 - "Provide links to machine learning library documentation."
@@ -30,7 +29,7 @@ For non-trivial machine learning tasks that occur in research, one needs to be p
 
 2. **pandas**: pandas is a fast, powerful, flexible and easy to use open source data analysis and manipulation tool, built on top of the Python programming language. See the [documentation](https://pandas.pydata.org/). The most important datatype in the pandas library is the *DataFrame*: a "spreadsheet-type object" with row and column names. It is preferred to use pandas DataFrames rather than NumPy arrays for managing data sets.
 
-If you are unfamiliar with these packages, I would recommend sitting down with [this textbook](https://www.amazon.ca/Python-Data-Analysis-Wrangling-IPython-ebook/dp/B075X4LT6K/ref=sr_1_1?crid=WLIHOCVH891S&dchild=1&keywords=python+for+data+analysis%2C+2nd+edition&qid=1593460237&sprefix=python+for+data+%2Caps%2C196&sr=8-1) and reading/coding along with chapters 4 and 5. Alternatively, you can read the documentation pages for [NumPy slicing](https://numpy.org/doc/stable/reference/arrays.indexing.html), [NumPy operations](https://scipy-lectures.org/intro/numpy/operations.html) and [pandas DataFrames](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html). In a few hours, you should have a good idea of how these packages work.
+If you are unfamiliar with these packages, I would recommend reading the introduction to the documentation pages for [NumPy slicing](https://numpy.org/doc/stable/reference/arrays.indexing.html), [NumPy operations](https://scipy-lectures.org/intro/numpy/operations.html) and [pandas DataFrames](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) or sitting down with [this textbook](https://www.amazon.ca/Python-Data-Analysis-Wrangling-IPython-ebook/dp/B075X4LT6K/ref=sr_1_1?crid=WLIHOCVH891S&dchild=1&keywords=python+for+data+analysis%2C+2nd+edition&qid=1593460237&sprefix=python+for+data+%2Caps%2C196&sr=8-1) if you have it available and reading/coding along with chapters 4 and 5. In a few hours, you should have a good idea of how these packages work.
 
 # Machine Learning Libraries in Python
 

@@ -3,7 +3,7 @@ layout: lesson
 root: .  # Is the only page that doesn't follow the pattern /:path/index.html
 permalink: index.html  # Is the only page that doesn't follow the pattern /:path/index.html
 ---
-This tutorial explores Machine Learning using sci-kit learn and tensorflow for applications in particle physics.
+This tutorial explores Machine Learning using scikit-learn and TensorFlow for applications in high energy physics.
 
 Extended from a [version developed by Luke Polson for the 2020 USATLAS Computing Bootcamp](https://lukepolson.github.io/HEP_ML_Lessons/).
 

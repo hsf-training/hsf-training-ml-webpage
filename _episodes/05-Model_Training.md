@@ -4,6 +4,7 @@ teaching: 15
 exercises: 15
 questions:
 - "How does one train machine learning models in Python?"
+- "What machine learning models might be appropriate?"
 objectives:
 - "Train a random forest model."
 - "Train a neural network model."
@@ -17,7 +18,7 @@ In this section we will examine 2 different machine learning models $$f$$ for cl
 
 
 ## Random Forest
-A random forest (see [Chapter 7](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) or [Wikipedia](https://en.wikipedia.org/wiki/Random_forest)) uses decision trees (see [Chapter 6](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) or [Wikipedia](https://en.wikipedia.org/wiki/Decision_tree_learning)) to make predictions. Decision trees are very simple models that make classification predictions by performing selections on regions in the data set. The diagram below shows a decision tree for classifying three different types of iris flower species.
+A random forest (see [Wikipedia](https://en.wikipedia.org/wiki/Random_forest) or [Chapter 7](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/)) uses decision trees (see [Wikipedia](https://en.wikipedia.org/wiki/Decision_tree_learning) or [Chapter 6](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/)) to make predictions. Decision trees are very simple models that make classification predictions by performing selections on regions in the data set. The diagram below shows a decision tree for classifying three different types of iris flower species.
 
 ![Decision tree](../plots/flower.jpeg){:width="80%"}
 
@@ -58,7 +59,7 @@ print(accuracy_score(y_test, y_pred_RF))
 4. An accuracy score between the test dataset `y_test` and machine learning predictions `y_pred` is made. The accuracy score is defined as the ratio of correctly identified data points to all data points.
  
 ## Neural Network
-A neural network is a black-box model with many hyperparameters. We will discuss the mathematical structure of neural networks later on in the tutorial. If you are interested in neural networks, I would highly recommend reading [Chapter 10](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) of the textbook (and [Chapters 11-18](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) as well, for that matter). It is also discussed [here](https://lukepolson.github.io/HEP_ML_Lessons/07-nn/index.html) in the tutorial. To use a neural network with scikit-learn, we must modularize its construction using a function. We will later pass this function into a Keras wrapper.
+A neural network is a black-box model with many hyperparameters. We will discuss the mathematical structure of neural networks later on in the tutorial. If you are interested and have it available, you can read [Chapter 10](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) of the textbook (and [Chapters 11-18](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) as well, for that matter). To use a neural network with scikit-learn, we must modularize its construction using a function. We will later pass this function into a Keras wrapper.
 
 ~~~
 def build_model(n_hidden=1, n_neurons=5, learning_rate=1e-3):
@@ -92,5 +93,5 @@ print(accuracy_score(y_test, y_pred_NN))
 The neural network should also have a similar accuracy score to the random forest. Note that while the accuracy is one metric for the strength of a classifier, many other metrics exist as well. We will examine these metrics in the next section.
 
 > ## Accuracy: The Naive Metric
-> Suppose you have a dataset where 90% of the dataset is background and 10% of the dataset is signal. Now suppose we have a dumb classifier that classifies every data point as background. In this example, the classifier will have 90% accuracy! This demonstrates why accuracy is generally not the preferred performance measure for classifiers, especially when you are dealing with *skewed* datasets. Skewed datasets show up all the time in particle physics where one has access to many more background than signal events. In this particular tutorial, we have a dataset with 520000 background events and 370000 signal events.
+> Suppose you have a dataset where 90% of the dataset is background and 10% of the dataset is signal. Now suppose we have a dumb classifier that classifies every data point as background. In this example, the classifier will have 90% accuracy! This demonstrates why accuracy is generally not the preferred performance measure for classifiers, especially when you are dealing with *skewed* datasets. Skewed datasets show up all the time in high energy physics where one has access to many more background than signal events. In this particular tutorial, we have a dataset with 520000 background events and 370000 signal events.
 {: .callout}
