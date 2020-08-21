@@ -1,7 +1,7 @@
 ---
 title: "Model Training"
-teaching: 10
-exercises: 10
+teaching: 15
+exercises: 15
 questions:
 - "How does one train machine learning models in Python?"
 objectives:

@@ -1,6 +1,6 @@
 ---
 title: "Mathematical Foundations"
-teaching: 0
+teaching: 20
 exercises: 0
 questions:
 - "What is the common terminology in machine learning?"
