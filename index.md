@@ -17,4 +17,6 @@ Extended from a [version developed by Luke Polson for the 2020 USATLAS Computing
 > * Basic Python knowledge, e.g. through the [Software Carpentry Programming with Python lesson](https://swcarpentry.github.io/python-novice-inflammation/) 
 {: .prereq}
 
+{% include curriculum.html %}
+
 {% include links.md %}
