@@ -83,12 +83,24 @@ y_valid, y_train_nn = y_train[:100], y_train[100:]
 
 NN_clf = keras.wrappers.scikit_learn.KerasClassifier(build_model)
 NN_clf.fit(X_train, y_train, validation_data=(X_valid, y_valid))
-y_pred_NN = NN_clf.predict(X_test)
-
-# See how well the classifier does
-print(accuracy_score(y_test, y_pred_NN))
 ~~~
 {: .language-python}
+
+> ## Challenge
+> Get the predicted y values for the neural network, **y_pred_NN**.
+> Once you have **y_pred_NN**, see how well your neural network classifier does using accurarcy_score. 
+>
+> > ## Solution
+> >
+> > ~~~
+> > y_pred_NN = NN_clf.predict(X_test)
+> > 
+> > # See how well the classifier does
+> > print(accuracy_score(y_test, y_pred_NN))
+> > ~~~
+> > {: .language-python}
+> {: .solution}
+{: .challenge}
 
 The neural network should also have a similar accuracy score to the random forest. Note that while the accuracy is one metric for the strength of a classifier, many other metrics exist as well. We will examine these metrics in the next section.
 

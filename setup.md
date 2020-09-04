@@ -8,7 +8,7 @@ For this tutorial we will be using [Kaggle](https://www.kaggle.com/). Make sure 
 
 Once you are signed in, you will be given access to the full resources of a Kaggle Jupyter notebook kernel (16 GB of RAM). Once you are signed in please use the following link:
 
-* [Please click here](https://www.kaggle.com/kernels/fork-version/38835290)
+* [Please click here](https://www.kaggle.com/meirinevans/introduction-to-machine-learning/edit)
 
 
 {% include links.md %}
