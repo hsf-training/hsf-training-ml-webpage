@@ -65,6 +65,7 @@ for s in samples:
                               		                      DataFrames[s].lep_type_1,
                                           	              DataFrames[s].lep_type_2,
                                                   	      DataFrames[s].lep_type_3) ]
+DataFrames # print data
 ~~~
 {: .language-python}
 
@@ -89,6 +90,7 @@ for s in samples:
 > >                                                     	    DataFrames[s].lep_charge_1,
 > >                                                     	    DataFrames[s].lep_charge_2,
 > >                                                     	    DataFrames[s].lep_charge_3) ]
+> > DataFrames # print data
 > > ~~~
 > > {: .language-python}
 > {: .solution}
@@ -106,17 +108,31 @@ lep_pt_2 = { # dictionary containing plotting parameters for the lep_pt_2 histog
     'xrange_min':7, # minimum on x-axis
     'xlabel':r'$lep\_pt$[2] [GeV]', # x-axis label
 }
+~~~
+{: .language-python}
 
-lep_pt_1 = { # dictionary containing plotting parameters for the lep_pt_1 histogram
-    # change plotting parameters
-    'bin_width':1, # width of each histogram bin
-    'num_bins':28, # number of histogram bins
-    'xrange_min':7, # minimum on x-axis
-    'xlabel':r'$lep\_pt$[1] [GeV]', # x-axis label
-}
+> ## Challenge
+> Write a dictionary of plotting parameters for lep_pt_1, using 28 bins.
+>
+> > ## Solution
+> >
+> > ~~~
+> > lep_pt_1 = { # dictionary containing plotting parameters for the lep_pt_1 histogram
+> >     # change plotting parameters
+> >     'bin_width':1, # width of each histogram bin
+> >     'num_bins':28, # number of histogram bins
+> >     'xrange_min':7, # minimum on x-axis
+> >     'xlabel':r'$lep\_pt$[1] [GeV]', # x-axis label
+> > }
+> > ~~~
+> > {: .language-python}
+> {: .solution}
+{: .challenge}
 
-SoverB_hist_dict = {'lep_pt_2':lep_pt_2,'lep_pt_1':lep_pt_1} 
-# add a histogram here if you want it plotted
+Now we define a dictionary for the histograms we want to plot.
+
+~~~
+SoverB_hist_dict = {'lep_pt_2':lep_pt_2,'lep_pt_1':lep_pt_1} # add a histogram here if you want it plotted 
 ~~~
 {: .language-python}
 
@@ -126,7 +142,7 @@ We're not doing any machine learning just yet! We're looking at the variables we
 
 ~~~
 from my_functions import plot_SoverB
-plot_SoverB(DataFrames)
+plot_SoverB(DataFrames, SoverB_hist_dict)
 ~~~
 {: .language-python}
 

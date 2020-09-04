@@ -1,5 +1,5 @@
 ---
-title: "Data Preprocessing for Machine Learning"
+title: "Data Preprocessing"
 teaching: 10
 exercises: 10
 questions:
@@ -69,7 +69,7 @@ from sklearn.model_selection import train_test_split
 # make train and test sets
 X_train,X_test, y_train,y_test = train_test_split(X, y, 
                                                   test_size=0.33, 
-                                                  random_state=492 )
+                                                  random_state=492 ) # set the random seed for reproducibility
 ~~~
 {: .language-python}
 
@@ -88,10 +88,20 @@ Now we will use the scaling to apply the transformations to the data.
 
 ~~~
 X_train = scaler.transform(X_train)
-X_test = scaler.transform(X_test)
-X = scaler.transform(X)
 ~~~
 {: .language-python}
 
+> ## Challenge
+> Apply the same scaler transformation to **X_test** and *X*.
+> 
+> > ## Solution
+> > 
+> > ~~~
+> > X_test = scaler.transform(X_test)
+> > X = scaler.transform(X)
+> > ~~~
+> > {: .language-python}
+> {: .solution}
+{: .challenge}
 
 Now we are ready to examine various models $$f$$ for predicting whether an event corresponds to a Higgs decay or a background event.

@@ -43,9 +43,9 @@ In the previous page we created a training and test dataset. Lets use these data
 ~~~
 from sklearn.ensemble import RandomForestClassifier
 
-RF_clf = RandomForestClassifier(criterion='gini', max_depth=8, n_estimators=30)
-RF_clf.fit(X_train, y_train)
-y_pred_RF = RF_clf.predict(X_test)
+RF_clf = RandomForestClassifier(criterion='gini', max_depth=8, n_estimators=30) # initialise your random forest classifier
+RF_clf.fit(X_train, y_train) # fit to the training data
+y_pred_RF = RF_clf.predict(X_test) # make predictions on the test data
 
 # See how well the classifier does
 print(accuracy_score(y_test, y_pred_RF))
@@ -62,27 +62,44 @@ print(accuracy_score(y_test, y_pred_RF))
 A neural network is a black-box model with many hyperparameters. The mathematical structure of neural networks was discussed earlier on in the tutorial. If you are interested and have it available, you can read [Chapter 10](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) of the textbook (and [Chapters 11-18](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) as well, for that matter). To use a neural network with scikit-learn, we must modularize its construction using a function. We will later pass this function into a Keras wrapper.
 
 ~~~
-def build_model(n_hidden=1, n_neurons=5, learning_rate=1e-3):
+def build_model(n_hidden=1, n_neurons=5, learning_rate=1e-3): # function to build a neural network model
     # Build
-    model = keras.models.Sequential()
-    for layer in range(n_hidden):
-        model.add(keras.layers.Dense(n_neurons, activation="relu"))
-    model.add(keras.layers.Dense(2, activation='softmax'))
+    model = keras.models.Sequential() # initialise the model
+    for layer in range(n_hidden): # loop over hidden layers
+        model.add(keras.layers.Dense(n_neurons, activation="relu")) # add layer to your model
+    model.add(keras.layers.Dense(2, activation='softmax')) # add output layer
     # Compile
-    optimizer = keras.optimizers.SGD(lr=learning_rate)
-    model.compile(loss='sparse_categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
+    optimizer = keras.optimizers.SGD(learning_rate=learning_rate) # define the optimizer
+    model.compile(loss='sparse_categorical_crossentropy', optimizer=optimizer, metrics=['accuracy']) # compile your model
     return model
 ~~~
 {: .language-python}
 
-For now, ignore all the complicated hyperparameters, but note that the loss used is `sparse_categorical_crossentropy`; the neural network uses gradient descent to optimize its parameters (in this case these parameters are *neuron weights*). The network can be trained as follows:
+For now, ignore all the complicated hyper-parameters, but note that the loss used is `sparse_categorical_crossentropy`; the neural network uses gradient descent to optimize its parameters (in this case these parameters are *neuron weights*). 
+
+We need to keep some events for validation. Validation sets are used to select and tune the final neural network model.
 
 ~~~
-X_valid, X_train_nn = X_train[:100], X_train[100:]
-y_valid, y_train_nn = y_train[:100], y_train[100:]
+X_valid, X_train_nn = X_train[:100], X_train[100:] # first 100 events for validation
+~~~
+{: .language-python}
 
-NN_clf = keras.wrappers.scikit_learn.KerasClassifier(build_model)
-NN_clf.fit(X_train, y_train, validation_data=(X_valid, y_valid))
+> ## Challenge
+> Assign the first 100 events in y_train for validation (**y_valid**) and the rest for training your neural network (**y_train_nn**).
+> 
+> > ## Solution
+> > ~~~
+> > y_valid, y_train_nn = y_train[:100], y_train[100:] # first 100 events for validation
+> > ~~~
+> > {: .language-python}
+> {: .solution}
+{: .challenge}
+
+The network can be trained as follows:
+
+~~~
+NN_clf = keras.wrappers.scikit_learn.KerasClassifier(build_model) # call the build_model function defined earlier
+NN_clf.fit(X_train_nn, y_train_nn, validation_data=(X_valid, y_valid)) # fit your neural network
 ~~~
 {: .language-python}
 
@@ -93,7 +110,7 @@ NN_clf.fit(X_train, y_train, validation_data=(X_valid, y_valid))
 > > ## Solution
 > >
 > > ~~~
-> > y_pred_NN = NN_clf.predict(X_test)
+> > y_pred_NN = NN_clf.predict(X_test) # make predictions on the test data
 > > 
 > > # See how well the classifier does
 > > print(accuracy_score(y_test, y_pred_NN))
@@ -105,5 +122,5 @@ NN_clf.fit(X_train, y_train, validation_data=(X_valid, y_valid))
 The neural network should also have a similar accuracy score to the random forest. Note that while the accuracy is one metric for the strength of a classifier, many other metrics exist as well. We will examine these metrics in the next section.
 
 > ## Accuracy: The Naive Metric
-> Suppose you have a dataset where 90% of the dataset is background and 10% of the dataset is signal. Now suppose we have a dumb classifier that classifies every data point as background. In this example, the classifier will have 90% accuracy! This demonstrates why accuracy is generally not the preferred performance measure for classifiers, especially when you are dealing with *skewed* datasets. Skewed datasets show up all the time in high energy physics where one has access to many more background than signal events. In this particular tutorial, we have a dataset with 520000 background events and 370000 signal events.
+> Suppose you have a dataset where 90% of the dataset is background and 10% of the dataset is signal. Now suppose we have a dumb classifier that classifies every data point as background. In this example, the classifier will have 90% accuracy! This demonstrates why accuracy is generally not the preferred performance measure for classifiers, especially when you are dealing with *skewed* datasets. Skewed datasets show up all the time in high energy physics where one has access to many more background than signal events. In this particular tutorial, we have a dataset with 520000 background events and 165000 signal events.
 {: .callout}
