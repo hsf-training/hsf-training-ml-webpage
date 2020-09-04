@@ -59,7 +59,7 @@ print(accuracy_score(y_test, y_pred_RF))
 4. An accuracy score between the test dataset `y_test` and machine learning predictions `y_pred` is made. The accuracy score is defined as the ratio of correctly identified data points to all data points.
  
 ## Neural Network
-A neural network is a black-box model with many hyperparameters. We will discuss the mathematical structure of neural networks later on in the tutorial. If you are interested and have it available, you can read [Chapter 10](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) of the textbook (and [Chapters 11-18](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) as well, for that matter). To use a neural network with scikit-learn, we must modularize its construction using a function. We will later pass this function into a Keras wrapper.
+A neural network is a black-box model with many hyperparameters. The mathematical structure of neural networks was discussed earlier on in the tutorial. If you are interested and have it available, you can read [Chapter 10](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) of the textbook (and [Chapters 11-18](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) as well, for that matter). To use a neural network with scikit-learn, we must modularize its construction using a function. We will later pass this function into a Keras wrapper.
 
 ~~~
 def build_model(n_hidden=1, n_neurons=5, learning_rate=1e-3):

@@ -45,11 +45,11 @@ Note that the four Python programming packages discussed so far are interoperabl
 Here we will import all the required libraries for the rest of the tutorial. All scikit-learn functions will be imported later on when they are required.
 
 ~~~
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt 
-import tensorflow as tf
-from tensorflow import keras
+import pandas as pd # to store data as dataframe
+import numpy as np # for numerical calculations such as histogramming
+import matplotlib.pyplot as plt # for plotting
+import tensorflow as tf # machine learning library
+from tensorflow import keras # tensorflow wrapper
 ~~~
 {: .language-python}
 
