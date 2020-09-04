@@ -1,13 +1,16 @@
 ---
 title: "Data Discussion"
-teaching: 15
+teaching: 10
 exercises: 10
 questions:
 - "What dataset is being used?"
+- "How do some of the variables look?"
 objectives:
 - "Briefly describe the dataset."
+- "Take a peek at some variables."
 keypoints:
-- "One must properly format data before any machine learning takes place."
+- "One must know a bit about your data before any machine learning takes place."
+- "It's a good idea to visualise your data before any machine learning takes place."
 ---
 
 # Dataset Used
@@ -29,11 +32,11 @@ Here we will format the dataset $$(x_i, y_i)$$ so we can explore! First, we need
 ~~~
 # get data from files
 
-data = {} # define empty dictionary to hold dataframes
+DataFrames = {} # define empty dictionary to hold dataframes
 for s in samples: # loop over samples
-    data[s] = pd.read_csv('/kaggle/input/4lepton/'+s+".csv") # read .csv file
-    
-data # print data
+    DataFrames[s] = pd.read_csv('/kaggle/input/4lepton/'+s+".csv") # read .csv file
+
+DataFrames # print data
 ~~~
 {: .language-python}
 
@@ -56,17 +59,16 @@ We then need to apply this function on our DataFrames.
 
 ~~~
 # apply cut on lepton type
-
 for s in samples:
     # cut on lepton type using the function cut_lep_type defined above
-    data[s] = data[s][ np.vectorize(cut_lep_type)(data[s].lep_type_0,
-                                                  data[s].lep_type_1,
-                                                  data[s].lep_type_2,
-                                                  data[s].lep_type_3) ]
+    DataFrames[s] = DataFrames[s][ np.vectorize(cut_lep_type)(DataFrames[s].lep_type_0,
+                              		                      DataFrames[s].lep_type_1,
+                                          	              DataFrames[s].lep_type_2,
+                                                  	      DataFrames[s].lep_type_3) ]
 ~~~
 {: .language-python}
 
-> ## Challenge (5 mins)
+> ## Challenge
 > Another cut to clean our data is to keep only events where lep_charge_0+lep_charge_1+lep_charge_2+lep_charge_3==0. 
 > Write out this function yourself then apply it.
 >
@@ -83,10 +85,10 @@ for s in samples:
 > > # apply cut on lepton charge
 > > for s in samples:
 > >     # cut on lepton charge using the function cut_lep_charge defined above
-> >     data[s] = data[s][ np.vectorize(cut_lep_charge)(data[s].lep_charge_0,
-> >                                                     data[s].lep_charge_1,
-> >                                                     data[s].lep_charge_2,
-> >                                                     data[s].lep_charge_3) ]
+> >     DataFrames[s] = DataFrames[s][ np.vectorize(cut_lep_charge)(DataFrames[s].lep_charge_0,
+> >                                                     	    DataFrames[s].lep_charge_1,
+> >                                                     	    DataFrames[s].lep_charge_2,
+> >                                                     	    DataFrames[s].lep_charge_3) ]
 > > ~~~
 > > {: .language-python}
 > {: .solution}
@@ -124,7 +126,7 @@ We're not doing any machine learning just yet! We're looking at the variables we
 
 ~~~
 from my_functions import plot_SoverB
-plot_SoverB(data)
+plot_SoverB(DataFrames)
 ~~~
 {: .language-python}
 

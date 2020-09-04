@@ -1,11 +1,13 @@
 ---
 title: "Data Preprocessing for Machine Learning"
-teaching: 15
+teaching: 10
 exercises: 10
 questions:
 - "How must we organize our data such that it can be used in the machine learning libraries?"
+- "Are we ready for machine learning yet?!"
 objectives:
 - "Prepare the dataset for machine learning."
+- "Get excited for machine learning!"
 keypoints:
 - "One must properly format data before any machine learning takes place."
 - "Data can be formatted using scikit-learn functionality; using it effectively may take time to master."
@@ -16,11 +18,7 @@ keypoints:
 It's almost time to build a machine learning model! First we choose the variables to use in our machine learning model.
 
 ~~~
-data_for_ML = {} # define empty dictionary to hold dataframes that will be used to train the ML model
 ML_inputs = ['lep_pt_1','lep_pt_2'] # list of features for ML model
-for key in data: # loop over the different keys in the dictionary of dataframes
-    data_for_ML[key] = data[key][ML_inputs].copy()
-data_for_ML # print DataFrames
 ~~~
 {: .language-python}
 
@@ -35,18 +33,18 @@ data_for_ML # print DataFrames
 # of length n_samples
 
 all_MC = [] # define empty list that will contain all features for the MC
-for key in data: # loop over the different keys in the dictionary of dataframes
-    if key!='data': # only MC should pass this
-        all_MC.append(data_for_ML[key]) # append the MC dataframe to the list containing all MC features
+for s in samples: # loop over the different samples
+    if s!='data': # only MC should pass this
+        all_MC.append(DataFrames[s][ML_inputs]) # append the MC dataframe to the list containing all MC features
 X = np.concatenate(all_MC) # concatenate the list of MC dataframes into a single 2D array of features, called X
 
 all_y = [] # define empty list that will contain labels whether an event in signal or background
-for key in data: # loop over the different keys in the dictionary of dataframes
-    if key!='data': # only MC should pass this
-        if 'H125' in key: # only signal MC should pass this
-            all_y.append(np.ones(data_for_ML[key].shape[0])) # signal events are labelled with 1
+for s in samples: # loop over the different samples
+    if s!='data': # only MC should pass this
+        if 'H125' in s: # only signal MC should pass this
+            all_y.append(np.ones(DataFrames[s].shape[0])) # signal events are labelled with 1
         else: # only background MC should pass this
-            all_y.append(np.zeros(data_for_ML[key].shape[0])) # background events are labelled 0
+            all_y.append(np.zeros(DataFrames[s].shape[0])) # background events are labelled 0
 y = np.concatenate(all_y) # concatenate the list of lables into a single 1D array of labels, called y
 ~~~
 {: .language-python}
