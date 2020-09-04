@@ -115,16 +115,17 @@ We can separate this plot into two separate histograms (Higgs vs. non Higgs) bec
 Suppose we move the threshold from 0 to 1 in steps of 0.01. In doing so, we will get an array of TPRs and FPRs. We can then plot the TPR array vs. the FPR array: this is the ROC curve. To plot the ROC curve, we need to obtain the probabilities that something is classified as a signal (rather than the signal/background prediction itself). This can be done as follows:
 
 ~~~
-fpr_rf, tpr_rf, thresholds = roc_curve(y_test, decisions_rf) # get FPRs, TPRs and thresholds for random forest
+from sklearn.metrics import roc_curve
+fpr_rf, tpr_rf, thresholds_rf = roc_curve(y_test, decisions_rf) # get FPRs, TPRs and thresholds for random forest
 ~~~
 {: .language-python}
 
 > ## Challenge
-> Get the FPRs, TPRs and thresholds for the neural network classifier (**fpr_nn**, **tpr_nn**, **thresholds**).
+> Get the FPRs, TPRs and thresholds for the neural network classifier (**fpr_nn**, **tpr_nn**, **thresholds_nn**).
 > 
 > > ## Solution
 > > ~~~
-> > fpr_nn, tpr_nn, thresholds = roc_curve(y_test, decisions_nn) # get FPRs, TPRs and thresholds for neural network
+> > fpr_nn, tpr_nn, thresholds_nn = roc_curve(y_test, decisions_nn) # get FPRs, TPRs and thresholds for neural network
 > > ~~~
 > > {: .language-python}
 > {: .solution}
