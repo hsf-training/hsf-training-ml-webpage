@@ -17,6 +17,23 @@ Extended from a [version developed by Luke Polson for the 2020 USATLAS Computing
 > * Basic Python knowledge, e.g. through the [Software Carpentry Programming with Python lesson](https://swcarpentry.github.io/python-novice-inflammation/) 
 {: .prereq}
 
+Introduction
+------------
+
+Machine learning is everywhere in modern "big-data" science. As physicists and big-data scientists, it's a good idea to know a bit about machine learning.
+
+The aim of this module is to:
+- explore what it means to build a machine learning model
+- expand on concepts in machine learning that are essential to anyone working in big-data science
+
+> ## The skills we'll focus on:
+>
+> 1.  Understanding a bit about machine learning
+> 2.  Preparing data for machine learning
+> 3.  Training some machine learning models
+> 4.  Comparing some machine learning models
+{: .checklist}
+
 {% include curriculum.html %}
 
 {% include links.md %}
