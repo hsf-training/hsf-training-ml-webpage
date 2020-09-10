@@ -18,7 +18,7 @@ keypoints:
 The dataset we will use in this tutorial is simulated ATLAS data. Each event corresponds to 4 detected leptons: some events correspond to a Higgs Boson decay and others do not (background). Various physical quantities such as lepton charge and transverse momentum are recorded for each event. The analysis in this tutorial loosely follows [the discovery of the Higgs Boson](https://www.sciencedirect.com/science/article/pii/S037026931200857X).
 
 ~~~
-# In this notebook we only process the signal ggH125_ZZ4lep and the main background ZZ, 
+# In this notebook we only process the signal ggH125_ZZ4lep and the main background llll, 
 # for illustration purposes.
 # You can add other backgrounds after if you wish.
 samples = ['ggH125_ZZ4lep','llll']

@@ -76,7 +76,7 @@ def build_model(n_hidden=1, n_neurons=5, learning_rate=1e-3): # function to buil
 ~~~
 {: .language-python}
 
-For now, ignore all the complicated hyper-parameters, but note that the loss used is `sparse_categorical_crossentropy`; the neural network uses gradient descent to optimize its parameters (in this case these parameters are *neuron weights*). 
+For now, ignore all the complicated hyperparameters, but note that the loss used is `sparse_categorical_crossentropy`; the neural network uses gradient descent to optimize its parameters (in this case these parameters are *neuron weights*). 
 
 We need to keep some events for validation. Validation sets are used to select and tune the final neural network model.
 
@@ -86,7 +86,7 @@ X_valid, X_train_nn = X_train[:100], X_train[100:] # first 100 events for valida
 {: .language-python}
 
 > ## Challenge
-> Assign the first 100 events in y_train for validation (**y_valid**) and the rest for training your neural network (**y_train_nn**).
+> Assign the first 100 events in y_train for validation (`y_valid`) and the rest for training your neural network (`y_train_nn`).
 > 
 > > ## Solution
 > > ~~~
@@ -105,8 +105,8 @@ NN_clf.fit(X_train_nn, y_train_nn, validation_data=(X_valid, y_valid)) # fit you
 {: .language-python}
 
 > ## Challenge
-> Get the predicted y values for the neural network, **y_pred_NN**.
-> Once you have **y_pred_NN**, see how well your neural network classifier does using accurarcy_score. 
+> Get the predicted y values for the neural network, `y_pred_NN`.
+> Once you have `y_pred_NN`, see how well your neural network classifier does using accurarcy_score. 
 >
 > > ## Solution
 > >

@@ -22,7 +22,7 @@ ML_inputs = ['lep_pt_1','lep_pt_2'] # list of features for ML model
 ~~~
 {: .language-python}
 
- The data type is currently a pandas DataFrame: we now need to convert it into a NumPy array so that it can be used in scikit-learn and TensorFlow during the machine learning process. Note that there are many ways that this can be done: in this tutorial we will use the NumPy **concatenate** functionality to format our data set. For more information, please see [the NumPy documentation]. We will briefly walk through the code in this tutorial.
+ The data type is currently a pandas DataFrame: we now need to convert it into a NumPy array so that it can be used in scikit-learn and TensorFlow during the machine learning process. Note that there are many ways that this can be done: in this tutorial we will use the NumPy **concatenate** functionality to format our data set. For more information, please see [the NumPy documentation on concatenate](https://numpy.org/doc/stable/reference/generated/numpy.concatenate.html). We will briefly walk through the code in this tutorial.
 
 ~~~
 #  Organise data ready for the machine learning model
@@ -92,7 +92,7 @@ X_train = scaler.transform(X_train)
 {: .language-python}
 
 > ## Challenge
-> Apply the same scaler transformation to **X_test** and *X*.
+> Apply the same scaler transformation to `X_test` and `X`.
 > 
 > > ## Solution
 > > 

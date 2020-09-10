@@ -87,7 +87,7 @@ decisions_rf = RF_clf.predict_proba(X_test)[:,1] # get the decisions of the rand
 {: .language-python}
 
 > ## Challenge
-> Get the decisions of the neural network classifier, **decisions_nn**.
+> Get the decisions of the neural network classifier, `decisions_nn`.
 > 
 > > ## Solution
 > > ~~~
@@ -121,7 +121,7 @@ fpr_rf, tpr_rf, thresholds_rf = roc_curve(y_test, decisions_rf) # get FPRs, TPRs
 {: .language-python}
 
 > ## Challenge
-> Get the FPRs, TPRs and thresholds for the neural network classifier (**fpr_nn**, **tpr_nn**, **thresholds_nn**).
+> Get the FPRs, TPRs and thresholds for the neural network classifier (`fpr_nn`, `tpr_nn`, `thresholds_nn`).
 > 
 > > ## Solution
 > > ~~~
@@ -165,7 +165,7 @@ ams_rf = AMS(tpr_rf, fpr_rf, 0.001) # get AMS for random classifier
 {: .language-python}
 
 > ## Challenge
-> Get the AMS score for your neural network classifier, **ams_nn**.
+> Get the AMS score for your neural network classifier, `ams_nn`.
 > 
 > > ## Solution
 > > ~~~
@@ -189,6 +189,3 @@ plt.legend() # add legend
 
 One should then select the value of the threshold that maximizes the AMS on these plots.
 
-> # Ready to machine learn to take over the world!
-> Hopefully you've enjoyed this brief discussion on machine learning! Try playing around with the hyper-parameters of your random forest and neural network classifiers, such as the number of hidden layers and neurons, and see how they effect the results of your classifiers in Python!
-{: .callout}
