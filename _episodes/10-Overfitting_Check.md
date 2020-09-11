@@ -10,11 +10,13 @@ keypoints:
 - "It's a good idea to check your models for overfitting."
 ---
 
+<iframe width="427" height="251" src="https://www.youtube.com/embed?v=oVLe7IulMEs&list=PLKZ9c4ONm-VmHsMKImIDEMsZI1Vp0UY-Z&index=8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 # Is there any overfitting?
 
 In this section we will check whether there has been any overfitting during the model training phase. As discussed in the [lesson on Mathematical Foundations](https://hsf-training.github.io/hsf-training-ml-webpage/02-mltechnical/index.html), overfitting can be an unwanted fly in the ointment, so it should be avoided!
 
-Comparing a machine learning model's output distribution for the training and testing set is a popular way in High Energy Physics to check for overfitting. The compare_train_test() method will plot the shape of the Neural Network's decision function for each class, as well as overlaying it with the decision function in the training set.
+Comparing a machine learning model's output distribution for the training and testing set is a popular way in High Energy Physics to check for overfitting. The compare_train_test() method will plot the shape of the machine learning model's decision function for each class, as well as overlaying it with the decision function in the training set.
 
 There are techniques to prevent overfitting.
 

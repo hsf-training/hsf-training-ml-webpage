@@ -13,6 +13,8 @@ keypoints:
 - "It's a good idea to visualise your data before any machine learning takes place."
 ---
 
+<iframe width="427" height="251" src="https://www.youtube.com/embed?v=oVLe7IulMEs&list=PLKZ9c4ONm-VmHsMKImIDEMsZI1Vp0UY-Z&index=5" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 # Dataset Used
 
 The dataset we will use in this tutorial is simulated ATLAS data. Each event corresponds to 4 detected leptons: some events correspond to a Higgs Boson decay and others do not (background). Various physical quantities such as lepton charge and transverse momentum are recorded for each event. The analysis in this tutorial loosely follows [the discovery of the Higgs Boson](https://www.sciencedirect.com/science/article/pii/S037026931200857X).

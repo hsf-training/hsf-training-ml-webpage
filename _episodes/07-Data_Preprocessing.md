@@ -13,6 +13,8 @@ keypoints:
 - "Data can be formatted using scikit-learn functionality; using it effectively may take time to master."
 ---
 
+<iframe width="427" height="251" src="https://www.youtube.com/embed?v=oVLe7IulMEs&list=PLKZ9c4ONm-VmHsMKImIDEMsZI1Vp0UY-Z&index=6" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 # Format the data for machine learning
 
 It's almost time to build a machine learning model! First we choose the variables to use in our machine learning model.

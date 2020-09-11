@@ -13,6 +13,8 @@ keypoints:
 - "That's it!"
 ---
 
+<iframe width="427" height="251" src="https://www.youtube.com/embed?v=oVLe7IulMEs&list=PLKZ9c4ONm-VmHsMKImIDEMsZI1Vp0UY-Z&index=10" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 # What about *real, experimental* data?
 
 Notice that we've trained and tested our machine learning models on simulated data for signal and background. That's why there are definite labels, `y`. This has been a case of **supervised learning** since we knew the labels (y) going into the game. Your machine learning models would then usually be *applied* to real experimental data once you're happy with them.
@@ -62,7 +64,7 @@ plt.xlabel('Threshold')
 ~~~
 {: .language-python}
 
-Within errors, the real experimental data errorbars agree with the simulated data histograms. Good news, our random classifier model makes sense with real experimental data!
+Within errors, the real experimental data errorbars agree with the simulated data histograms. Good news, our random forest classifier model makes sense with real experimental data!
 
 > ## Ok maybe one more challenge...
 > In a new cell, make the same plot for your neural network classifier. Change the `np.arange` calls to (0, 0.6, 0.1), (0, 0.6, 0.1) and (0.05, 0.55, 0.1) respectively. Do real experimental data agree with simulated data in this case?
@@ -85,7 +87,7 @@ Within errors, the real experimental data errorbars agree with the simulated dat
 
 # At the end of the day
 
-How many signal events is the random classifier predicting?
+How many signal events is the random forest classifier predicting?
 
 ~~~
 print(np.count_nonzero(y_data_RF==1)) # signal
@@ -99,7 +101,7 @@ print(np.count_nonzero(y_data_RF==0)) # background
 ~~~
 {: .language-python}
 
-The random classifier is *predicting* that 91 real data events are signal and 416 are background, how cool is that?!
+The random forest classifier is *predicting* that 91 real data events are signal and 416 are background, how cool is that?!
 
 > # Ready to machine learn to take over the world!
 > Hopefully you've enjoyed this brief discussion on machine learning! Try playing around with the hyperparameters of your random forest and neural network classifiers, such as the number of hidden layers and neurons, and see how they effect the results of your classifiers in Python!

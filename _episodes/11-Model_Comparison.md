@@ -13,6 +13,8 @@ keypoints:
 - "Making plots is useful to assess classifier performance."
 ---
 
+<iframe width="427" height="251" src="https://www.youtube.com/embed?v=oVLe7IulMEs&list=PLKZ9c4ONm-VmHsMKImIDEMsZI1Vp0UY-Z&index=9" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 # Alternative Metrics
 
 As seen in the previous section, accuracy is typically not the preferred metric for classifiers. In this section we will define some new metrics. Let TP, FP, TN, FN be the number of true positives, false positives, true negatives, and false negatives classified using a given model. **Note that in this terminology, a background event is considered negative while a signal event is considered positive**.
@@ -160,7 +162,7 @@ where $$s$$ and $$b$$ are the true and false positive rates and $$b_r$$ is some 
 def AMS(tpr, fpr, b_reg): # define function to calculate AMS
     return np.sqrt(2*(tpr+fpr+b_reg)+np.log(tpr/(fpr+b_reg))-tpr) # equation for AMS
     
-ams_rf = AMS(tpr_rf, fpr_rf, 0.001) # get AMS for random classifier
+ams_rf = AMS(tpr_rf, fpr_rf, 0.001) # get AMS for random forest classifier
 ~~~
 {: .language-python}
 

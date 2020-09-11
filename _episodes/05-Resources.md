@@ -13,6 +13,8 @@ keypoints:
 - "scikit-learn and TensorFlow are two good options for machine learning in Python."
 ---
 
+<iframe width="427" height="251" src="https://www.youtube.com/embed?v=oVLe7IulMEs&list=PLKZ9c4ONm-VmHsMKImIDEMsZI1Vp0UY-Z&index=4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 # Proficiency in Python
 
 If you are unfamiliar with Python, the following tutorials will be useful:

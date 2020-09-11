@@ -3,6 +3,9 @@ layout: lesson
 root: .  # Is the only page that doesn't follow the pattern /:path/index.html
 permalink: index.html  # Is the only page that doesn't follow the pattern /:path/index.html
 ---
+
+<iframe width="427" height="251" src="https://www.youtube.com/embed?v=CKQXQMRE6vY&list=PLKZ9c4ONm-VmHsMKImIDEMsZI1Vp0UY-Z" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 This tutorial explores Machine Learning using scikit-learn and TensorFlow for applications in high energy physics.
 
 Extended from a [version developed by Luke Polson for the 2020 USATLAS Computing Bootcamp](https://lukepolson.github.io/HEP_ML_Lessons/).
