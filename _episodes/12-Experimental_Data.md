@@ -101,7 +101,7 @@ print(np.count_nonzero(y_data_RF==0)) # background
 ~~~
 {: .language-python}
 
-The random forest classifier is *predicting* that 91 real data events are signal and 416 are background, how cool is that?!
+The random forest classifier is *predicting* how many real data events are signal and how many are background, how cool is that?!
 
 > # Ready to machine learn to take over the world!
 > Hopefully you've enjoyed this brief discussion on machine learning! Try playing around with the hyperparameters of your random forest and neural network classifiers, such as the number of hidden layers and neurons, and see how they effect the results of your classifiers in Python!

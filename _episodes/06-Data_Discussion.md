@@ -1,7 +1,7 @@
 ---
 title: "Data Discussion"
 teaching: 10
-exercises: 10
+exercises: 5
 questions:
 - "What dataset is being used?"
 - "How do some of the variables look?"
@@ -114,7 +114,7 @@ lep_pt_2 = { # dictionary containing plotting parameters for the lep_pt_2 histog
 {: .language-python}
 
 > ## Challenge
-> Write a dictionary of plotting parameters for lep_pt_1, using 28 bins.
+> Write a dictionary of plotting parameters for lep_pt_1, using 28 bins. We're using 28 bins here since lep_pt_1 extends to higher values than lep_pt_2.
 >
 > > ## Solution
 > >

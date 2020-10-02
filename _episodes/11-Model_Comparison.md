@@ -81,6 +81,8 @@ print (classification_report(y_test, y_pred_RF,
 > {: .solution}
 {: .challenge}
 
+Out of the box, the random forest performs slightly better than the neural network.
+
 Let's get the decisions of the random forest classifier.
 
 ~~~
@@ -103,8 +105,8 @@ decisions_rf = RF_clf.predict_proba(X_test)[:,1] # get the decisions of the rand
 The ROC curve is a plot of the recall (or true positive rate) vs. the false positive rate: the ratio of negative instances incorrectly classified as positive. A classifier may classify many instances as positive (i.e. has a low tolerance for classifying something as positive), but in such an example it will probably also incorrectly classify many negative instances as positive as well. The false positive rate is plotted on the x-axis of the ROC curve and the true positive rate on the y-axis; the threshold is varied to give a parameteric curve. A random classifier results in a line. Before we look at the ROC curve, let's examine the following plot
 
 ~~~
-plt.hist(decisions_nn[y_test==1], color='b', histtype='step', bins=50, label='Higgs Events') # plot signal
-plt.hist(decisions_nn[y_test==0], color='g', histtype='step', bins=50, label='Background Events') # plot background
+plt.hist(decisions_rf[y_test==1], color='b', histtype='step', bins=50, label='Higgs Events') # plot signal
+plt.hist(decisions_rf[y_test==0], color='g', histtype='step', bins=50, label='Background Events') # plot background
 plt.xlabel('Threshold') # x-axis label
 plt.ylabel('Number of Events') # y-axis label
 plt.semilogy() # make the y-axis semi-log
@@ -146,7 +148,7 @@ plt.legend() # add a legend
 ~~~
 {: .language-python}
 
-
+*(Note: don't worry if your plot looks slightly different to the video, the classifiers train slightly different each time because they're random.)*
 
 We need to decide on an appropriate threshold.
 
@@ -157,6 +159,7 @@ As discussed above, the threshold depends on the problem at hand. In this specif
 $$\text{AMS} = \sqrt{2\left((s+b+b_r)\ln\left(\frac{s}{b+b_r}\right)-s \right)} $$
 
 where $$s$$ and $$b$$ are the true and false positive rates and $$b_r$$ is some number chosen to reduce the variance of the AMS such that the selection region is not too small. For the purpose of this tutorial we will choose $$b_r=0.001$$. 
+Other values for $b_r$ would also be possible. Once you've plotted AMS for the first time, you may want to play around with the value of $b_r$ and see how it affects your selection for the threshold value that maximizes the AMS of the plots.
 
 ~~~
 def AMS(tpr, fpr, b_reg): # define function to calculate AMS
@@ -188,6 +191,8 @@ plt.title('AMS with $b_r=0.001$') # add plot title
 plt.legend() # add legend
 ~~~
 {: .language-python}
+
+*(Note: don't worry if your plot looks slightly different to the video, the classifiers train slightly different each time because they're random.)*
 
 One should then select the value of the threshold that maximizes the AMS on these plots.
 

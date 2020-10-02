@@ -57,7 +57,7 @@ print(accuracy_score(y_test, y_pred_RF))
 
 
 1. The classifier is created. In this situation we have three hyperparameters specified: `criterion`, `max_depth` (max number of consecutive cuts an individual tree can make), and `n_estimators` (number of decision trees used). These **are not altered** during training (i.e. they are not included in $$\theta$$).
-2. The classifier is trained using the training dataset `X_train` and corresponding labels `y_train`.
+2. The classifier is trained using the training dataset `X_train` and corresponding labels `y_train`. During training, we give the classifier both the features (X_train) and targets (y_train) and it must learn how to map the data to a prediction. Check out this [online article](https://towardsdatascience.com/random-forest-in-python-24d0893d51c0) for more info.
 3. The classifier makes predictions on the test dataset `X_test`. The machine learning algorithm was not exposed to these data during training.
 4. An accuracy score between the test dataset `y_test` and machine learning predictions `y_pred` is made. The accuracy score is defined as the ratio of correctly identified data points to all data points.
  

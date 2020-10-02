@@ -1,6 +1,6 @@
 ---
 title: "Resources"
-teaching: 15
+teaching: 10
 exercises: 0
 questions:
 - "Where should I go if I want to get better at Python?"

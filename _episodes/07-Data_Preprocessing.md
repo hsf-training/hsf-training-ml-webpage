@@ -1,7 +1,7 @@
 ---
 title: "Data Preprocessing"
 teaching: 10
-exercises: 10
+exercises: 5
 questions:
 - "How must we organize our data such that it can be used in the machine learning libraries?"
 - "Are we ready for machine learning yet?!"

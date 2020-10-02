@@ -25,7 +25,7 @@ Introduction
 
 Machine learning is everywhere in modern "big-data" science. As physicists and big-data scientists, it's a good idea to know a bit about machine learning.
 
-The aim of this module is to:
+The aim of this lesson is to:
 - explore what it means to build a machine learning model
 - expand on concepts in machine learning that are essential to anyone working in big-data science
 
@@ -38,5 +38,7 @@ The aim of this module is to:
 {: .checklist}
 
 {% include curriculum.html %}
+
+Videos are provided at the top of each page to help guide you. For the sections without coding (Introduction, Mathematical Foundations, Neural Networks) the videos essentially take you through the text, so choose whichever way you learn best: video or reading. For the remaining sections, the videos take you through the coding live.
 
 {% include links.md %}

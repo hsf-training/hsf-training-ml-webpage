@@ -5,7 +5,7 @@ exercises: 0
 questions:
 - "What is the common terminology in machine learning?"
 - "How does machine learning actually optimize?"
-- "Is there anyting I should be careful of?"
+- "Is there anything I should be careful of?"
 objectives:
 - "Discuss the role of data, models, and loss functions in machine learning."
 - "Discuss the role of gradient descent when optimizing a model."
@@ -31,14 +31,14 @@ keypoints:
 * **Loss Function**: A function that determines *how well the model $$y=f(x)$$ predicts the data $$(x_i, y_i)$$*. Some models work better than others. One such loss function might be $$\sum_i (y_i-f(x_i))^2$$: the mean-squared error. For the quadratic function this would be $$\sum_i (y_i-(ax_i^2+bx_i+c))^2$$. One doesn't need to use the mean-squared error (MSE) as a loss function, however; one could also use the mean-absolute error (MAE), or the mean-cubed error, etc. What about cases where the $$x_i$$ represent pictures of animals and the $$y_i$$ are strings representing the animal in the picture? How can we define a loss function to account for the *error* the function made when classifying this picture? In this case one needs to be clever about loss functions as functions like the MSE or MAE don't make sense anymore. A common loss function in this case is the *cross entropy loss function*.
 
 > ## Loss Function and Likelihood
-> The MSE loss function is a special case of using the maximum log-likelihood method when the model $$f$$ describes measurements as outcomes of independent Gaussian random variables where each random variable has the same standard deviation. In this case $$\ln L(\theta) = \text{const.} - \frac{1}{2\sigma^2} \sum_{i=1}^N (y_i-f(x_i, \theta))^2$$ where $$L$$ is the likelihood function, $$(x_i, y_i)$$ are the data, $$\sigma$$ is the standard deviation of the random variables, and $$\theta$$ represents the model parameters. Since we subtract the loss function in the formula for log-likelihood, minimizing the MSE loss function is equivalent to maximizing the likelihood.
+> Likelihood measures the goodness of fit of a statistical model to a data sample. For computational convenience, the log-likelihood is often used [Wikipedia](https://en.wikipedia.org/wiki/Likelihood_function). The MSE loss function is a special case of using the maximum log-likelihood method when the model $$f$$ describes measurements as outcomes of independent Gaussian random variables where each random variable has the same standard deviation. In this case $$\ln \mathcal{L}(\theta) = \text{const.} - \frac{1}{2\sigma^2} \sum_{i=1}^N (y_i-f(x_i, \theta))^2$$ where $$\mathcal{L}$$ is the likelihood function, $$(x_i, y_i)$$ are the data, $$\sigma$$ is the standard deviation of the random variables, and $$\theta$$ represents the model parameters. Since we subtract the loss function in the formula for log-likelihood, minimizing the MSE loss function is equivalent to maximizing the likelihood.
 {: .callout}
 
 
 ![Quadratic model and data points](../plots/intro_image.png){:width="80%"}
 
 
-What's important to note is that once the data and model are specified, then the loss function depends on the parameters of the model. For example, consider the data points $$(x_i, y_i)$$ in the plot above and the MSE loss function.  For the left hand plot the model is $$y=ax^2+bx+c$$ and so the MSE depends on $$a$$, $$b$$, and $$c$$ and $$L=L(\theta)=L(a,b,c)$$. For the right hand plot, however, the model is $$y=ae^{bx}$$ and so in this case the MSE only depends on two parameters: $$a$$ and $$b$$ and $$L(\theta)=L(a,b)$$.
+What's important to note is that once the data and model are specified, then the loss function depends on the parameters of the model. For example, consider the data points $$(x_i, y_i)$$ in the plot above and the MSE loss function.  For the left hand plot the model is $$y=ax^2+bx+c$$ and so the MSE depends on $$a$$, $$b$$, and $$c$$ and the loss function, $$L=L(\theta)=L(a,b,c)$$. For the right hand plot, however, the model is $$y=ae^{bx}$$ and so in this case the MSE only depends on two parameters: $$a$$ and $$b$$ and $$L(\theta)=L(a,b)$$.
 
 # Gradient Descent
 
@@ -58,26 +58,26 @@ Note that the models in the plots above have 1 (left) and 2 (right) parameters. 
 
 # The Fly in the Ointment: Overfitting
 
-![Quadratic model and data points](../plots/overfit.png){:width="80%"}
+![Quadratic model and data points](../plots/underfit_overfit.png){:width="80%"}
 
-In general, a model with more parameters can fit a more complicated dataset. Consider the plot above
+In general, a model with more parameters can fit a more complicated dataset. Consider the plot above for a case where we happen to know the true function
 
-* The red and orange data points are both taken from the same population
-* The model is only trained on the red data points
-* The mean squared error is much lower for the points to which the model was exposed.
+* A model with too few parameters (left) can't describe the data (underfitting)
+* A model with too many parameters (right) will learn the statistical fluctuations in the data and doesn't describe the general trend well (overfitting)
+* You're aiming for the goldilocks number of parameters in the middle!
 
-This phenomenon is known as overfitting in machine learning. In general you want to train the model on some known data points $$(x_i,y_i)$$ and then use the model to make predictions on new data points, but if the model is overfitting then the predictions for the new data points will be inaccurate.
+In general you want to train the model on some known data points $$(x_i,y_i)$$ and then use the model to make predictions on new data points, but if the model is overfitting then the predictions for the new data points will be inaccurate.
 
-The main way to avoid this phenomenon in machine learning is by using what is known as a **training** set $$(x_i, y_i)_t$$ and a **validation** set $$(x_i, y_i)_v$$. The training set typically consists of 60%-80% of your data and the validation set consists of the rest of the data. During training, one only uses the the training set to tune $$\theta$$. One can then determine if the model is overfitting by comparing $$L(\theta)$$ for the training set and the validation set. Typically, the model will start to overfit after a certain number of gradient descent steps: a straightforward way to stop overfitting is to stop adjusting $$\theta$$ using gradient descent when the loss function starts to significantly differ between training and validation.
+The main way to avoid the phenomenon of overfitting in machine learning is by using what is known as a **training** set $$(x_i, y_i)_t$$ and a **validation** set $$(x_i, y_i)_v$$. The training set typically consists of 60%-80% of your data and the validation set consists of the rest of the data. During training, one only uses the the training set to tune $$\theta$$. One can then determine if the model is overfitting by comparing $$L(\theta)$$ for the training set and the validation set. Typically, the model will start to overfit after a certain number of gradient descent steps: a straightforward way to stop overfitting is to stop adjusting $$\theta$$ using gradient descent when the loss function starts to significantly differ between training and validation.
 
 # Regression, Classification, Generation
 
 The three main tasks of machine learning can now be revisited with the mathematical formulation.
 
-1. **Regression**. The data in this case are $$(x_i, y_i)$$, where the $$y_i$$ are in $$\mathbb{R}^n$$. For example, each instance $$x_i$$ might specify the height and weight of a person and $$y_i$$ the corresponding resting heart rate of the person. A common loss function for this type of problem is the MSE.
+1. **Regression**. The data in this case are $$(x_i, y_i)$$, where the $$y_i$$ are continuous in $$\mathbb{R}^n$$. For example, each instance $$x_i$$ might specify the height and weight of a person and $$y_i$$ the corresponding resting heart rate of the person. A common loss function for this type of problem is the MSE.
 
 2. **Classification**. The data in this case are $$(x_i, y_i)$$, where $$y_i$$ are discrete values that represent classes. For example, each instance $$x_i$$ might specify the petal width and height of a flower and each $$y_i$$ would then specify the corresponding type of flower. A common loss function for this type of problem is cross entropy. In these learning tasks, a machine learning model typically predicts the *probability* that a given $$x_i$$ corresponds to a certain class. Hence if the possible classes in the problem are $$(C_1, C_2, C_3, C_4)$$ then the model would output an array $$(p_1, p_2, p_3, p_4)$$ where $$\sum_i p_i = 1$$ for each $$y_i$$.
 
-3. **Generation**. As discussed previously, the input is a random distribution (typically Gaussian noise) and the output is some data: typically an image. You can think of the input as *codings* of the image to be generated. This process is fundamentally different than regression or classification. For more information see [Wikipedia](https://en.wikipedia.org/wiki/Generative_adversarial_network) for an introduction or if you have it available, [Chapter 17](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) where Generative Adversarial Networks are discussed.
+3. **Generation**. As discussed previously, the input is a random distribution (typically Gaussian noise) and the output is some data: typically an image. You can think of the input as *codings* of the image to be generated. This process is fundamentally different than regression or classification. For more information see [Wikipedia](https://en.wikipedia.org/wiki/Generative_adversarial_network) for an introduction or if you have it available, [Chapter 17 of Hands-On Machine Learning](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) where Generative Adversarial Networks are discussed.
 
 {% include links.md %}
