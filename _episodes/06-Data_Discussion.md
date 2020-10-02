@@ -13,7 +13,7 @@ keypoints:
 - "It's a good idea to visualise your data before any machine learning takes place."
 ---
 
-<iframe width="427" height="251" src="https://www.youtube.com/embed?v=oVLe7IulMEs&list=PLKZ9c4ONm-VmHsMKImIDEMsZI1Vp0UY-Z&index=5" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="427" height="251" src="https://www.youtube.com/embed?v=GbedkKJiGq4&list=PLKZ9c4ONm-VmHsMKImIDEMsZI1Vp0UY-Z&index=5&ab_channel=HEPSoftwareFoundation" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # Dataset Used
 
@@ -161,7 +161,7 @@ In the [ATLAS Higgs discovery paper](https://www.sciencedirect.com/science/artic
 
 Imagine having to separately optimise about 5,6,7,10...20 variables! Not to mention that applying a cut on one variable could change the distribution of another, which would mean you'd have to re-optimise... Nightmare.
 
-This is where a machine learning model such as a neural network can come to the rescue. A machine learning can optimise all variables at the same time.
+This is where a machine learning model such as a neural network can come to the rescue. A machine learning model can optimise all variables at the same time.
 
 A machine learning model not only optimises cuts, but can find correlations in many dimensions that will give better signal/background classification than individual cuts ever could.
 

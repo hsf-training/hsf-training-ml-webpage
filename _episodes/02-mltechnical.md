@@ -16,7 +16,7 @@ keypoints:
 - "Beware of overfitting!"
 ---
 
-<iframe width="427" height="251" src="https://www.youtube.com/embed?v=oVLe7IulMEs&list=PLKZ9c4ONm-VmHsMKImIDEMsZI1Vp0UY-Z&index=2" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="427" height="251" src="https://www.youtube.com/embed?v=rqfE7UXlxss&list=PLKZ9c4ONm-VmHsMKImIDEMsZI1Vp0UY-Z&index=2&ab_channel=HEPSoftwareFoundation" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
  
  In this section we will establish the mathematical foundations of machine learning. We will define three important quantities: **data**, **models**, and **loss functions**. We will then discuss the optimization procedure known as **gradient descent**.
  

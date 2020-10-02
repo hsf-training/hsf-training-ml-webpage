@@ -13,7 +13,7 @@ keypoints:
 - "Making plots is useful to assess classifier performance."
 ---
 
-<iframe width="427" height="251" src="https://www.youtube.com/embed?v=oVLe7IulMEs&list=PLKZ9c4ONm-VmHsMKImIDEMsZI1Vp0UY-Z&index=9" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="427" height="251" src="https://www.youtube.com/embed?v=GbedkKJiGq4&list=PLKZ9c4ONm-VmHsMKImIDEMsZI1Vp0UY-Z&index=9&ab_channel=HEPSoftwareFoundation" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # Alternative Metrics
 
@@ -159,7 +159,7 @@ As discussed above, the threshold depends on the problem at hand. In this specif
 $$\text{AMS} = \sqrt{2\left((s+b+b_r)\ln\left(\frac{s}{b+b_r}\right)-s \right)} $$
 
 where $$s$$ and $$b$$ are the true and false positive rates and $$b_r$$ is some number chosen to reduce the variance of the AMS such that the selection region is not too small. For the purpose of this tutorial we will choose $$b_r=0.001$$. 
-Other values for $b_r$ would also be possible. Once you've plotted AMS for the first time, you may want to play around with the value of $b_r$ and see how it affects your selection for the threshold value that maximizes the AMS of the plots.
+Other values for $$b_r$$ would also be possible. Once you've plotted AMS for the first time, you may want to play around with the value of $$b_r$$ and see how it affects your selection for the threshold value that maximizes the AMS of the plots.
 
 ~~~
 def AMS(tpr, fpr, b_reg): # define function to calculate AMS
