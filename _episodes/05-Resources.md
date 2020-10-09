@@ -37,8 +37,13 @@ If you are unfamiliar with these packages, I would recommend reading the introdu
 
 There are many machine libraries in Python, but the two discussed in this tutorial are scikit-learn and TensorFlow.
 
-1. **scikit-learn**: features various classification, regression and clustering algorithms and is designed to interoperate with the Python numerical and scientific libraries NumPy and SciPy. This library **does not** have GPU support: as such, it should only be used for training simple neural networks. See [the documentation](https://scikit-learn.org/stable/).
-2. **TensorFlow**: TensorFlow is an end-to-end open-source platform for machine learning. It is used for building and deploying machine learning models and **does** have GPU support. TensorFlow is used to train complicated neural network models that require a lot of GPU power. See [the documentation](https://www.tensorflow.org/).
+1. **scikit-learn**: features various classification, regression and clustering algorithms and is designed to interoperate with the Python numerical and scientific libraries NumPy and SciPy. See [the documentation](https://scikit-learn.org/stable/).
+2. **TensorFlow**: TensorFlow is an end-to-end open-source platform for machine learning. It is used for building and deploying machine learning models. See [the documentation](https://www.tensorflow.org/).
+
+> ## What about GPUs?
+> **scikit-learn** doesn't have GPU support, therefore should only be used for training simple neural networks.
+> **TensorFlow** does have GPU support, therefore can be used train complicated neural network model that require a lot of GPU power.
+{: .callout}
 
 Note that the four Python programming packages discussed so far are interoperable: in particular, datatypes from NumPy and pandas are often used in packages like scikit-learn and TensorFlow.
 
