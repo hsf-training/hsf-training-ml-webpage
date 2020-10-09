@@ -80,6 +80,7 @@ Within errors, the real experimental data errorbars agree with the simulated dat
 > > data_err = np.sqrt(data_hist * scale) / scale # get error on experimental data
 > > plt.errorbar(x=np.arange(0.05, 0.55, 0.1), y=data_hist, yerr=data_err) # plot the experimental data errorbars
 > > plt.xlabel('Threshold')
+> > ~~~
 > > {: .language-python}
 > {: .solution}
 {: .challenge}
