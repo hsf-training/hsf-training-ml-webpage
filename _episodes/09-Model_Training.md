@@ -46,9 +46,9 @@ In the previous page we created a training and test dataset. Lets use these data
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
-RF_clf = RandomForestClassifier(criterion='gini', max_depth=8, n_estimators=30) # initialise your random forest classifier
-RF_clf.fit(X_train, y_train) # fit to the training data
-y_pred_RF = RF_clf.predict(X_test) # make predictions on the test data
+RF_clf = RandomForestClassifier(criterion='gini', max_depth=8, n_estimators=30, random_state=52) # initialise your random forest classifier
+RF_clf.fit(X_train_scaled, y_train) # fit to the training data
+y_pred_RF = RF_clf.predict(X_test_scaled) # make predictions on the test data
 
 # See how well the classifier does
 print(accuracy_score(y_test, y_pred_RF))
@@ -57,8 +57,8 @@ print(accuracy_score(y_test, y_pred_RF))
 
 
 1. The classifier is created. In this situation we have three hyperparameters specified: `criterion`, `max_depth` (max number of consecutive cuts an individual tree can make), and `n_estimators` (number of decision trees used). These **are not altered** during training (i.e. they are not included in $$\theta$$).
-2. The classifier is trained using the training dataset `X_train` and corresponding labels `y_train`. During training, we give the classifier both the features (X_train) and targets (y_train) and it must learn how to map the data to a prediction. Check out this [online article](https://towardsdatascience.com/random-forest-in-python-24d0893d51c0) for more info.
-3. The classifier makes predictions on the test dataset `X_test`. The machine learning algorithm was not exposed to these data during training.
+2. The classifier is trained using the training dataset `X_train_scaled` and corresponding labels `y_train`. During training, we give the classifier both the features (X_train_scaled) and targets (y_train) and it must learn how to map the data to a prediction. Check out this [online article](https://towardsdatascience.com/random-forest-in-python-24d0893d51c0) for more info.
+3. The classifier makes predictions on the test dataset `X_test_scaled`. The machine learning algorithm was not exposed to these data during training.
 4. An accuracy score between the test dataset `y_test` and machine learning predictions `y_pred` is made. The accuracy score is defined as the ratio of correctly identified data points to all data points.
  
 ## Neural Network
@@ -83,7 +83,7 @@ For now, ignore all the complicated hyperparameters, but note that the loss used
 We need to keep some events for validation. Validation sets are used to select and tune the final neural network model.
 
 ~~~
-X_valid, X_train_nn = X_train[:100], X_train[100:] # first 100 events for validation
+X_valid_scaled, X_train_nn_scaled = X_train_scaled[:100], X_train_scaled[100:] # first 100 events for validation
 ~~~
 {: .language-python}
 
@@ -102,7 +102,7 @@ The network can be trained as follows:
 
 ~~~
 NN_clf = keras.wrappers.scikit_learn.KerasClassifier(build_model) # call the build_model function defined earlier
-NN_clf.fit(X_train_nn, y_train_nn, validation_data=(X_valid, y_valid)) # fit your neural network
+NN_clf.fit(X_train_nn_scaled, y_train_nn, validation_data=(X_valid_scaled, y_valid)) # fit your neural network
 ~~~
 {: .language-python}
 
@@ -113,7 +113,7 @@ NN_clf.fit(X_train_nn, y_train_nn, validation_data=(X_valid, y_valid)) # fit you
 > > ## Solution
 > >
 > > ~~~
-> > y_pred_NN = NN_clf.predict(X_test) # make predictions on the test data
+> > y_pred_NN = NN_clf.predict(X_test_scaled) # make predictions on the test data
 > > 
 > > # See how well the classifier does
 > > print(accuracy_score(y_test, y_pred_NN))

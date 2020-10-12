@@ -86,7 +86,7 @@ Out of the box, the random forest performs slightly better than the neural netwo
 Let's get the decisions of the random forest classifier.
 
 ~~~
-decisions_rf = RF_clf.predict_proba(X_test)[:,1] # get the decisions of the random forest 
+decisions_rf = RF_clf.predict_proba(X_test_scaled)[:,1] # get the decisions of the random forest 
 ~~~
 {: .language-python}
 
@@ -95,7 +95,7 @@ decisions_rf = RF_clf.predict_proba(X_test)[:,1] # get the decisions of the rand
 > 
 > > ## Solution
 > > ~~~
-> > decisions_nn = NN_clf.predict_proba(X_test)[:,1] # get the decisions of the neural network
+> > decisions_nn = NN_clf.predict_proba(X_test_scaled)[:,1] # get the decisions of the neural network
 > > ~~~
 > > {: .language-python}
 > {: .solution}
@@ -159,7 +159,7 @@ As discussed above, the threshold depends on the problem at hand. In this specif
 $$\text{AMS} = \sqrt{2\left((TP+FP+b_r)\ln\left(\frac{TP}{FP+b_r}\right)-TP \right)} $$
 
 where $$s$$ and $$b$$ are the true and false positive rates and $$b_r$$ is some number chosen to reduce the variance of the AMS such that the selection region is not too small. For the purpose of this tutorial we will choose $$b_r=0.001$$. 
-Other values for $$b_r$$ would also be possible. Once you've plotted AMS for the first time, you may want to play around with the value of $$b_r$$ and see how it affects your selection for the threshold value that maximizes the AMS of the plots.
+Other values for $$b_r$$ would also be possible. Once you've plotted AMS for the first time, you may want to play around with the value of $$b_r$$ and see how it affects your selection for the threshold value that maximizes the AMS of the plots. You may see that changing $$b_r$$ doesn't change the AMS much.
 
 ~~~
 def AMS(tpr, fpr, b_reg): # define function to calculate AMS

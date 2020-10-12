@@ -27,8 +27,8 @@ We first need to get the real experimental data.
 > 1. Read data.csv like in the [Data Discussion lesson](https://hsf-training.github.io/hsf-training-ml-webpage/06-Data_Discussion/index.html). data.csv is in the same file folder as the files we've used so far.
 > 2. Apply cut_lep_type and cut_lep_charge like in the [Data Discussion lesson](https://hsf-training.github.io/hsf-training-ml-webpage/06-Data_Discussion/index.html)
 > 3. Convert the data to a NumPy array, `X_data`, similar to the [Data Preprocessing lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html). You may find the attribute `.values` useful to convert a pandas DataFrame to a Numpy array.
-> 4. Don't forget to transform using the scaler like in the [Data Preprocessing lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html)
-> 5. Predict the labels your random forest classifier would assign to `X_data`. Call your predictions `y_data_RF`.
+> 4. Don't forget to transform using the scaler like in the [Data Preprocessing lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html). Call the scaled data `X_data_scaled`.
+> 5. Predict the labels your random forest classifier would assign to `X_data_scaled`. Call your predictions `y_data_RF`.
 >
 > > ## Solution to part 1
 > > ~~~
@@ -60,14 +60,14 @@ We first need to get the real experimental data.
 > 
 > > ## Solution to part 4
 > > ~~~
-> > X_data = scaler.transform(X_data) # X_data now scaled same as training and testing sets
+> > X_data_scaled = scaler.transform(X_data) # X_data now scaled same as training and testing sets
 > > ~~~
 > > {: .language-python}
 > {: .solution}
 > 
 > > ## Solution to part 5
 > > ~~~
-> > y_data_RF = RF_clf.predict(X_data) # make predictions on the data
+> > y_data_RF = RF_clf.predict(X_data_scaled) # make predictions on the data
 > > ~~~
 > > {: .language-python}
 > {: .solution}
@@ -80,8 +80,8 @@ thresholds = [] # define list to hold random forest classifier probability predi
 for s in samples: # loop over samples
     thresholds.append(RF_clf.predict_proba(scaler.transform(DataFrames[s][ML_inputs]))[:,1]) # get ML_inputs from DataFrames[s], transform the values, predict probabilities
 plt.hist(thresholds, bins=np.arange(0, 0.8, 0.1), density=True, stacked=True) # plot simulated data
-data_hist = np.histogram(RF_clf.predict_proba(X_data)[:,1], bins=np.arange(0, 0.8, 0.1), density=True)[0] # histogram the experimental data
-scale = sum(RF_clf.predict_proba(X_data)[:,1]) / sum(data_hist) # get scale imposed by density=True
+data_hist = np.histogram(RF_clf.predict_proba(X_data_scaled)[:,1], bins=np.arange(0, 0.8, 0.1), density=True)[0] # histogram the experimental data
+scale = sum(RF_clf.predict_proba(X_data_scaled)[:,1]) / sum(data_hist) # get scale imposed by density=True
 data_err = np.sqrt(data_hist * scale) / scale # get error on experimental data
 plt.errorbar(x=np.arange(0.05, 0.75, 0.1), y=data_hist, yerr=data_err) # plot the experimental data errorbars
 plt.xlabel('Threshold')
@@ -99,8 +99,8 @@ Within errors, the real experimental data errorbars agree with the simulated dat
 > > for s in samples: # loop over samples
 > >     thresholds.append(NN_clf.predict_proba(scaler.transform(DataFrames[s][ML_inputs]))[:,1]) # get ML_inputs from DataFrames[s], transform the values, predict probabilities
 > > plt.hist(thresholds, bins=np.arange(0, 0.6, 0.1), density=True, stacked=True) # plot simulated data
-> > data_hist = np.histogram(NN_clf.predict_proba(X_data)[:,1], bins=np.arange(0, 0.6, 0.1), density=True)[0] # histogram the experimental data
-> > scale = sum(NN_clf.predict_proba(X_data)[:,1]) / sum(data_hist) # get scale imposed by density=True
+> > data_hist = np.histogram(NN_clf.predict_proba(X_data_scaled)[:,1], bins=np.arange(0, 0.6, 0.1), density=True)[0] # histogram the experimental data
+> > scale = sum(NN_clf.predict_proba(X_data_scaled)[:,1]) / sum(data_hist) # get scale imposed by density=True
 > > data_err = np.sqrt(data_hist * scale) / scale # get error on experimental data
 > > plt.errorbar(x=np.arange(0.05, 0.55, 0.1), y=data_hist, yerr=data_err) # plot the experimental data errorbars
 > > plt.xlabel('Threshold')

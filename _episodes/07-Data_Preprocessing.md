@@ -89,7 +89,7 @@ scaler.fit(X_train)
 Now we will use the scaling to apply the transformations to the data. 
 
 ~~~
-X_train = scaler.transform(X_train)
+X_train_scaled = scaler.transform(X_train)
 ~~~
 {: .language-python}
 
@@ -99,8 +99,8 @@ X_train = scaler.transform(X_train)
 > > ## Solution
 > > 
 > > ~~~
-> > X_test = scaler.transform(X_test)
-> > X = scaler.transform(X)
+> > X_test_scaled = scaler.transform(X_test)
+> > X_scaled = scaler.transform(X)
 > > ~~~
 > > {: .language-python}
 > {: .solution}
