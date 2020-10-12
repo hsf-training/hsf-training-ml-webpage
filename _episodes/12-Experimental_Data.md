@@ -24,7 +24,7 @@ To make sure our machine learning model makes sense when applied to real experim
 We first need to get the real experimental data.
 
 > ## Challenge to end all challenges
-> 1. Read data.csv like in the [Data Discussion lesson](https://hsf-training.github.io/hsf-training-ml-webpage/06-Data_Discussion/index.html)
+> 1. Read data.csv like in the [Data Discussion lesson](https://hsf-training.github.io/hsf-training-ml-webpage/06-Data_Discussion/index.html). data.csv is in the same file folder as the files we've used so far.
 > 2. Apply cut_lep_type and cut_lep_charge like in the [Data Discussion lesson](https://hsf-training.github.io/hsf-training-ml-webpage/06-Data_Discussion/index.html)
 > 3. Convert the data to a NumPy array, `X_data`, similar to the [Data Preprocessing lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html). You may find the attribute `.values` useful to convert a pandas DataFrame to a Numpy array.
 > 4. Don't forget to transform using the scaler like in the [Data Preprocessing lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html)
@@ -67,7 +67,7 @@ plt.xlabel('Threshold')
 Within errors, the real experimental data errorbars agree with the simulated data histograms. Good news, our random forest classifier model makes sense with real experimental data!
 
 > ## Ok maybe one more challenge...
-> In a new cell, make the same plot for your neural network classifier. Change the `np.arange` calls to (0, 0.6, 0.1), (0, 0.6, 0.1) and (0.05, 0.55, 0.1) respectively. Do real experimental data agree with simulated data in this case?
+> In a new cell, make the same plot for your neural network classifier. To display this graph more clearly, change the `np.arange` calls to (0, 0.6, 0.1), (0, 0.6, 0.1) and (0.05, 0.55, 0.1) respectively. Do real experimental data agree with simulated data in this case?
 >
 > > ## Solution
 > > ~~~

@@ -163,7 +163,7 @@ Other values for $$b_r$$ would also be possible. Once you've plotted AMS for the
 
 ~~~
 def AMS(tpr, fpr, b_reg): # define function to calculate AMS
-    return np.sqrt(2*(tpr+fpr+b_reg)+np.log(tpr/(fpr+b_reg))-tpr) # equation for AMS
+    return np.sqrt(2*((tpr+fpr+b_reg)*np.log(1+tpr/(fpr+b_reg))-tpr)) # equation for AMS 
     
 ams_rf = AMS(tpr_rf, fpr_rf, 0.001) # get AMS for random forest classifier
 ~~~
