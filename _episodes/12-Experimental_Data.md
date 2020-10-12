@@ -30,9 +30,15 @@ We first need to get the real experimental data.
 > 4. Don't forget to transform using the scaler like in the [Data Preprocessing lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html)
 > 5. Predict the labels your random forest classifier would assign to `X_data`. Call your predictions `y_data_RF`.
 >
-> > ## Solution
+> > ## Solution to part 1
 > > ~~~
 > > DataFrames['data'] = pd.read_csv('/kaggle/input/4lepton/data.csv') # read data.csv file
+> > ~~~
+> > {: .language-python}
+> {: .solution}
+>
+> > ## Solution to part 2
+> > ~~~
 > > DataFrames['data'] = DataFrames['data'][ np.vectorize(cut_lep_type)(DataFrames['data'].lep_type_0,
 > >                                                                     DataFrames['data'].lep_type_1,
 > >                                                                     DataFrames['data'].lep_type_2,
@@ -41,12 +47,29 @@ We first need to get the real experimental data.
 > >                                                                       DataFrames['data'].lep_charge_1,
 > >                                                                       DataFrames['data'].lep_charge_2,
 > >                                                                       DataFrames['data'].lep_charge_3) ]
-> > X_data = DataFrames['data'][ML_inputs].values # .values converts straight to NumPy array
-> > X_data = scaler.transform(X_data) # X_data now scaled same as training and testing sets
-> > y_data_RF = RF_clf.predict(X_data) # make predictions on the data
 > > ~~~
 > > {: .language-python}
 > {: .solution}
+>
+> > ## Solution to part 3
+> > ~~~
+> > X_data = DataFrames['data'][ML_inputs].values # .values converts straight to NumPy array
+> > ~~~
+> > {: .language-python}
+> {: .solution}
+> 
+> > ## Solution to part 4
+> > ~~~
+> > X_data = scaler.transform(X_data) # X_data now scaled same as training and testing sets
+> > ~~~
+> > {: .language-python}
+> {: .solution}
+> 
+> > ## Solution to part 5
+> > ~~~
+> > y_data_RF = RF_clf.predict(X_data) # make predictions on the data
+> > ~~~
+> > {: .language-python}
 {: .challenge}
 
 Now we can overlay the real experimental data on the simulated data.
