@@ -16,7 +16,7 @@ Extended from a [version developed by Luke Polson for the 2020 USATLAS Computing
 
 
 > ## Prerequisites
-> * A [Kaggle](https://www.kaggle.com/) account. Click [here to create an account](https://www.kaggle.com/account/login?phase=startRegisterTab&returnUrl=%2F)
+> * A [Kaggle](https://www.kaggle.com/) account. Click [here to create an account](https://www.kaggle.com/account/login?phase=startRegisterTab&returnUrl=%2F) as described in the [Setup page](https://hsf-training.github.io/hsf-training-ml-webpage/setup.html)
 > * Basic Python knowledge, e.g. through the [Software Carpentry Programming with Python lesson](https://swcarpentry.github.io/python-novice-inflammation/) 
 {: .prereq}
 
