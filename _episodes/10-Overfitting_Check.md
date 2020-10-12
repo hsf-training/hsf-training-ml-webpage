@@ -30,7 +30,7 @@ compare_train_test(RF_clf, X_train, y_train, X_test, y_test, 'Random Forest outp
 
 If overfitting were present, the dots (test set) would be *very far* from the bars (training set). Look back to the figure in the Overfitting section of the [Mathematical Foundations lesson](https://hsf-training.github.io/hsf-training-ml-webpage/02-mltechnical/index.html) for a brief explanation. Overfitting might look something like this
 
-![Overfitted](../plots/overfitted.png)
+![Overfitted](../plots/overfitted.png){:width="80%"}
 
 As discussed in the [Mathematical Foundations lesson](https://hsf-training.github.io/hsf-training-ml-webpage/02-mltechnical/index.html), there are techniques to prevent overfitting. For instance, you could try reduce the number of parameters in your model, e.g. for a neural network reduce the number of neurons. 
 
