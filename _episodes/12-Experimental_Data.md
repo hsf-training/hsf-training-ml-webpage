@@ -70,6 +70,7 @@ We first need to get the real experimental data.
 > > y_data_RF = RF_clf.predict(X_data) # make predictions on the data
 > > ~~~
 > > {: .language-python}
+> {: .solution}
 {: .challenge}
 
 Now we can overlay the real experimental data on the simulated data.
