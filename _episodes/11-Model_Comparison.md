@@ -1,7 +1,7 @@
 ---
 title: "Model Comparison"
 teaching: 10
-exercises: 20
+exercises: 10
 questions:
 - "How do you use the scikit-learn and TensorFlow packages for machine learning?"
 - "How do I see whether my machine learning model is doing alright?"
@@ -102,7 +102,7 @@ decisions_rf = RF_clf.predict_proba(X_test)[:,1] # get the decisions of the rand
 {: .challenge}
 
 # The ROC Curve
-The ROC curve is a plot of the recall (or true positive rate) vs. the false positive rate: the ratio of negative instances incorrectly classified as positive. A classifier may classify many instances as positive (i.e. has a low tolerance for classifying something as positive), but in such an example it will probably also incorrectly classify many negative instances as positive as well. The false positive rate is plotted on the x-axis of the ROC curve and the true positive rate on the y-axis; the threshold is varied to give a parameteric curve. A random classifier results in a line. Before we look at the ROC curve, let's examine the following plot
+The Receiver Operating Characteristic (ROC) curve is a plot of the recall (or true positive rate) vs. the false positive rate: the ratio of negative instances incorrectly classified as positive. A classifier may classify many instances as positive (i.e. has a low tolerance for classifying something as positive), but in such an example it will probably also incorrectly classify many negative instances as positive as well. The false positive rate is plotted on the x-axis of the ROC curve and the true positive rate on the y-axis; the threshold is varied to give a parameteric curve. A random classifier results in a line. Before we look at the ROC curve, let's examine the following plot
 
 ~~~
 plt.hist(decisions_rf[y_test==1], color='b', histtype='step', bins=50, label='Higgs Events') # plot signal
@@ -156,7 +156,7 @@ We need to decide on an appropriate threshold.
 
 As discussed above, the threshold depends on the problem at hand. In this specific example of classifying particles as signal or background events, the primary goal is optimizing the discovery region for statistical significance. As discussed [here](https://higgsml.lal.in2p3.fr/files/2014/04/documentation_v1.8.pdf), this metric is the approximate median significance (AMS) defined as 
 
-$$\text{AMS} = \sqrt{2\left((s+b+b_r)\ln\left(\frac{s}{b+b_r}\right)-s \right)} $$
+$$\text{AMS} = \sqrt{2\left((TP+FP+b_r)\ln\left(\frac{TP}{FP+b_r}\right)-TP \right)} $$
 
 where $$s$$ and $$b$$ are the true and false positive rates and $$b_r$$ is some number chosen to reduce the variance of the AMS such that the selection region is not too small. For the purpose of this tutorial we will choose $$b_r=0.001$$. 
 Other values for $$b_r$$ would also be possible. Once you've plotted AMS for the first time, you may want to play around with the value of $$b_r$$ and see how it affects your selection for the threshold value that maximizes the AMS of the plots.
