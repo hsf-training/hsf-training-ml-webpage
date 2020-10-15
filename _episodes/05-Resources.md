@@ -71,7 +71,7 @@ Let's set the random seed that we'll be using. This reduces the randomness when 
 
 ~~~
 from numpy.random import seed
-seed_value = 492
+seed_value = 42
 seed(seed_value)
 tf.random.set_seed(seed_value)
 ~~~
