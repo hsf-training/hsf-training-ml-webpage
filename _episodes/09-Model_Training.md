@@ -46,7 +46,7 @@ In the previous page we created a training and test dataset. Lets use these data
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
-RF_clf = RandomForestClassifier(criterion='gini', max_depth=8, n_estimators=30, random_state=52) # initialise your random forest classifier
+RF_clf = RandomForestClassifier(criterion='gini', max_depth=8, n_estimators=30, random_state=seed_value) # initialise your random forest classifier
 RF_clf.fit(X_train_scaled, y_train) # fit to the training data
 y_pred_RF = RF_clf.predict(X_test_scaled) # make predictions on the test data
 

@@ -161,18 +161,27 @@ $$\text{AMS} = \sqrt{2\left((TP+FP+b_r)\ln\left(\frac{TP}{FP+b_r}\right)-TP \rig
 where $$s$$ and $$b$$ are the true and false positive rates and $$b_r$$ is some number chosen to reduce the variance of the AMS such that the selection region is not too small. For the purpose of this tutorial we will choose $$b_r=0.001$$. 
 Other values for $$b_r$$ would also be possible. Once you've plotted AMS for the first time, you may want to play around with the value of $$b_r$$ and see how it affects your selection for the threshold value that maximizes the AMS of the plots. You may see that changing $$b_r$$ doesn't change the AMS much.
 
-~~~
-def AMS(tpr, fpr, b_reg): # define function to calculate AMS
-    return np.sqrt(2*((tpr+fpr+b_reg)*np.log(1+tpr/(fpr+b_reg))-tpr)) # equation for AMS 
-    
-ams_rf = AMS(tpr_rf, fpr_rf, 0.001) # get AMS for random forest classifier
-~~~
-{: .language-python}
-
 > ## Challenge
-> Get the AMS score for your neural network classifier, `ams_nn`.
+> 1. Define a function `AMS` that calculates AMS using the equation above. Call the true positives `tpr`, false postives `fpr` and $$b_r$$ `b_reg`.
+> 2. Use this function to get the AMS score for your random forest classifier, `ams_rf`.
+> 3. Use this function to get the AMS score for your neural network classifier, `ams_nn`.
 > 
-> > ## Solution
+> > ## Solution to part 1
+> > ~~~
+> > def AMS(tpr, fpr, b_reg): # define function to calculate AMS
+> >     return np.sqrt(2*((tpr+fpr+b_reg)*np.log(1+tpr/(fpr+b_reg))-tpr)) # equation for AMS
+> > ~~~
+> > {: .language-python}
+> {: .solution}
+>
+> > ## Solution to part 2
+> > ~~~ 
+> > ams_rf = AMS(tpr_rf, fpr_rf, 0.001) # get AMS for random forest classifier
+> > ~~~
+> > {: .language-python}
+> {: .solution}
+>
+> > ## Solution to part 3
 > > ~~~
 > > ams_nn = AMS(tpr_nn, fpr_nn, 0.001) # get AMS for neural network
 > > ~~~

@@ -67,6 +67,15 @@ np.__version__
 ~~~
 {: .language-python}
 
+Let's set the random seed that we'll be using. This reduces the randomness when you re-run the notebook
+
+~~~
+from numpy.random import seed
+seed_value = 492
+seed(seed_value)
+tf.random.set_seed(seed_value)
+~~~
+{: .language-python}
 
 
 

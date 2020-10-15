@@ -153,7 +153,7 @@ Let's talk through the lep_pt_2 plots.
 2. We then take the ratio of the number of <span style="color:blue">signal</span> events that pass this cut, to the number of <span style="color:red">background</span> events that pass this cut. This gives us a starting value for S/B (2nd plot). 
 3. We then increase this cut value to 8 GeV, 9 GeV, 10 GeV, 11 GeV, 12 GeV. Cuts at these values are throwing away more <span style="color:red">background</span> than <span style="color:blue">signal</span>, so S/B increases. 
 4. There comes a point around 13 GeV where we start throwing away too much <span style="color:blue">signal</span>, thus S/B starts to decrease. 
-5. Our goal is to find the maximum in S/B, and place the cut there.
+5. Our goal is to find the maximum in S/B, and place the cut there. You may have thought the maximum would be where the <span style="color:blue">signal</span> and <span style="color:red">background</span> cross in the upper plot, but remember that the lower plot is the <span style="color:blue">signal</span> to <span style="color:red">background</span> ratio of everything to the right of that x-value, not the <span style="color:blue">signal</span> to <span style="color:red">background</span> ratio at that x-value.
 
 The same logic applies to lep_pt_1.
 

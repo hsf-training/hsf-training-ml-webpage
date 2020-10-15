@@ -71,7 +71,7 @@ from sklearn.model_selection import train_test_split
 # make train and test sets
 X_train,X_test, y_train,y_test = train_test_split(X, y, 
                                                   test_size=0.33, 
-                                                  random_state=492 ) # set the random seed for reproducibility
+                                                  random_state=seed_value ) # set the random seed for reproducibility
 ~~~
 {: .language-python}
 
