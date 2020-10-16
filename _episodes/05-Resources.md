@@ -70,10 +70,10 @@ np.__version__
 Let's set the random seed that we'll be using. This reduces the randomness when you re-run the notebook
 
 ~~~
-from numpy.random import seed
-seed_value = 42
-seed(seed_value)
-tf.random.set_seed(seed_value)
+from numpy.random import seed # import the function to set the random seed in NumPy
+seed_value = 42 # 42 is the answer to life, the universe and everything
+seed(seed_value) # set the seed value for random numbers in NumPy
+tf.random.set_seed(seed_value) # seed value for random numbers in TensorFlow
 ~~~
 {: .language-python}
 
