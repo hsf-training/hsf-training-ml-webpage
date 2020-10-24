@@ -10,7 +10,7 @@ objectives:
 - "Provide links to machine learning library documentation."
 keypoints:
 - "NumPy and pandas are the main libraries for scientific computing."
-- "scikit-learn and TensorFlow are two good options for machine learning in Python."
+- "scikit-learn and PyTorch are two good options for machine learning in Python."
 ---
 
 <iframe width="427" height="251" src="https://www.youtube.com/embed?v=AGCps9YmWK8&list=PLKZ9c4ONm-VmHsMKImIDEMsZI1Vp0UY-Z&index=4&ab_channel=HEPSoftwareFoundation" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -38,44 +38,11 @@ If you are unfamiliar with these packages, I would recommend reading the introdu
 There are many machine libraries in Python, but the two discussed in this tutorial are scikit-learn and TensorFlow.
 
 1. **scikit-learn**: features various classification, regression and clustering algorithms and is designed to interoperate with the Python numerical and scientific libraries NumPy and SciPy. See [the documentation](https://scikit-learn.org/stable/).
-2. **TensorFlow**: TensorFlow is an end-to-end open-source platform for machine learning. It is used for building and deploying machine learning models. See [the documentation](https://www.tensorflow.org/).
+2. **PyTorch**: PyTorch is an end-to-end open-source platform for machine learning. It is used for building and deploying machine learning models. See [the documentation](https://www.tensorflow.org/).
 
 > ## What about GPUs?
 > **scikit-learn** doesn't have GPU support, therefore should only be used for training simple neural networks.
-> **TensorFlow** does have GPU support, therefore can be used train complicated neural network model that require a lot of GPU power.
+> **PyTorch** does have GPU support, therefore can be used train complicated neural network model that require a lot of GPU power.
 {: .callout}
 
-Note that the four Python programming packages discussed so far are interoperable: in particular, datatypes from NumPy and pandas are often used in packages like scikit-learn and TensorFlow.
-
-# Code Example
-
-Here we will import all the required libraries for the rest of the tutorial. All scikit-learn functions will be imported later on when they are required.
-
-~~~
-import pandas as pd # to store data as dataframe
-import numpy as np # for numerical calculations such as histogramming
-import matplotlib.pyplot as plt # for plotting
-import tensorflow as tf # machine learning library
-from tensorflow import keras # tensorflow wrapper
-~~~
-{: .language-python}
-
-You can check the version of these packages by checking the `__version__` attribute.
-
-~~~
-np.__version__
-~~~
-{: .language-python}
-
-Let's set the random seed that we'll be using. This reduces the randomness when you re-run the notebook
-
-~~~
-from numpy.random import seed # import the function to set the random seed in NumPy
-seed_value = 42 # 42 is the answer to life, the universe and everything
-seed(seed_value) # set the seed value for random numbers in NumPy
-tf.random.set_seed(seed_value) # seed value for random numbers in TensorFlow
-~~~
-{: .language-python}
-
-
-
+Note that the four Python programming packages discussed so far are interoperable: in particular, datatypes from NumPy and pandas are often used in packages like scikit-learn and PyTorch.

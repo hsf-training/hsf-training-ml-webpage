@@ -17,7 +17,7 @@ keypoints:
 
 # What about *real, experimental* data?
 
-Notice that we've trained and tested our machine learning models on simulated data for signal and background. That's why there are definite labels, `y`. This has been a case of **supervised learning** since we knew the labels (y) going into the game. Your machine learning models would then usually be *applied* to real experimental data once you're happy with them.
+Notice that we've trained and tested our machine learning models on simulated data for <span style="color:orange">signal</span> and <span style="color:blue">background</span>. That's why there are definite labels, `y`. This has been a case of **supervised learning** since we knew the labels (y) going into the game. Your machine learning models would then usually be *applied* to real experimental data once you're happy with them.
 
 To make sure our machine learning model makes sense when applied to real experimental data, we should check whether simulated data and real experimental data have the same shape in classifier threshold values.
 
@@ -76,57 +76,39 @@ We first need to get the real experimental data.
 Now we can overlay the real experimental data on the simulated data.
 
 ~~~
+labels = ['background','signal'] # labels for simulated data
 thresholds = [] # define list to hold random forest classifier probability predictions for each sample
 for s in samples: # loop over samples
-    thresholds.append(RF_clf.predict_proba(scaler.transform(DataFrames[s][ML_inputs]))[:,1]) # get ML_inputs from DataFrames[s], transform the values, predict probabilities
-plt.hist(thresholds, bins=np.arange(0, 0.8, 0.1), density=True, stacked=True) # plot simulated data
+    thresholds.append(RF_clf.predict_proba(X_data_scaled)[:,1]) # predict probabilities from X_data_scaled
+plt.hist(thresholds, bins=np.arange(0, 0.8, 0.1), density=True, stacked=True, label=labels) # plot simulated data
 data_hist = np.histogram(RF_clf.predict_proba(X_data_scaled)[:,1], bins=np.arange(0, 0.8, 0.1), density=True)[0] # histogram the experimental data
 scale = sum(RF_clf.predict_proba(X_data_scaled)[:,1]) / sum(data_hist) # get scale imposed by density=True
 data_err = np.sqrt(data_hist * scale) / scale # get error on experimental data
-plt.errorbar(x=np.arange(0.05, 0.75, 0.1), y=data_hist, yerr=data_err) # plot the experimental data errorbars
+plt.errorbar(x=np.arange(0.05, 0.75, 0.1), y=data_hist, yerr=data_err, label='Data') # plot the experimental data errorbars
 plt.xlabel('Threshold')
+plt.legend() 
 ~~~
 {: .language-python}
 
 Within errors, the real experimental data errorbars agree with the simulated data histograms. Good news, our random forest classifier model makes sense with real experimental data!
 
-> ## Ok maybe one more challenge...
-> In a new cell, make the same plot for your neural network classifier. To display this graph more clearly, change the `np.arange` calls to (0, 0.6, 0.1), (0, 0.6, 0.1) and (0.05, 0.55, 0.1) respectively. Do real experimental data agree with simulated data in this case?
->
-> > ## Solution
-> > ~~~
-> > thresholds = [] # define list to hold random forest classifier probability predictions for each sample
-> > for s in samples: # loop over samples
-> >     thresholds.append(NN_clf.predict_proba(scaler.transform(DataFrames[s][ML_inputs]))[:,1]) # get ML_inputs from DataFrames[s], transform the values, predict probabilities
-> > plt.hist(thresholds, bins=np.arange(0, 0.6, 0.1), density=True, stacked=True) # plot simulated data
-> > data_hist = np.histogram(NN_clf.predict_proba(X_data_scaled)[:,1], bins=np.arange(0, 0.6, 0.1), density=True)[0] # histogram the experimental data
-> > scale = sum(NN_clf.predict_proba(X_data_scaled)[:,1]) / sum(data_hist) # get scale imposed by density=True
-> > data_err = np.sqrt(data_hist * scale) / scale # get error on experimental data
-> > plt.errorbar(x=np.arange(0.05, 0.55, 0.1), y=data_hist, yerr=data_err) # plot the experimental data errorbars
-> > plt.xlabel('Threshold')
-> > ~~~
-> > {: .language-python}
-> {: .solution}
-{: .challenge}
-
-
 # At the end of the day
 
-How many signal events is the random forest classifier predicting?
+How many <span style="color:orange">signal</span> events is the random forest classifier predicting?
 
 ~~~
 print(np.count_nonzero(y_data_RF==1)) # signal
 ~~~
 {: .language-python}
 
-What about background?
+What about <span style="color:blue">background</span>?
 
 ~~~
 print(np.count_nonzero(y_data_RF==0)) # background
 ~~~
 {: .language-python}
 
-The random forest classifier is *predicting* how many real data events are signal and how many are background, how cool is that?!
+The random forest classifier is *predicting* how many real data events are <span style="color:orange">signal</span> and how many are <span style="color:blue">background</span>, how cool is that?!
 
 > # Ready to machine learn to take over the world!
 > Hopefully you've enjoyed this brief discussion on machine learning! Try playing around with the hyperparameters of your random forest and neural network classifiers, such as the number of hidden layers and neurons, and see how they effect the results of your classifiers in Python!

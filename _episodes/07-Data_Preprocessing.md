@@ -106,4 +106,4 @@ X_train_scaled = scaler.transform(X_train)
 > {: .solution}
 {: .challenge}
 
-Now we are ready to examine various models $$f$$ for predicting whether an event corresponds to a Higgs decay or a background event.
+Now we are ready to examine various models $$f$$ for predicting whether an event corresponds to a <span style="color:orange">signal</span> event or a <span style="color:blue">background</span> event.

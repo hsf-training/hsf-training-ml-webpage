@@ -17,14 +17,14 @@ keypoints:
 
 # Alternative Metrics
 
-As seen in the previous section, accuracy is typically not the preferred metric for classifiers. In this section we will define some new metrics. Let TP, FP, TN, FN be the number of true positives, false positives, true negatives, and false negatives classified using a given model. **Note that in this terminology, a background event is considered negative while a signal event is considered positive**.
+As seen in the previous section, accuracy is typically not the preferred metric for classifiers. In this section we will define some new metrics. Let TP, FP, TN, FN be the number of true positives, false positives, true negatives, and false negatives classified using a given model. **Note that in this terminology, a <span style="color:blue">background</span> event is considered negative while a <span style="color:orange">signal</span> event is considered positive**.
 
-* TP: Signal events correctly identified as signal events
-* FP: Background events incorrectly identified as signal events
-* TN: Background events correctly identified as background events
-* FN: Signal events incorrectly identified as background events
+* TP: <span style="color:orange">Signal</span> events correctly identified as <span style="color:orange">signal</span> events
+* FP: <span style="color:blue">Background</span> events incorrectly identified as <span style="color:orange">signal</span> events
+* TN: <span style="color:blue">Background</span> events correctly identified as <span style="color:blue">background</span> events
+* FN: <span style="color:orange">Signal</span> events incorrectly identified as <span style="color:blue">background</span> events
 
-Before getting into these metrics, it is important to note that a machine learning binary classifier is capable of providing a probability that a given instance corresponds to a signal or background (i.e. it would output `[0.2, 0.8]` where the first index corresponds to background and the second index as signal).
+Before getting into these metrics, it is important to note that a machine learning binary classifier is capable of providing a probability that a given instance corresponds to a <span style="color:orange">signal</span> or <span style="color:blue">background</span> (i.e. it would output `[0.2, 0.8]` where the first index corresponds to <span style="color:blue">background</span> and the second index as <span style="color:orange">signal</span>).
 
 > ## Probability or not?
 > There is some debate as to whether the numbers in the output of a machine learning classifier (such as `[0.2, 0.8]`) actually represent probabilities. For more information read [the following scikit-learn documentation](https://scikit-learn.org/stable/modules/calibration.html). In general, for a *well calibrated classifier*, these do in fact represent probabilities in the frequentist interpretation. It can be difficult, however, to assess whether or not a classifier is indeed *well calibrated*. As such, it may be better to interpret these as confidence levels rather than probabilities.
@@ -90,23 +90,19 @@ decisions_rf = RF_clf.predict_proba(X_test_scaled)[:,1] # get the decisions of t
 ~~~
 {: .language-python}
 
-> ## Challenge
-> Get the decisions of the neural network classifier, `decisions_nn`.
-> 
-> > ## Solution
-> > ~~~
-> > decisions_nn = NN_clf.predict_proba(X_test_scaled)[:,1] # get the decisions of the neural network
-> > ~~~
-> > {: .language-python}
-> {: .solution}
-{: .challenge}
+The decisions of the neural network classifier, `decisions_nn`, can be obtained like:
+
+~~~
+decisions_nn = NN_clf(X_test_var)[1][:,1] # get the decisions of the neural network
+~~~
+{: .language-python}
 
 # The ROC Curve
 The Receiver Operating Characteristic (ROC) curve is a plot of the recall (or true positive rate) vs. the false positive rate: the ratio of negative instances incorrectly classified as positive. A classifier may classify many instances as positive (i.e. has a low tolerance for classifying something as positive), but in such an example it will probably also incorrectly classify many negative instances as positive as well. The false positive rate is plotted on the x-axis of the ROC curve and the true positive rate on the y-axis; the threshold is varied to give a parameteric curve. A random classifier results in a line. Before we look at the ROC curve, let's examine the following plot
 
 ~~~
-plt.hist(decisions_rf[y_test==1], color='b', histtype='step', bins=50, label='Higgs Events') # plot signal
-plt.hist(decisions_rf[y_test==0], color='g', histtype='step', bins=50, label='Background Events') # plot background
+plt.hist(decisions_rf[y_test==0], histtype='step', bins=50, label='Background Events') # plot background
+plt.hist(decisions_rf[y_test==1], histtype='step', bins=50, linestyle='dashed', label='Signal Events') # plot signal
 plt.xlabel('Threshold') # x-axis label
 plt.ylabel('Number of Events') # y-axis label
 plt.semilogy() # make the y-axis semi-log
@@ -114,9 +110,9 @@ plt.legend() # draw the legend
 ~~~
 {: .language-python}
 
-We can separate this plot into two separate histograms (Higgs vs. non Higgs) because we know beforehand which events correspond to the particular type of event. For real data where the answers aren't provided, it will be one concatenated histogram. The game here is simple: we pick a threshold (i.e. vertical line on the plot). Once we choose that threshold, everything to the right of that vertical line is classified as a signal event, and everything to the left is classified as a background event. By moving this vertical line left and right (i.e. altering the threshold) we effectively change TP, FP, TN and FN. Hence we also change the true positive rate and the false positive rate by moving this line around.
+We can separate this plot into two separate histograms (Higgs vs. non Higgs) because we know beforehand which events correspond to the particular type of event. For real data where the answers aren't provided, it will be one concatenated histogram. The game here is simple: we pick a threshold (i.e. vertical line on the plot). Once we choose that threshold, everything to the right of that vertical line is classified as a <span style="color:orange">signal</span> event, and everything to the left is classified as a <span style="color:blue">background</span> event. By moving this vertical line left and right (i.e. altering the threshold) we effectively change TP, FP, TN and FN. Hence we also change the true positive rate and the false positive rate by moving this line around.
 
-Suppose we move the threshold from 0 to 1 in steps of 0.01. In doing so, we will get an array of TPRs and FPRs. We can then plot the TPR array vs. the FPR array: this is the ROC curve. To plot the ROC curve, we need to obtain the probabilities that something is classified as a signal (rather than the signal/background prediction itself). This can be done as follows:
+Suppose we move the threshold from 0 to 1 in steps of 0.01. In doing so, we will get an array of TPRs and FPRs. We can then plot the TPR array vs. the FPR array: this is the ROC curve. To plot the ROC curve, we need to obtain the probabilities that something is classified as a <span style="color:orange">signal</span> (rather than the <span style="color:orange">signal</span>/<span style="color:blue">background</span> prediction itself). This can be done as follows:
 
 ~~~
 from sklearn.metrics import roc_curve
@@ -139,8 +135,8 @@ Now we plot the ROC curve:
 
 ~~~
 plt.plot(fpr_rf, tpr_rf, label='Random Forest') # plot random forest ROC
-plt.plot(fpr_nn, tpr_nn, linestyle='--', color='red', label='Neural Network') # plot neural network ROC
-plt.plot([0, 1], [0, 1], linestyle='--', color='grey', label='Luck') # plot diagonal line to indicate luck
+plt.plot(fpr_nn, tpr_nn, linestyle='dashed', label='Neural Network') # plot neural network ROC
+plt.plot([0, 1], [0, 1], linestyle='dotted', color='grey', label='Luck') # plot diagonal line to indicate luck
 plt.xlabel('False Positive Rate') # x-axis label
 plt.ylabel('True Positive Rate') # y-axis label
 plt.grid() # add a grid to the plot
@@ -154,7 +150,7 @@ We need to decide on an appropriate threshold.
 
 ## What Should My Threshold Be?
 
-As discussed above, the threshold depends on the problem at hand. In this specific example of classifying particles as signal or background events, the primary goal is optimizing the discovery region for statistical significance. As discussed [here](https://higgsml.lal.in2p3.fr/files/2014/04/documentation_v1.8.pdf), this metric is the approximate median significance (AMS) defined as 
+As discussed above, the threshold depends on the problem at hand. In this specific example of classifying particles as <span style="color:orange">signal</span> or <span style="color:blue">background</span> events, the primary goal is optimizing the discovery region for statistical significance. As discussed [here](https://higgsml.lal.in2p3.fr/files/2014/04/documentation_v1.8.pdf), this metric is the approximate median significance (AMS) defined as 
 
 $$\text{AMS} = \sqrt{2\left((TP+FP+b_r)\ln\left(\frac{TP}{FP+b_r}\right)-TP \right)} $$
 
@@ -193,7 +189,7 @@ Then plot:
 
 ~~~
 plt.plot(thresholds_rf, ams_rf, label='Random Forest') # plot random forest AMS
-plt.plot(thresholds_nn, ams_nn, label='Neural Network') # plot neural network AMS
+plt.plot(thresholds_nn, ams_nn, linestyle='dashed', label='Neural Network') # plot neural network AMS
 plt.xlabel('Threshold') # x-axis label
 plt.ylabel('AMS') # y-axis label
 plt.title('AMS with $b_r=0.001$') # add plot title

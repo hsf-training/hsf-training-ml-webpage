@@ -15,12 +15,40 @@ keypoints:
 
 <iframe width="427" height="251" src="https://www.youtube.com/embed?v=GbedkKJiGq4&list=PLKZ9c4ONm-VmHsMKImIDEMsZI1Vp0UY-Z&index=5&ab_channel=HEPSoftwareFoundation" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-# Dataset Used
+# Code Example
 
-The dataset we will use in this tutorial is simulated ATLAS data. Each event corresponds to 4 detected leptons: some events correspond to a Higgs Boson decay and others do not (background). Various physical quantities such as lepton charge and transverse momentum are recorded for each event. The analysis in this tutorial loosely follows [the discovery of the Higgs Boson](https://www.sciencedirect.com/science/article/pii/S037026931200857X).
+Here we will import all the required libraries for the rest of the tutorial. All scikit-learn and PyTorch functions will be imported later on when they are required.
 
 ~~~
-# In this notebook we only process the signal ggH125_ZZ4lep and the main background llll, 
+import pandas as pd # to store data as dataframe
+import numpy as np # for numerical calculations such as histogramming
+import matplotlib.pyplot as plt # for plotting
+~~~
+{: .language-python}
+
+You can check the version of these packages by checking the `__version__` attribute.
+
+~~~
+np.__version__
+~~~
+{: .language-python}
+
+Let's set the random seed that we'll be using. This reduces the randomness when you re-run the notebook
+
+~~~
+seed_value = 420 # 42 is the answer to life, the universe and everything
+from numpy.random import seed # import the function to set the random seed in NumPy
+seed(seed_value) # set the seed value for random numbers in NumPy
+~~~
+{: .language-python}
+
+
+# Dataset Used
+
+The dataset we will use in this tutorial is simulated ATLAS data. Each event corresponds to 4 detected leptons: some events correspond to a Higgs Boson decay (<span style="color:orange">signal</span>) and others do not (<span style="color:blue">background</span>). Various physical quantities such as lepton charge and transverse momentum are recorded for each event. The analysis in this tutorial loosely follows [the discovery of the Higgs Boson](https://www.sciencedirect.com/science/article/pii/S037026931200857X).
+
+~~~
+# In this notebook we only process the main signal ggH125_ZZ4lep and the main background llll, 
 # for illustration purposes.
 # You can add other backgrounds after if you wish.
 samples = ['ggH125_ZZ4lep','llll']
@@ -100,7 +128,7 @@ DataFrames # print data
 
 # Plot some input variables
 
-In any analysis searching for signal one wants to optimise the use of various input variables. Often, this optimisation will be to find the best signal to background ratio. Here we define histograms for the variables that we'll look to optimise.
+In any analysis searching for signal one wants to optimise the use of various input variables. Often, this optimisation will be to find the best <span style="color:orange">signal</span> to <span style="color:blue">background</span> ratio. Here we define histograms for the variables that we'll look to optimise.
 
 ~~~
 lep_pt_2 = { # dictionary containing plotting parameters for the lep_pt_2 histogram
@@ -138,7 +166,7 @@ SoverB_hist_dict = {'lep_pt_2':lep_pt_2,'lep_pt_1':lep_pt_1} # add a histogram h
 ~~~
 {: .language-python}
 
-Now let's take a look at those variables. Because the code is a bit long, we pre-defined a function for you, to illustrate the optimum cut value on individual variables, based on <span style="color:blue">signal</span> to <span style="color:red">background</span> ratio. Let's call the function to illustrate the optimum cut value on individual variables, based on <span style="color:blue">signal</span> to <span style="color:red">background</span> ratio. You can check out the function definition [here](https://www.kaggle.com/meirinevans/my-functions/edit) 
+Now let's take a look at those variables. Because the code is a bit long, we pre-defined a function for you, to illustrate the optimum cut value on individual variables, based on <span style="color:orange">signal</span> to <span style="color:blue">background</span> ratio. Let's call the function to illustrate the optimum cut value on individual variables, based on <span style="color:orange">signal</span> to <span style="color:blue">background</span> ratio. You can check out the function definition [here](https://www.kaggle.com/meirinevans/my-functions/edit) 
 
 We're not doing any machine learning just yet! We're looking at the variables we'll later use for machine learning.
 
@@ -149,11 +177,11 @@ plot_SoverB(DataFrames, SoverB_hist_dict)
 {: .language-python}
 
 Let's talk through the lep_pt_2 plots.
-1. Imagine placing a cut at 7 GeV in the distributions of <span style="color:blue">signal</span> and <span style="color:red">background</span> (1st plot). This means keeping all events above 7 GeV in the <span style="color:blue">signal</span> and <span style="color:red">background</span> histograms. 
-2. We then take the ratio of the number of <span style="color:blue">signal</span> events that pass this cut, to the number of <span style="color:red">background</span> events that pass this cut. This gives us a starting value for S/B (2nd plot). 
-3. We then increase this cut value to 8 GeV, 9 GeV, 10 GeV, 11 GeV, 12 GeV. Cuts at these values are throwing away more <span style="color:red">background</span> than <span style="color:blue">signal</span>, so S/B increases. 
-4. There comes a point around 13 GeV where we start throwing away too much <span style="color:blue">signal</span>, thus S/B starts to decrease. 
-5. Our goal is to find the maximum in S/B, and place the cut there. You may have thought the maximum would be where the <span style="color:blue">signal</span> and <span style="color:red">background</span> cross in the upper plot, but remember that the lower plot is the <span style="color:blue">signal</span> to <span style="color:red">background</span> ratio of everything to the right of that x-value, not the <span style="color:blue">signal</span> to <span style="color:red">background</span> ratio at that x-value.
+1. Imagine placing a cut at 7 GeV in the distributions of <span style="color:orange">signal</span> and <span style="color:blue">background</span> (1st plot). This means keeping all events above 7 GeV in the <span style="color:orange">signal</span> and <span style="color:blue">background</span> histograms. 
+2. We then take the ratio of the number of <span style="color:orange">signal</span> events that pass this cut, to the number of <span style="color:blue">background</span> events that pass this cut. This gives us a starting value for S/B (2nd plot). 
+3. We then increase this cut value to 8 GeV, 9 GeV, 10 GeV, 11 GeV, 12 GeV. Cuts at these values are throwing away more <span style="color:blue">background</span> than <span style="color:orange">signal</span>, so S/B increases. 
+4. There comes a point around 13 GeV where we start throwing away too much <span style="color:orange">signal</span>, thus S/B starts to decrease. 
+5. Our goal is to find the maximum in S/B, and place the cut there. You may have thought the maximum would be where the <span style="color:orange">signal</span> and <span style="color:blue">background</span> cross in the upper plot, but remember that the lower plot is the <span style="color:orange">signal</span> to <span style="color:blue">background</span> ratio of everything to the right of that x-value, not the <span style="color:orange">signal</span> to <span style="color:blue">background</span> ratio at that x-value.
 
 The same logic applies to lep_pt_1.
 
@@ -163,6 +191,6 @@ Imagine having to separately optimise about 5,6,7,10...20 variables! Not to ment
 
 This is where a machine learning model such as a neural network can come to the rescue. A machine learning model can optimise all variables at the same time.
 
-A machine learning model not only optimises cuts, but can find correlations in many dimensions that will give better signal/background classification than individual cuts ever could.
+A machine learning model not only optimises cuts, but can find correlations in many dimensions that will give better <span style="color:orange">signal</span>/<span style="color:blue">background</span> classification than individual cuts ever could.
 
 That's the end of the introduction to why one might want to use a machine learning model. If you'd like to try using one, just keep reading!

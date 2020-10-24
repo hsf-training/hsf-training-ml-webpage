@@ -34,15 +34,14 @@ If overfitting were present, the dots (test set) would be *very far* from the ba
 
 As discussed in the [Mathematical Foundations lesson](https://hsf-training.github.io/hsf-training-ml-webpage/02-mltechnical/index.html), there are techniques to prevent overfitting. For instance, you could try reduce the number of parameters in your model, e.g. for a neural network reduce the number of neurons. 
 
-Our <span style="color:blue">blue</span> signal dots (test set) nicely overlap with our <span style="color:blue">blue</span> signal histogram bars (training set). The same goes for the red background. This overlap indicates that no overtaining is present. Happy days!
+Our <span style="color:orange">orange</span> signal dots (test set) nicely overlap with our <span style="color:orange">orange</span> signal histogram bars (training set). The same goes for the <span style="color:blue">blue</span> background. This overlap indicates that no overtaining is present. Happy days!
 
 > ## Challenge
 > Make the same overfitting check for your neural network and decide whether any overfitting is present.
 > 
 > > ## Solution
 > > ~~~
-> > compare_train_test(NN_clf, X_train_nn_scaled, y_train_nn, X_test_scaled, y_test, 'Neural Network output')
-> > ~~~
+> > compare_train_test(NN_clf, X_train_scaled, y_train, X_test_scaled, y_test, 'Neural Network output')
 > > ~~~
 > > {: .language-python}
 > {: .solution}

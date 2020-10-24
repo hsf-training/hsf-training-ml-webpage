@@ -26,6 +26,7 @@ TensorFlow is also interoperable with other packages discussed so far, datatypes
 Here we will import all the required TensorFlow libraries for the rest of the tutorial.
 
 ~~~
+from tensorflow import keras # tensorflow wrapper
 from tensorflow.random import set_seed # import set_seed function for TensorFlow
 set_seed(seed_value) # set TensorFlow random seed
 ~~~
@@ -53,12 +54,23 @@ def build_model(n_hidden=1, n_neurons=5, learning_rate=1e-3): # function to buil
 
 For now, ignore all the complicated hyperparameters, but note that the loss used is `sparse_categorical_crossentropy`; the neural network uses gradient descent to optimize its parameters (in this case these parameters are *neuron weights*).
 
-In [the lesson on Model Training](https://hsf-training.github.io/hsf-training-ml-webpage/09-Model_Training/index.html) we defined:
+We need to keep some events for validation. Validation sets are used to select and tune the final neural network model.
 
-1. Validation data for the neural network: `X_valid_scaled`
-2. Training data for the neural network: `X_train_nn_scaled`
-3. Validation labels for the neural network: `y_valid`
-4. Training labels for the neural network: `y_train_nn`
+~~~
+X_valid_scaled, X_train_nn_scaled = X_train_scaled[:100], X_train_scaled[100:] # first 100 events for validation
+~~~
+{: .language-python}
+
+> ## Challenge
+> Assign the first 100 events in y_train for validation (`y_valid`) and the rest for training your neural network (`y_train_nn`).
+> 
+> > ## Solution
+> > ~~~
+> > y_valid, y_train_nn = y_train[:100], y_train[100:] # first 100 events for validation
+> > ~~~
+> > {: .language-python}
+> {: .solution}
+{: .challenge}
 
 With these parameters, the network can be trained as follows:
 
@@ -94,7 +106,6 @@ The TensorFlow neural network should also have a similar accuracy score to the P
 > > ## Solution
 > > ~~~
 > > compare_train_test(tf_clf, X_train_nn_scaled, y_train_nn, X_test_scaled, y_test, 'TensorFlow Neural Network output')
-> > ~~~
 > > ~~~
 > > {: .language-python}
 > {: .solution}
@@ -146,9 +157,9 @@ The TensorFlow neural network should also have a similar accuracy score to the P
 > > ## Solution
 > > ~~~
 > > plt.plot(fpr_rf, tpr_rf, label='Random Forest') # plot random forest ROC
-> > plt.plot(fpr_nn, tpr_nn, linestyle='--', color='red', label='PyTorch Neural Network') # plot PyTorch neural network ROC
-> > plt.plot(fpr_tf, tpr_tf, linestyle='-.', color='orange', label='TensorFlow Neural Network') # plot TensorFlow neural network ROC
-> > plt.plot([0, 1], [0, 1], linestyle='--', color='grey', label='Luck') # plot diagonal line to indicate luck
+> > plt.plot(fpr_nn, tpr_nn, linestyle='dashed', label='PyTorch Neural Network') # plot PyTorch neural network ROC
+> > plt.plot(fpr_tf, tpr_tf, linestyle='dashdot', label='TensorFlow Neural Network') # plot TensorFlow neural network ROC
+> > plt.plot([0, 1], [0, 1], linestyle='dotted', color='grey', label='Luck') # plot diagonal line to indicate luck
 > > plt.xlabel('False Positive Rate') # x-axis label
 > > plt.ylabel('True Positive Rate') # y-axis label
 > > plt.grid() # add a grid to the plot
@@ -177,33 +188,12 @@ The TensorFlow neural network should also have a similar accuracy score to the P
 > > ## Solution
 > > ~~~
 > > plt.plot(thresholds_rf, ams_rf, label='Random Forest') # plot random forest AMS
-> > plt.plot(thresholds_nn, ams_nn, label='PyTorch Neural Network') # plot PyTorch neural network AMS
-> > plt.plot(thresholds_tf, ams_tf, label='TensorFlow Neural Network') # plot TensorFlow neural network AMS
+> > plt.plot(thresholds_nn, ams_nn, linestyle='dashed', label='PyTorch Neural Network') # plot PyTorch neural network AMS
+> > plt.plot(thresholds_tf, ams_tf, linestyle='dashdot', label='TensorFlow Neural Network') # plot TensorFlow neural network AMS
 > > plt.xlabel('Threshold') # x-axis label
 > > plt.ylabel('AMS') # y-axis label
 > > plt.title('AMS with $b_r=0.001$') # add plot title
 > > plt.legend() # add a legend
-> > ~~~
-> > {: .language-python}
-> {: .solution}
-{: .challenge}
-
-## Applying to Experimental Data
-
-> ## Ok maybe one more challenge...
-> As you did in the final challenge of [the Applying to Experimental Data lesson](https://hsf-training.github.io/hsf-training-ml-webpage/12-Experimental_Data/index.html), in a new cell, make the same plot for your TensorFlow neural network classifier. To display this graph more clearly, change the `np.arange` calls to (0, 0.6, 0.1), (0, 0.6, 0.1) and (0.05, 0.55, 0.1) respectively. Do real experimental data agree with simulated data in this case?
->
-> > ## Solution
-> > ~~~
-> > thresholds = [] # define list to hold random forest classifier probability predictions for each sample
-> > for s in samples: # loop over samples
-> >     thresholds.append(tf_clf.predict_proba(scaler.transform(DataFrames[s][ML_inputs]))[:,1]) # get ML_inputs from DataFrames[s], transform the values, predict probabilities
-> > plt.hist(thresholds, bins=np.arange(0, 0.6, 0.1), density=True, stacked=True) # plot simulated data
-> > data_hist = np.histogram(tf_clf.predict_proba(X_data_scaled)[:,1], bins=np.arange(0, 0.6, 0.1), density=True)[0] # histogram the experimental data
-> > scale = sum(tf_clf.predict_proba(X_data_scaled)[:,1]) / sum(data_hist) # get scale imposed by density=True
-> > data_err = np.sqrt(data_hist * scale) / scale # get error on experimental data
-> > plt.errorbar(x=np.arange(0.05, 0.55, 0.1), y=data_hist, yerr=data_err) # plot the experimental data errorbars
-> > plt.xlabel('Threshold')
 > > ~~~
 > > {: .language-python}
 > {: .solution}
