@@ -125,12 +125,12 @@ class Classifier_MLP(nn.Module): # define Multi-Layer Perceptron
         self.out = nn.Linear(hidden_dim, out_dim) # output layer
         self.out_dim = out_dim # output layer dimension
 
-    def forward(self, x): # define function to return network
+    def forward(self, x): # order of the layers
         
         x = F.relu(self.h1(x)) # relu activation function for hidden layer
         x = self.out(x) # no activation function for output layer
         
-        return x, F.softmax(x, dim=1) # softmax function
+        return x, F.softmax(x, dim=1) # SoftMax function
 ~~~
 {: .language-python}
 
