@@ -3,7 +3,7 @@ title: "Model Comparison"
 teaching: 10
 exercises: 10
 questions:
-- "How do you use the scikit-learn and TensorFlow packages for machine learning?"
+- "How do you use the scikit-learn and PyTorch packages for machine learning?"
 - "How do I see whether my machine learning model is doing alright?"
 objectives:
 - "Check how well our random forest is doing."

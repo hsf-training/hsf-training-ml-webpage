@@ -6,7 +6,7 @@ permalink: index.html  # Is the only page that doesn't follow the pattern /:path
 
 <iframe width="427" height="251" src="https://www.youtube.com/embed?v=7EPn4FGFG3k&list=PLKZ9c4ONm-VmHsMKImIDEMsZI1Vp0UY-Z&ab_channel=HEPSoftwareFoundation" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-This tutorial explores Machine Learning using scikit-learn and TensorFlow for applications in high energy physics.
+This tutorial explores Machine Learning using scikit-learn and PyTorch for applications in high energy physics.
 
 Extended from a [version developed by Luke Polson for the 2020 USATLAS Computing Bootcamp](https://lukepolson.github.io/HEP_ML_Lessons/).
 

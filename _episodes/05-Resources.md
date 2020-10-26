@@ -35,7 +35,7 @@ If you are unfamiliar with these packages, I would recommend reading the introdu
 
 # Machine Learning Libraries in Python
 
-There are many machine libraries in Python, but the two discussed in this tutorial are scikit-learn and TensorFlow.
+There are many machine libraries in Python, but the two discussed in this tutorial are scikit-learn and PyTorch.
 
 1. **scikit-learn**: features various classification, regression and clustering algorithms and is designed to interoperate with the Python numerical and scientific libraries NumPy and SciPy. See [the documentation](https://scikit-learn.org/stable/).
 2. **PyTorch**: PyTorch is an end-to-end open-source platform for machine learning. It is used for building and deploying machine learning models. See [the documentation](https://www.tensorflow.org/).
