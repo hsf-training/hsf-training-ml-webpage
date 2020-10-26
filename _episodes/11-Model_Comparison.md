@@ -93,7 +93,7 @@ decisions_rf = RF_clf.predict_proba(X_test_scaled)[:,1] # get the decisions of t
 The decisions of the neural network classifier, `decisions_nn`, can be obtained like:
 
 ~~~
-decisions_nn = NN_clf(X_test_var)[1][:,1] # get the decisions of the neural network
+decisions_nn = NN_clf(X_test_var)[1][:,1].cpu().detach().numpy() # get the decisions of the neural network
 ~~~
 {: .language-python}
 
