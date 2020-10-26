@@ -10,6 +10,8 @@ This tutorial explores Machine Learning using scikit-learn and TensorFlow for ap
 
 Extended from a [version developed by Luke Polson for the 2020 USATLAS Computing Bootcamp](https://lukepolson.github.io/HEP_ML_Lessons/).
 
+This lesson leads directly into a lesson ["Machine Learning on GPU"](https://hsf-training.github.io/hsf-training-ml-gpu-webpage/) originally developed by Anna Scaife.
+
 <!-- this is an html comment -->
 
 {% comment %} This is a comment in Liquid {% endcomment %}
