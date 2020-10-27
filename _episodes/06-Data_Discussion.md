@@ -128,7 +128,7 @@ DataFrames # print data
 
 # Plot some input variables
 
-In any analysis searching for signal one wants to optimise the use of various input variables. Often, this optimisation will be to find the best <span style="color:orange">signal</span> to <span style="color:blue">background</span> ratio. Here we define histograms for the variables that we'll look to optimise.
+In any analysis searching for <span style="color:orange">signal</span> one wants to optimise the use of various input variables. Often, this optimisation will be to find the best <span style="color:orange">signal</span> to <span style="color:blue">background</span> ratio. Here we define histograms for the variables that we'll look to optimise.
 
 ~~~
 lep_pt_2 = { # dictionary containing plotting parameters for the lep_pt_2 histogram
