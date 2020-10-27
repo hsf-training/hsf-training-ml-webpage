@@ -16,7 +16,7 @@ keypoints:
 - "If you want to become proficient in machine learning, you need to practice."
 ---
 
-<iframe width="427" height="251" src="https://www.youtube.com/embed?v=GbedkKJiGq4&list=PLKZ9c4ONm-VmHsMKImIDEMsZI1Vp0UY-Z&index=1&ab_channel=HEPSoftwareFoundation" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="427" height="251" src="https://www.youtube.com/embed?v=coXH7JG5gyc&list=PLKZ9c4ONm-VmHsMKImIDEMsZI1Vp0UY-Z&index=1&ab_channel=HEPSoftwareFoundation" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # What is Machine Learning?
 

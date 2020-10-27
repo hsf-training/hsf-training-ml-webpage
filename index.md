@@ -4,7 +4,7 @@ root: .  # Is the only page that doesn't follow the pattern /:path/index.html
 permalink: index.html  # Is the only page that doesn't follow the pattern /:path/index.html
 ---
 
-<iframe width="427" height="251" src="https://www.youtube.com/embed?v=7EPn4FGFG3k&list=PLKZ9c4ONm-VmHsMKImIDEMsZI1Vp0UY-Z&ab_channel=HEPSoftwareFoundation" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="427" height="251" src="https://www.youtube.com/embed?v=D1qgTYq_imM&list=PLKZ9c4ONm-VmHsMKImIDEMsZI1Vp0UY-Z&ab_channel=HEPSoftwareFoundation" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 This tutorial explores Machine Learning using scikit-learn and PyTorch for applications in high energy physics.
 

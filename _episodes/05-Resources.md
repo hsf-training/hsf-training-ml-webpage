@@ -13,7 +13,7 @@ keypoints:
 - "scikit-learn and PyTorch are two good options for machine learning in Python."
 ---
 
-<iframe width="427" height="251" src="https://www.youtube.com/embed?v=AGCps9YmWK8&list=PLKZ9c4ONm-VmHsMKImIDEMsZI1Vp0UY-Z&index=4&ab_channel=HEPSoftwareFoundation" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="427" height="251" src="https://www.youtube.com/embed?v=aFW3gzfbiPo&list=PLKZ9c4ONm-VmHsMKImIDEMsZI1Vp0UY-Z&index=4&ab_channel=HEPSoftwareFoundation" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # Proficiency in Python
 
