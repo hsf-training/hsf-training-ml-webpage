@@ -42,7 +42,9 @@ There are many machine libraries in Python, but the two discussed in this tutori
 
 > ## What about GPUs?
 > **scikit-learn** doesn't have GPU support, therefore should only be used for training simple neural networks.
-> **PyTorch** does have GPU support, therefore can be used train complicated neural network models that require a lot of GPU power.
+>
+> **PyTorch** does have GPU support, therefore can be used to train complicated neural network models that require a lot of GPU power.
+> Take a look at our tutorial ["Machine Learning on GPUs"](https://hsf-training.github.io/hsf-training-ml-gpu-webpage/) if you're interested.
 {: .callout}
 
 Note that the four Python programming packages discussed so far are interoperable: in particular, datatypes from NumPy and pandas are often used in packages like scikit-learn and PyTorch.
