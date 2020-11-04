@@ -79,7 +79,7 @@ Now we can overlay the real experimental data on the simulated data.
 labels = ['background','signal'] # labels for simulated data
 thresholds = [] # define list to hold random forest classifier probability predictions for each sample
 for s in samples: # loop over samples
-    thresholds.append(RF_clf.predict_proba(X_data_scaled)[:,1]) # predict probabilities from X_data_scaled
+    thresholds.append(RF_clf.predict_proba(scaler.transform(DataFrames[s][ML_inputs]))[:,1]) # predict probabilities for each sample
 plt.hist(thresholds, bins=np.arange(0, 0.8, 0.1), density=True, stacked=True, label=labels) # plot simulated data
 data_hist = np.histogram(RF_clf.predict_proba(X_data_scaled)[:,1], bins=np.arange(0, 0.8, 0.1), density=True)[0] # histogram the experimental data
 scale = sum(RF_clf.predict_proba(X_data_scaled)[:,1]) / sum(data_hist) # get scale imposed by density=True
