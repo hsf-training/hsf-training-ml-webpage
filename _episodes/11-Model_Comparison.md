@@ -152,7 +152,7 @@ We need to decide on an appropriate threshold.
 
 As discussed above, the threshold depends on the problem at hand. In this specific example of classifying particles as <span style="color:orange">signal</span> or <span style="color:blue">background</span> events, the primary goal is optimizing the discovery region for statistical significance. As discussed [here](https://higgsml.lal.in2p3.fr/files/2014/04/documentation_v1.8.pdf), this metric is the approximate median significance (AMS) defined as 
 
-$$\text{AMS} = \sqrt{2\left((TPR+FPR+b_r)\ln\left(\frac{TPR}{FPR+b_r}\right)-TPR \right)} $$
+$$\text{AMS} = \sqrt{2\left((TPR+FPR+b_r)\ln\left(1+\frac{TPR}{FPR+b_r}\right)-TPR \right)} $$
 
 where $$TPR$$ and $$FPR$$ are the true and false positive rates and $$b_r$$ is some number chosen to reduce the variance of the AMS such that the selection region is not too small. For the purpose of this tutorial we will choose $$b_r=0.001$$. 
 Other values for $$b_r$$ would also be possible. Once you've plotted AMS for the first time, you may want to play around with the value of $$b_r$$ and see how it affects your selection for the threshold value that maximizes the AMS of the plots. You may see that changing $$b_r$$ doesn't change the AMS much.
