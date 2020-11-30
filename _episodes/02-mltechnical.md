@@ -80,4 +80,6 @@ The three main tasks of machine learning can now be revisited with the mathemati
 
 3. **Generation**. As discussed previously, the input is a random distribution (typically Gaussian noise) and the output is some data: typically an image. You can think of the input as *codings* of the image to be generated. This process is fundamentally different than regression or classification. For more information see [Wikipedia](https://en.wikipedia.org/wiki/Generative_adversarial_network) for an introduction or if you have it available, [Chapter 17 of Hands-On Machine Learning](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) where Generative Adversarial Networks are discussed.
 
+Your feedback is very welcome! Most helpful for us is if you "[Improve this page on GitHub](https://github.com/hsf-training/hsf-training-ml-webpage/edit/gh-pages/_episodes/02-mltechnical.md)". If you prefer anonymous feedback, please [fill this form](https://forms.gle/XBeULpKXVHF8CKC17).
+
 {% include links.md %}

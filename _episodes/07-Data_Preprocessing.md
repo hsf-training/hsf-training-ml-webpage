@@ -107,3 +107,5 @@ X_train_scaled = scaler.transform(X_train)
 {: .challenge}
 
 Now we are ready to examine various models $$f$$ for predicting whether an event corresponds to a <span style="color:orange">signal</span> event or a <span style="color:blue">background</span> event.
+
+Your feedback is very welcome! Most helpful for us is if you "[Improve this page on GitHub](https://github.com/hsf-training/hsf-training-ml-webpage/edit/gh-pages/_episodes/07-Data_Preprocessing.md)". If you prefer anonymous feedback, please [fill this form](https://forms.gle/XBeULpKXVHF8CKC17).

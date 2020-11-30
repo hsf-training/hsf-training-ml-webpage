@@ -194,3 +194,5 @@ This is where a machine learning model such as a neural network can come to the 
 A machine learning model not only optimises cuts, but can find correlations in many dimensions that will give better <span style="color:orange">signal</span>/<span style="color:blue">background</span> classification than individual cuts ever could.
 
 That's the end of the introduction to why one might want to use a machine learning model. If you'd like to try using one, just keep reading!
+
+Your feedback is very welcome! Most helpful for us is if you "[Improve this page on GitHub](https://github.com/hsf-training/hsf-training-ml-webpage/edit/gh-pages/_episodes/06-Data_Discussion.md)". If you prefer anonymous feedback, please [fill this form](https://forms.gle/XBeULpKXVHF8CKC17).

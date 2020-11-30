@@ -65,5 +65,7 @@ Machine Learning is not something you'll learn in an hour. It's a skill you need
 
 Just for a bit of perspective, I started learning about machine learning in April 2019. Don't expect the learning process to be a quick one: follow online courses and code along with them. If you have a textbook, read through it thoroughly and make sure you code along with the textbook.
 
+Your feedback is very welcome! Most helpful for us is if you "[Improve this page on GitHub](https://github.com/hsf-training/hsf-training-ml-webpage/edit/gh-pages/_episodes/01-introduction.md)". If you prefer anonymous feedback, please [fill this form](https://forms.gle/XBeULpKXVHF8CKC17).
+
 {% include links.md %}
 

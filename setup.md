@@ -17,4 +17,6 @@ Once you are signed in, you will be given access to the full resources of a Kagg
 
 * Click Copy and Edit in the top-right corner to have your own version of the notebook!
 
+Your feedback is very welcome! Most helpful for us is if you "[Improve this page on GitHub](https://github.com/hsf-training/hsf-training-ml-webpage/edit/gh-pages/setup.md)". If you prefer anonymous feedback, please [fill this form](https://forms.gle/XBeULpKXVHF8CKC17).
+
 {% include links.md %}

@@ -48,3 +48,5 @@ Our <span style="color:orange">orange</span> signal dots (test set) nicely overl
 {: .challenge}
 
 Now that we've checked for overfitting we can go onto comparing our machine learning models!
+
+Your feedback is very welcome! Most helpful for us is if you "[Improve this page on GitHub](https://github.com/hsf-training/hsf-training-ml-webpage/edit/gh-pages/_episodes/10-Overfitting_Check.md)". If you prefer anonymous feedback, please [fill this form](https://forms.gle/XBeULpKXVHF8CKC17).

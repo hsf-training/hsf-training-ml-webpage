@@ -201,3 +201,4 @@ plt.legend() # add legend
 
 One should then select the value of the threshold that maximizes the AMS on these plots.
 
+Your feedback is very welcome! Most helpful for us is if you "[Improve this page on GitHub](https://github.com/hsf-training/hsf-training-ml-webpage/edit/gh-pages/_episodes/11-Model_Comparison.md)". If you prefer anonymous feedback, please [fill this form](https://forms.gle/XBeULpKXVHF8CKC17).

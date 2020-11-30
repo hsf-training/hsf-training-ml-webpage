@@ -49,3 +49,5 @@ There are many machine libraries in Python, but the two discussed in this tutori
 {: .callout}
 
 Note that the four Python programming packages discussed so far are interoperable: in particular, datatypes from NumPy and pandas are often used in packages like scikit-learn and PyTorch.
+
+Your feedback is very welcome! Most helpful for us is if you "[Improve this page on GitHub](https://github.com/hsf-training/hsf-training-ml-webpage/edit/gh-pages/_episodes/05-Resources.md)". If you prefer anonymous feedback, please [fill this form](https://forms.gle/XBeULpKXVHF8CKC17).

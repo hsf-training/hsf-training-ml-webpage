@@ -113,3 +113,5 @@ The random forest classifier is *predicting* how many real data events are <span
 > # Ready to machine learn to take over the world!
 > Hopefully you've enjoyed this brief discussion on machine learning! Try playing around with the hyperparameters of your random forest and neural network classifiers, such as the number of hidden layers and neurons, and see how they effect the results of your classifiers in Python!
 {: .callout}
+
+Your feedback is very welcome! Most helpful for us is if you "[Improve this page on GitHub](https://github.com/hsf-training/hsf-training-ml-webpage/edit/gh-pages/_episodes/12-Experimental_Data.md)". If you prefer anonymous feedback, please [fill this form](https://forms.gle/XBeULpKXVHF8CKC17).
