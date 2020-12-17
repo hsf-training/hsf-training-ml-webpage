@@ -1,7 +1,7 @@
 ---
 title: "OPTIONAL: different dataset"
 teaching: 5
-exercises: 15
+exercises: 20
 questions:
 - "What other datasets can I use?"
 - "How do classifiers perform on different datasets?"
@@ -23,11 +23,10 @@ The new dataset we will use in this tutorial is ATLAS data for a different proce
 
 The signal process is called 'ttZ'. The background processes are called 'ttbar','Z2HF','Z1HF','Z0HF' and 'Other'.
 
-> ### Challenge
+> ## Challenge
 > Define a list `samples_ttZ` containing 'Other','Z1HF','Z2HF','ttbar','ttZ'. (You can add 'Z0HF' later).
 >
-> > ### Solution
-> > 
+> > ## Solution
 > > ~~~
 > > samples_ttZ = ['Other','Z1HF','Z2HF','ttbar','ttZ'] # start with only these processes, more can be added later. 
 > > ~~~
@@ -40,12 +39,11 @@ The signal process is called 'ttZ'. The background processes are called 'ttbar',
 
 Here we will format the dataset $$(x_i, y_i)$$ so we can explore! First, we need to open our data set and read it into pandas DataFrames.
 
-> ### Challenge
+> ## Challenge
 > 1. Define an empty dictionary `DataFrames_ttZ` to hold your ttZ dataframes.
 > 2. Loop over `samples_ttZ` and read the csv files in '/kaggle/input/ttz-csv/' into `DataFrames_ttZ`.
 >
-> > ### Solution
-> > 
+> > ## Solution
 > > ~~~
 > > # get data from files
 > > DataFrames_ttZ = {} # define empty dictionary to hold dataframes
@@ -75,10 +73,10 @@ That's the end of the introduction to why one might want to use a machine learni
 
 It's almost time to build a machine learning model! 
 
-> ### Challenge
+> ## Challenge
 > First create a list `ML_inputs_ttZ` of variables 'pt4_jet','pt6_jet','dRll','NJetPairsZMass','Nmbjj_top','MbbPtOrd','HT_jet6','dRbb' to use in our machine learning model. (You can add the other variables in later)
 >
-> > ### Solution
+> > ## Solution
 > > ~~~
 > > ML_inputs_ttZ = ['pt4_jet','pt6_jet','dRll','NJetPairsZMass','Nmbjj_top','MbbPtOrd','HT_jet6','dRbb'] # list of features for ML model
 > > ~~~
@@ -88,7 +86,7 @@ It's almost time to build a machine learning model!
 
  The data type is currently a pandas DataFrame: we now need to convert it into a NumPy array so that it can be used in scikit-learn and TensorFlow during the machine learning process. Note that there are many ways that this can be done: in this tutorial we will use the NumPy **concatenate** functionality to format our data set. For more information, please see [the NumPy documentation on concatenate](https://numpy.org/doc/stable/reference/generated/numpy.concatenate.html). 
 
-> ### Challenge
+> ## Challenge
 > 1. Create an empty list `all_MC_ttZ`
 > 2. loop over `samples_ttZ`
 > 3. (at each pass through the loop) if currently processing a sample called 'data': continue
@@ -98,56 +96,56 @@ It's almost time to build a machine learning model!
 > 7. concatenate the list `all_MC_ttZ` into an array `X_ttZ`
 > 8. concatenate the list `all_y_ttZ` into an array `y_ttZ`
 >
-> > ### Solution to part 1
+> > ## Solution to part 1
 > > ~~~
 > > all_MC_ttZ = [] # define empty list that will contain all features for the MC
 > > ~~~
 > > {: .language-python}
 > {: .solution}
 >
-> > ### Solution to part 2
+> > ## Solution to part 2
 > > ~~~
 > > for s in samples_ttZ: # loop over the different samples
 > > ~~~
 > > {: .language-python}
 > {: .solution}
 >
-> > ### Solution to part 3
+> > ## Solution to part 3
 > > ~~~
 > >     if s=='data': continue # only MC should pass this
 > > ~~~
 > > {: .language-python}
 > {: .solution}
 >
-> > ### Solution to part 4
+> > ## Solution to part 4
 > > ~~~
 > >     all_MC_ttZ.append(DataFrames_ttZ[s][ML_inputs_ttZ]) # append the MC dataframe to the list containing all MC features
 > > ~~~
 > > {: .language-python}
 > {: .solution}
 >
-> > ### Solution to part 5
+> > ## Solution to part 5
 > > ~~~
 > >     if s=='ttZ': all_y_ttZ.append(np.ones(DataFrames_ttZ[s].shape[0])) # signal events are labelled with 1
 > > ~~~
 > > {: .language-python}
 > {: .solution}
 >
-> > ### Solution to part 6
+> > ## Solution to part 6
 > > ~~~
 > >     else: all_y_ttZ.append(np.zeros(DataFrames_ttZ[s].shape[0])) # background events are labelled 0
 > > ~~~
 > > {: .language-python}
 > {: .solution}
 >
-> > ### Solution to part 7
+> > ## Solution to part 7
 > > ~~~
 > > X_ttZ = np.concatenate(all_MC_ttZ) # concatenate the list of MC dataframes into a single 2D array of features, called X
 > > ~~~
 > > {: .language-python}
 > {: .solution}
 >
-> > ### Solution to part 8
+> > ## Solution to part 8
 > > ~~~
 > > y_ttZ = np.concatenate(all_y_ttZ) # concatenate the list of lables into a single 1D array of labels, called y
 > > ~~~
@@ -166,11 +164,11 @@ Now we are ready to examine various models $$f$$ for predicting whether an event
 
 You've just created a training and test dataset. Lets use these datasets to train a random forest.
 
-> ### Challenge
+> ## Challenge
 > 1. Define a new `RandomForestClassifier` called `RF_clf_ttZ` with `max_depth=8,n_estimators=30` as before
 > 2. `fit` your `RF_clf_ttZ` classifier to `X_ttZ` and `y_ttZ`
 > 
-> > ### Solution
+> > ## Solution to part 1
 > > ~~~
 > > RF_clf_ttZ = RandomForestClassifier(max_depth=8, n_estimators=30) # initialise your random forest classifier
 > > # you may also want to specify criterion, random_seed
@@ -178,7 +176,7 @@ You've just created a training and test dataset. Lets use these datasets to trai
 > > {: .language-python}
 > {: .solution}
 >
-> > ### Solution to part 2
+> > ## Solution to part 2
 > > ~~~
 > > RF_clf_ttZ.fit(X_ttZ, y_ttZ) # fit to the training data
 > > ~~~
