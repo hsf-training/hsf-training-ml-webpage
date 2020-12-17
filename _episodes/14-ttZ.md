@@ -93,11 +93,12 @@ Definitions of these variables can be found in the [ATLAS published paper studyi
 
 > ## Challenge
 > 1. Create an empty list `all_MC_ttZ`. This is similar to `all_MC` in [the 'Data Preprocessing' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html).
-> 2. loop over `samples_ttZ`. This is similar to looping over `samples` in [the 'Data Preprocessing' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html).
-> 3. (at each pass through the loop) if currently processing a sample called 'data': continue 
-> 4. (at each pass through the loop) append the subset of the DataFrame for this sample containing the columns for `ML_inputs_ttZ` to to the list `all_MC_ttZ`. This is similar to the append to `all_MC` in [the 'Data Preprocessing' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html).
-> 5. (at each pass through the loop) if currently processing a sample called 'ttZ': append an array of ones to `all_y_ttZ`. This is similar to the <span style="color:orange">signal</span> append to `all_y` in [the 'Data Preprocessing' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html).
-> 6. (at each pass through the loop) else: append an array of zeros to `all_y_ttZ`. This is similar to the <span style="color:blue">background</span> append to `all_y` in [the 'Data Preprocessing' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html).
+> 2. Create an empty list `all_y_ttZ`. This is similar to `all_y` in [the 'Data Preprocessing' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html).
+> 3. loop over `samples_ttZ`. This is similar to looping over `samples` in [the 'Data Preprocessing' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html).
+> 4. (at each pass through the loop) if currently processing a sample called 'data': continue 
+> 5. (at each pass through the loop) append the subset of the DataFrame for this sample containing the columns for `ML_inputs_ttZ` to to the list `all_MC_ttZ`. This is similar to the append to `all_MC` in [the 'Data Preprocessing' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html).
+> 6. (at each pass through the loop) if currently processing a sample called 'ttZ': append an array of ones to `all_y_ttZ`. This is similar to the <span style="color:orange">signal</span> append to `all_y` in [the 'Data Preprocessing' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html).
+> 7. (at each pass through the loop) else: append an array of zeros to `all_y_ttZ`. This is similar to the <span style="color:blue">background</span> append to `all_y` in [the 'Data Preprocessing' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html).
 >
 > > ## Solution to part 1
 > > ~~~
@@ -106,7 +107,14 @@ Definitions of these variables can be found in the [ATLAS published paper studyi
 > > {: .language-python}
 > {: .solution}
 >
-> > ## Solution to parts 2,3,4,5,6
+> > ## Solution to part 2
+> > ~~~
+> > all_y_ttZ = [] # define empty list that will contain all labels for the MC
+> > ~~~
+> > {: .language-python}
+> {: .solution}
+>
+> > ## Solution to parts 3,4,5,6,7
 > > ~~~
 > > for s in samples_ttZ: # loop over the different samples
 > >     if s=='data': continue # only MC should pass this
@@ -119,6 +127,7 @@ Definitions of these variables can be found in the [ATLAS published paper studyi
 {: .challenge}
 
 > ## Challenge
+> Run the previous cell and start a new cell.
 > 1. concatenate the list `all_MC_ttZ` into an array `X_ttZ`. This is similar to `X` in [the 'Data Preprocessing' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html).
 > 2. concatenate the list `all_y_ttZ` into an array `y_ttZ`. This is similar to `y` in [the 'Data Preprocessing' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html).
 >
