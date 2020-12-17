@@ -51,7 +51,7 @@ The dataset we will use in this tutorial is simulated ATLAS data. Each event cor
 # In this notebook we only process the main signal ggH125_ZZ4lep and the main background llll, 
 # for illustration purposes.
 # You can add other backgrounds after if you wish.
-samples = ['ggH125_ZZ4lep','llll']
+samples = ['llll','ggH125_ZZ4lep']
 ~~~
 {: .language-python}
 

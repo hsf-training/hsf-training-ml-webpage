@@ -1,7 +1,7 @@
 ---
 title: "OPTIONAL: different dataset"
 teaching: 5
-exercises: 20
+exercises: 35
 questions:
 - "What other datasets can I use?"
 - "How do classifiers perform on different datasets?"
@@ -12,6 +12,8 @@ keypoints:
 - "The same algorithm can do fairly well across different datasets."
 - "Different optimisation is needed for different datasets."
 ---
+
+<iframe width="427" height="251" src="https://www.youtube.com/embed?v=HePrmoE8XRU&list=PLKZ9c4ONm-VmHsMKImIDEMsZI1Vp0UY-Z&index=11&ab_channel=HEPSoftwareFoundation" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 We've already trained some machine learning models on a particular dataset, that for Higgs boson decay to 4 leptons. Now let's try a different dataset. This will show you the process of using the same algorithms on different datasets. Another thing that will come out of this is that separate optimisation is needed for different datasets.
 
@@ -171,7 +173,7 @@ You've just formatted your dataset as arrays. Lets use these datasets to train a
 >
 > > ## Solution to part 2
 > > ~~~
-> > RF_clf_ttZ.fit(X_ttZ, y_ttZ) # fit to the training data
+> > RF_clf_ttZ.fit(X_ttZ, y_ttZ) # fit to the data
 > > ~~~
 > > {: .language-python}
 > {: .solution}
@@ -274,7 +276,7 @@ Can you do better? Can you make your graph look more like the published graph? H
 Here are some suggestions that you could try to go further:
 
 > ## Going further
-> 1. **Add variables into the your machine learning models**. Start by adding them in the list of `ML_inputs_ttZ`. See how things look with all variables added.
+> 1. **Add variables into your machine learning models**. Start by adding them in the list of `ML_inputs_ttZ`. See how things look with all variables added.
 > 2. **Add in the other background samples** in `samples_ttZ` by adding the files that aren't currently being processed. See how things look with all added. 
 > 3. **Modify some Random Forest hyper-parameters** in your definition of `RF_clf_ttZ`. You may find the [sklearn documentation on RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) helpful.
 > 4. **Give your neural network a go!**. Maybe your neural network will perform better on this dataset? You could use PyTorch and/or TensorFlow.
