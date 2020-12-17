@@ -279,7 +279,7 @@ Within errors, the real experimental data errorbars agree with the simulated dat
 
 This is already looking similar to Figure 10(c) from [the ATLAS published paper studying this process](https://journals.aps.org/prd/pdf/10.1103/PhysRevD.99.072009). Check you out, recreating science research!
 
-![ttZ paper](../plots/ttZ-2L-6j2b-SR){:width="80%"}
+![ttZ paper](../plots/ttZ-2L-6j2b-SR.png){:width="80%"}
 
 Can you do better? Can you make your graph look more like the published graph? Have we forgotten any steps before applying our machine learning model to data? How would a different machine learning model do?
 
