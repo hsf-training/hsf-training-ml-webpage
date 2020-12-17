@@ -66,7 +66,7 @@ DataFrames = {} # define empty dictionary to hold dataframes
 for s in samples: # loop over samples
     DataFrames[s] = pd.read_csv('/kaggle/input/4lepton/'+s+".csv") # read .csv file
 
-DataFrames # print data
+DataFrames['ggH125_ZZ4lep'] # print signal data to take a look
 ~~~
 {: .language-python}
 
@@ -95,7 +95,7 @@ for s in samples:
                               		                      DataFrames[s].lep_type_1,
                                           	              DataFrames[s].lep_type_2,
                                                   	      DataFrames[s].lep_type_3) ]
-DataFrames # print data
+DataFrames['ggH125_ZZ4lep'] # print signal data to take a look
 ~~~
 {: .language-python}
 
@@ -120,7 +120,7 @@ DataFrames # print data
 > >                                                     	    DataFrames[s].lep_charge_1,
 > >                                                     	    DataFrames[s].lep_charge_2,
 > >                                                     	    DataFrames[s].lep_charge_3) ]
-> > DataFrames # print data
+> > DataFrames['ggH125_ZZ4lep'] # print signal data to take a look
 > > ~~~
 > > {: .language-python}
 > {: .solution}
@@ -166,7 +166,7 @@ SoverB_hist_dict = {'lep_pt_2':lep_pt_2,'lep_pt_1':lep_pt_1} # add a histogram h
 ~~~
 {: .language-python}
 
-Now let's take a look at those variables. Because the code is a bit long, we pre-defined a function for you, to illustrate the optimum cut value on individual variables, based on <span style="color:orange">signal</span> to <span style="color:blue">background</span> ratio. Let's call the function to illustrate the optimum cut value on individual variables, based on <span style="color:orange">signal</span> to <span style="color:blue">background</span> ratio. You can check out the function definition [here](https://www.kaggle.com/meirinevans/my-functions/edit) 
+Now let's take a look at those variables. Because the code is a bit long, we pre-defined a function for you, to illustrate the optimum cut value on individual variables, based on <span style="color:orange">signal</span> to <span style="color:blue">background</span> ratio. Let's call the function to illustrate the optimum cut value on individual variables, based on <span style="color:orange">signal</span> to <span style="color:blue">background</span> ratio. You can check out the function definition [-->here<--](https://www.kaggle.com/meirinevans/my-functions/edit) 
 
 We're not doing any machine learning just yet! We're looking at the variables we'll later use for machine learning.
 

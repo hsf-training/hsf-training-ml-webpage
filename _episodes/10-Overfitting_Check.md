@@ -20,7 +20,7 @@ Comparing a machine learning model's output distribution for the training and te
 
 There are techniques to prevent overfitting.
 
-The code to plot the overfitting check is a bit long, so once again you can see the function definition [here](https://www.kaggle.com/meirinevans/my-functions/edit) 
+The code to plot the overfitting check is a bit long, so once again you can see the function definition [-->here<--](https://www.kaggle.com/meirinevans/my-functions/edit) 
 
 ~~~
 from my_functions import compare_train_test
