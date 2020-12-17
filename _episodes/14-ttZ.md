@@ -98,8 +98,6 @@ Definitions of these variables can be found in the [ATLAS published paper studyi
 > 4. (at each pass through the loop) append the subset of the DataFrame for this sample containing the columns for `ML_inputs_ttZ` to to the list `all_MC_ttZ`. This is similar to the append to `all_MC` in [the 'Data Preprocessing' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html).
 > 5. (at each pass through the loop) if currently processing a sample called 'ttZ': append an array of ones to `all_y_ttZ`. This is similar to the <span style="color:orange">signal</span> append to `all_y` in [the 'Data Preprocessing' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html).
 > 6. (at each pass through the loop) else: append an array of zeros to `all_y_ttZ`. This is similar to the <span style="color:blue">background</span> append to `all_y` in [the 'Data Preprocessing' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html).
-> 7. concatenate the list `all_MC_ttZ` into an array `X_ttZ`. This is similar to `X` in [the 'Data Preprocessing' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html).
-> 8. concatenate the list `all_y_ttZ` into an array `y_ttZ`. This is similar to `y` in [the 'Data Preprocessing' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html).
 >
 > > ## Solution to part 1
 > > ~~~
@@ -118,15 +116,20 @@ Definitions of these variables can be found in the [ATLAS published paper studyi
 > > ~~~
 > > {: .language-python}
 > {: .solution}
+{: .challenge}
+
+> ## Challenge
+> 1. concatenate the list `all_MC_ttZ` into an array `X_ttZ`. This is similar to `X` in [the 'Data Preprocessing' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html).
+> 2. concatenate the list `all_y_ttZ` into an array `y_ttZ`. This is similar to `y` in [the 'Data Preprocessing' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html).
 >
-> > ## Solution to part 7
+> > ## Solution to part 1
 > > ~~~
 > > X_ttZ = np.concatenate(all_MC_ttZ) # concatenate the list of MC dataframes into a single 2D array of features, called X
 > > ~~~
 > > {: .language-python}
 > {: .solution}
 >
-> > ## Solution to part 8
+> > ## Solution to part 2
 > > ~~~
 > > y_ttZ = np.concatenate(all_y_ttZ) # concatenate the list of lables into a single 1D array of labels, called y
 > > ~~~
