@@ -108,36 +108,12 @@ Definitions of these variables can be found in the [ATLAS published paper studyi
 > > {: .language-python}
 > {: .solution}
 >
-> > ## Solution to part 2
+> > ## Solution to parts 2,3,4,5,6
 > > ~~~
 > > for s in samples_ttZ: # loop over the different samples
-> > ~~~
-> > {: .language-python}
-> {: .solution}
->
-> > ## Solution to part 3
-> > ~~~
 > >     if s=='data': continue # only MC should pass this
-> > ~~~
-> > {: .language-python}
-> {: .solution}
->
-> > ## Solution to part 4
-> > ~~~
 > >     all_MC_ttZ.append(DataFrames_ttZ[s][ML_inputs_ttZ]) # append the MC dataframe to the list containing all MC features
-> > ~~~
-> > {: .language-python}
-> {: .solution}
->
-> > ## Solution to part 5
-> > ~~~
 > >     if s=='ttZ': all_y_ttZ.append(np.ones(DataFrames_ttZ[s].shape[0])) # signal events are labelled with 1
-> > ~~~
-> > {: .language-python}
-> {: .solution}
->
-> > ## Solution to part 6
-> > ~~~
 > >     else: all_y_ttZ.append(np.zeros(DataFrames_ttZ[s].shape[0])) # background events are labelled 0
 > > ~~~
 > > {: .language-python}
@@ -279,7 +255,7 @@ Within errors, the real experimental data errorbars agree with the simulated dat
 
 This is already looking similar to Figure 10(c) from [the ATLAS published paper studying this process](https://journals.aps.org/prd/pdf/10.1103/PhysRevD.99.072009). Check you out, recreating science research!
 
-![ttZ paper](../plots/ttZ-2L-6j2b-SR.png){:width="80%"}
+![ttZ paper](../plots/ttZ-2L-6j2b-SR.png){:width="40%"}
 
 Can you do better? Can you make your graph look more like the published graph? Have we forgotten any steps before applying our machine learning model to data? How would a different machine learning model do?
 
