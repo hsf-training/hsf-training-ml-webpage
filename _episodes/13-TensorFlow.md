@@ -199,6 +199,8 @@ The TensorFlow neural network should also have a similar accuracy score to the P
 > {: .solution}
 {: .challenge}
 
+> ## Challenge 
+
 All things considered, how does your TensorFlow neural network compare to your PyTorch neural network and scikit-learn random forest?
 
 Your feedback is very welcome! Most helpful for us is if you "[Improve this page on GitHub](https://github.com/hsf-training/hsf-training-ml-webpage/edit/gh-pages/_episodes/13-TensorFlow.md)". If you prefer anonymous feedback, please [fill this form](https://forms.gle/XBeULpKXVHF8CKC17).
