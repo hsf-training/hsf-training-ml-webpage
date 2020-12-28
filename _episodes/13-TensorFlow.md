@@ -199,10 +199,15 @@ The TensorFlow neural network should also have a similar accuracy score to the P
 > {: .solution}
 {: .challenge}
 
+### Regularization
+
 > ## Challenge 
-
-> > ## Solution
-
+> What is regularization?
+>
+> > ## Solution 
+> > ~~~
+> > Regularization is a technique which is used to solve the overfitting problem of the machine learning models.Regularizers allow you to apply penalties on layer parameters or layer activity during optimization. These penalties are summed into the loss function that the network optimizes.Regularization penalties are applied on a per-layer basis. The exact API will depend on the layer, but many layers (e.g. Dense, Conv1D, Conv2D and Conv3D) have a unified API.
+>
 All things considered, how does your TensorFlow neural network compare to your PyTorch neural network and scikit-learn random forest?
 
 Your feedback is very welcome! Most helpful for us is if you "[Improve this page on GitHub](https://github.com/hsf-training/hsf-training-ml-webpage/edit/gh-pages/_episodes/13-TensorFlow.md)". If you prefer anonymous feedback, please [fill this form](https://forms.gle/XBeULpKXVHF8CKC17).
