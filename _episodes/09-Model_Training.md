@@ -12,7 +12,7 @@ keypoints:
 - "Random forests and neural networks are two viable machine learning models."
 ---
 
-<iframe width="427" height="251" src="https://www.youtube.com/embed?v=nYAQRY_c-yw&list=PLKZ9c4ONm-VmHsMKImIDEMsZI1Vp0UY-Z&index=7&ab_channel=HEPSoftwareFoundation" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="427" height="251" src="https://www.youtube.com/embed?v=nYAQRY_c-yw&list=PLKZ9c4ONm-VmHsMKImIDEMsZI1Vp0UY-Z&index=8&ab_channel=HEPSoftwareFoundation" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # Models
 
