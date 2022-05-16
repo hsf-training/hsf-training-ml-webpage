@@ -1,8 +1,7 @@
 [![Build Status](https://travis-ci.org/hsf-training/hsf-training-ml-webpage.svg?branch=gh-pages)](https://travis-ci.org/hsf-training/hsf-training-ml-webpage)
+[![HSF Training Center](https://img.shields.io/badge/HSF%20Training%20Center-browse-ff69b4)](https://hepsoftwarefoundation.org/training/curriculum.html)
 
 # Machine Learning for Particle Physics
-
-[![Create a Slack Account with us](https://img.shields.io/badge/Create_Slack_Account-The_Carpentries-071159.svg)](https://swc-slack-invite.herokuapp.com/)
 
 This repository generates the corresponding lesson website from [The Carpentries](https://carpentries.org/) repertoire of lessons. 
 
