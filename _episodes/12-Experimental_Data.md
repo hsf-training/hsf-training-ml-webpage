@@ -44,7 +44,7 @@ We first need to get the real experimental data.
 > >        DataFrames["data"].lep_type_0,
 > >        DataFrames["data"].lep_type_1,
 > >        DataFrames["data"].lep_type_2,
-> >        DataFrames["data"].lep_type_3,
+> >        DataFrames["data"].lep_type_3
 > >    )
 > > ]
 > > DataFrames["data"] = DataFrames["data"][
@@ -52,7 +52,7 @@ We first need to get the real experimental data.
 > >        DataFrames["data"].lep_charge_0,
 > >        DataFrames["data"].lep_charge_1,
 > >        DataFrames["data"].lep_charge_2,
-> >        DataFrames["data"].lep_charge_3,
+> >        DataFrames["data"].lep_charge_3
 > >    )
 > > ]
 > > ~~~
