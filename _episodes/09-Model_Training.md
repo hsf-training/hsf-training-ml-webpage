@@ -37,7 +37,7 @@ The diagram below is a visual representation of random forests; there are $$B$$ 
 
 
 > ## Wisdom of the Crowd (Ensemble Learning)
-> Suppose you pose a complex question to thousands of random people, then aggregrate their answers. In many cases you will find that this aggregreated answer is better than an expert's answer. This phenomenon is  known as *wisdom of the crowd*. Similarly, if you aggregrate the predictions from a group of predictors (such as classifiers or reggressors), you will often get better predictions than with the individual predictor. A group of predictors is called an *ensemble*. For an interesting example of this phenomenon in estimating the weight of an ox, see [this national geographic article](https://www.nationalgeographic.com/science/phenomena/2013/01/31/the-real-wisdom-of-the-crowds/). 
+> Suppose you pose a complex question to thousands of random people, then aggregrate their answers. In many cases you will find that this aggregreated answer is better than an expert's answer. This phenomenon is  known as *wisdom of the crowd*. Similarly, if you aggregrate the predictions from a group of predictors (such as classifiers or reggressors), you will often get better predictions than with the individual predictor. A group of predictors is called an *ensemble*. For an interesting example of this phenomenon in estimating the weight of an ox, see [this national geographic article](https://www.nationalgeographic.com/science/phenomena/2013/01/31/the-real-wisdom-of-the-crowds/).
 {: .callout}
 
 In the previous page we created a training and test dataset. Lets use these datasets to train a random forest.
@@ -60,9 +60,9 @@ print(accuracy_score(y_test, y_pred_RF))
 2. The classifier is trained using the training dataset `X_train_scaled` and corresponding labels `y_train`. During training, we give the classifier both the features (X_train_scaled) and targets (y_train) and it must learn how to map the data to a prediction. Check out this [online article](https://towardsdatascience.com/random-forest-in-python-24d0893d51c0) for more info.
 3. The classifier makes predictions on the test dataset `X_test_scaled`. The machine learning algorithm was not exposed to these data during training.
 4. An accuracy score between the test dataset `y_test` and machine learning predictions `y_pred` is made. The accuracy score is defined as the ratio of correctly identified data points to all data points.
- 
+
 ## Neural Network
-A neural network is a black-box model with many hyperparameters. The mathematical structure of neural networks was discussed earlier on in the tutorial. If you are interested and have it available, you can read [Chapter 10](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) of the textbook (and [Chapters 11-18](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) as well, for that matter). 
+A neural network is a black-box model with many hyperparameters. The mathematical structure of neural networks was discussed earlier on in the tutorial. If you are interested and have it available, you can read [Chapter 10](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) of the textbook (and [Chapters 11-18](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) as well, for that matter).
 
 First let's import the bits we need to build a neural network in PyTorch.
 
@@ -89,7 +89,7 @@ torch.manual_seed(seed_value)            # set random seed for PyTorch
 ~~~
 {: .language-python}
 
-Now we create tensors, variables, datasets and loaders to build our neural network in PyTorch. We need to keep some events for validation. Validation sets are used to select and tune the final neural network model. Here we're making use of the PyTorch `DataLoader` functionality. This is going to be useful later when we want to load data during our training loop. 
+Now we create tensors, variables, datasets and loaders to build our neural network in PyTorch. We need to keep some events for validation. Validation sets are used to select and tune the final neural network model. Here we're making use of the PyTorch `DataLoader` functionality. This is going to be useful later when we want to load data during our training loop.
 
 ~~~
 X_train_tensor = torch.as_tensor(X_train_scaled, dtype=torch.float) # make tensor from X_train_scaled
@@ -120,21 +120,21 @@ Here we define the neural network that we'll be using. This is a simple fully-co
 class Classifier_MLP(nn.Module): # define Multi-Layer Perceptron
     def __init__(self, in_dim, hidden_dim, out_dim): # initialise
         super().__init__() # lets you avoid referring to the base class explicitly
-        
+
         self.h1  = nn.Linear(in_dim, hidden_dim) # hidden layer 1
         self.out = nn.Linear(hidden_dim, out_dim) # output layer
         self.out_dim = out_dim # output layer dimension
 
     def forward(self, x): # order of the layers
-        
+
         x = F.relu(self.h1(x)) # relu activation function for hidden layer
         x = self.out(x) # no activation function for output layer
-        
+
         return x, F.softmax(x, dim=1) # SoftMax function
 ~~~
 {: .language-python}
 
-Next we need to specify that we're using the `Classifier_MLP` model that we specified above and pass it the parameters it requires (`input_size`, `hidden_dim`, `out_dim`). 
+Next we need to specify that we're using the `Classifier_MLP` model that we specified above and pass it the parameters it requires (`input_size`, `hidden_dim`, `out_dim`).
 
 We also specify which optimizer we'll use to train our network. Here I've implemented a classic [Stochastic Gradient Descent](https://en.wikipedia.org/wiki/Stochastic_gradient_descent) (SGD) optimiser, but there are [a wide range of optimizers available in the PyTorch library](https://pytorch.org/docs/stable/optim.html#algorithms). For most recent applications the [Adam](https://arxiv.org/abs/1412.6980) optimizer is used.
 
@@ -144,11 +144,11 @@ optimizer = torch.optim.SGD(NN_clf.parameters(), lr=learning_rate) # optimize mo
 ~~~
 {: .language-python}
 
-The next cell contains the training loop for optimizing the parameters of our neural network. To train the network we loop through the full training data set multiple times. Each loop is called an *epoch*. However, we don't read the full dataset all at once in an individual epoch, instead we split it into *mini-batches* and we use the optimization algorithm to update the network parameters after each batch. 
+The next cell contains the training loop for optimizing the parameters of our neural network. To train the network we loop through the full training data set multiple times. Each loop is called an *epoch*. However, we don't read the full dataset all at once in an individual epoch, instead we split it into *mini-batches* and we use the optimization algorithm to update the network parameters after each batch.
 
-The `train_loader` that we specified earlier using the PyTorch `DataLoader` breaks up the full dataset into batches automatically and allows us to load the feature data (`x_train`) and the label data (`y_train`) for each batch separately. Moreover, because we specified `shuffle=True` when we defined the `train_loader` the full datasets will be shuffled on each epoch, so that we aren't optimising over an identical sequence of samples in every loop. 
+The `train_loader` that we specified earlier using the PyTorch `DataLoader` breaks up the full dataset into batches automatically and allows us to load the feature data (`x_train`) and the label data (`y_train`) for each batch separately. Moreover, because we specified `shuffle=True` when we defined the `train_loader` the full datasets will be shuffled on each epoch, so that we aren't optimising over an identical sequence of samples in every loop.
 
-PyTorch models (`nn.Module`) can be set into either training or evaluation mode. For the loop we've defined here this setting does not make any difference as we do not use any layers that perform differently during evaluation (e.g. dropout, batch normalisation, etc. ) However, it's included here for completeness. 
+PyTorch models (`nn.Module`) can be set into either training or evaluation mode. For the loop we've defined here this setting does not make any difference as we do not use any layers that perform differently during evaluation (e.g. dropout, batch normalisation, etc. ) However, it's included here for completeness.
 
 ~~~
 _results = [] # define empty list for epoch, train_loss, valid_loss, accuracy
@@ -156,19 +156,19 @@ for epoch in range(epochs):  # loop over the dataset multiple times
 
     # training loop for this epoch
     NN_clf.train() # set the model into training mode
-    
+
     train_loss = 0. # start training loss counter at 0
     for batch, (x_train_batch, y_train_batch) in enumerate(train_loader): # loop over train_loader
-        
+
         NN_clf.zero_grad() # set the gradients to zero before backpropragation because PyTorch accumulates the gradients
         out, prob = NN_clf(x_train_batch) # get output and probability on this training batch
         loss = F.cross_entropy(out, y_train_batch) # calculate loss as cross entropy
-        
+
         loss.backward() # compute dloss/dx
         optimizer.step() # updates the parameters
-        
+
         train_loss += loss.item() * x_train_batch.size(0) # add to counter for training loss
-    
+
     train_loss /= len(train_loader.dataset) # divide train loss by length of train_loader
 
     if verbose: # if verbose flag set to True
@@ -177,18 +177,18 @@ for epoch in range(epochs):  # loop over the dataset multiple times
     # validation loop for this epoch:
     NN_clf.eval() # set the model into evaluation mode
     with torch.no_grad():  # turn off the gradient calculations
-        
+
         correct = 0; valid_loss = 0 # start counters for number of correct and validation loss
         for i, (x_valid_batch, y_valid_batch) in enumerate(valid_loader): # loop over validation loader
-            
+
             out, prob = NN_clf(x_valid_batch) # get output and probability on this validation batch
             loss = F.cross_entropy(out, y_valid_batch) # compute loss as cross entropy
-            
+
             valid_loss += loss.item() * x_valid_batch.size(0) # add to counter for validation loss
-            
+
             preds = prob.argmax(dim=1, keepdim=True) # get predictions
             correct += preds.eq(y_valid_batch.view_as(preds)).sum().item() # count number of correct
-            
+
         valid_loss /= len(valid_loader.dataset) # divide validation loss by length of validation dataset
         accuracy = correct / len(valid_loader.dataset) # calculate accuracy as number of correct divided by total
 
@@ -218,7 +218,7 @@ y_pred_NN = prob.cpu().detach().numpy().argmax(axis=1) # get signal/background p
 {: .language-python}
 
 > ## Challenge
-> Once you have `y_pred_NN`, see how well your neural network classifier does using accurarcy_score. 
+> Once you have `y_pred_NN`, see how well your neural network classifier does using accurarcy_score.
 >
 > > ## Solution
 > >

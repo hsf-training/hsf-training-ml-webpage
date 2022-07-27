@@ -65,14 +65,14 @@ We first need to get the real experimental data.
 > > ~~~
 > > {: .language-python}
 > {: .solution}
-> 
+>
 > > ## Solution to part 4
 > > ~~~
 > > X_data_scaled = scaler.transform(X_data) # X_data now scaled same as training and testing sets
 > > ~~~
 > > {: .language-python}
 > {: .solution}
-> 
+>
 > > ## Solution to part 5
 > > ~~~
 > > y_data_RF = RF_clf.predict(X_data_scaled) # make predictions on the data
@@ -94,7 +94,7 @@ scale = sum(RF_clf.predict_proba(X_data_scaled)[:,1]) / sum(data_hist) # get sca
 data_err = np.sqrt(data_hist * scale) / scale # get error on experimental data
 plt.errorbar(x=np.arange(0.05, 0.75, 0.1), y=data_hist, yerr=data_err, label='Data') # plot the experimental data errorbars
 plt.xlabel('Threshold')
-plt.legend() 
+plt.legend()
 ~~~
 {: .language-python}
 

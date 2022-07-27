@@ -17,9 +17,9 @@ keypoints:
 
 In this section we will examine the fully connected neural network (NN) in TensorFlow, rather than PyTorch.
 
-**TensorFlow** is an end-to-end open-source platform for machine learning. It is used for building and deploying machine learning models. See [the documentation](https://www.tensorflow.org/). 
+**TensorFlow** is an end-to-end open-source platform for machine learning. It is used for building and deploying machine learning models. See [the documentation](https://www.tensorflow.org/).
 
-**TensorFlow** does have GPU support, therefore can be used train complicated neural network model that require a lot of GPU power. 
+**TensorFlow** does have GPU support, therefore can be used train complicated neural network model that require a lot of GPU power.
 
 TensorFlow is also interoperable with other packages discussed so far, datatypes from NumPy and pandas are often used in TensorFlow.
 
@@ -63,7 +63,7 @@ X_valid_scaled, X_train_nn_scaled = X_train_scaled[:100], X_train_scaled[100:] #
 
 > ## Challenge
 > Assign the first 100 events in y_train for validation (`y_valid`) and the rest for training your neural network (`y_train_nn`).
-> 
+>
 > > ## Solution
 > > ~~~
 > > y_valid, y_train_nn = y_train[:100], y_train[100:] # first 100 events for validation

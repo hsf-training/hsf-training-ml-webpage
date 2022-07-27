@@ -29,11 +29,11 @@ same reconstruction software as used for the data. Each event corresponds to 2 d
 The <span style="color:orange">signal</span> process is called 'ttZ'. The <span style="color:blue">background</span> processes are called 'ttbar','Z2HF','Z1HF','Z0HF' and 'Other'.
 
 > ## Challenge
-> Define a list `samples_ttZ` containing 'Other','Z1HF','Z2HF','ttbar','ttZ'. (You can add 'Z0HF' later). This is similar to `samples` in [the 'Data Discussion' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/06-Data_Discussion/index.html). 
+> Define a list `samples_ttZ` containing 'Other','Z1HF','Z2HF','ttbar','ttZ'. (You can add 'Z0HF' later). This is similar to `samples` in [the 'Data Discussion' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/06-Data_Discussion/index.html).
 >
 > > ## Solution
 > > ~~~
-> > samples_ttZ = ['Other','Z1HF','Z2HF','ttbar','ttZ'] # start with only these processes, more can be added later. 
+> > samples_ttZ = ['Other','Z1HF','Z2HF','ttbar','ttZ'] # start with only these processes, more can be added later.
 > > ~~~
 > > {: .language-python}
 > {: .solution}
@@ -76,7 +76,7 @@ That's the end of the introduction to why one might want to use a machine learni
 
 ## Format the data for machine learning
 
-It's almost time to build a machine learning model! 
+It's almost time to build a machine learning model!
 
 > ## Challenge
 > First create a list `ML_inputs_ttZ` of variables 'pt4_jet','pt6_jet','dRll','NJetPairsZMass','Nmbjj_top','MbbPtOrd','HT_jet6','dRbb' to use in our machine learning model. (You can add the other variables in later). This is similar to `ML_inputs` in [the 'Data Preprocessing' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html).
@@ -91,13 +91,13 @@ It's almost time to build a machine learning model!
 
 Definitions of these variables can be found in the [ATLAS published paper studying this process](https://journals.aps.org/prd/pdf/10.1103/PhysRevD.99.072009).
 
- The data type is currently a pandas DataFrame: we now need to convert it into a NumPy array so that it can be used in scikit-learn and TensorFlow during the machine learning process. Note that there are many ways that this can be done: in this tutorial we will use the NumPy **concatenate** functionality to format our data set. For more information, please see [the NumPy documentation on concatenate](https://numpy.org/doc/stable/reference/generated/numpy.concatenate.html). 
+ The data type is currently a pandas DataFrame: we now need to convert it into a NumPy array so that it can be used in scikit-learn and TensorFlow during the machine learning process. Note that there are many ways that this can be done: in this tutorial we will use the NumPy **concatenate** functionality to format our data set. For more information, please see [the NumPy documentation on concatenate](https://numpy.org/doc/stable/reference/generated/numpy.concatenate.html).
 
 > ## Challenge
 > 1. Create an empty list `all_MC_ttZ`. This is similar to `all_MC` in [the 'Data Preprocessing' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html).
 > 2. Create an empty list `all_y_ttZ`. This is similar to `all_y` in [the 'Data Preprocessing' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html).
 > 3. loop over `samples_ttZ`. This is similar to looping over `samples` in [the 'Data Preprocessing' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html).
-> 4. (at each pass through the loop) if currently processing a sample called 'data': continue 
+> 4. (at each pass through the loop) if currently processing a sample called 'data': continue
 > 5. (at each pass through the loop) append the subset of the DataFrame for this sample containing the columns for `ML_inputs_ttZ` to to the list `all_MC_ttZ`. This is similar to the append to `all_MC` in [the 'Data Preprocessing' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html).
 > 6. (at each pass through the loop) if currently processing a sample called 'ttZ': append an array of ones to `all_y_ttZ`. This is similar to the <span style="color:orange">signal</span> append to `all_y` in [the 'Data Preprocessing' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html).
 > 7. (at each pass through the loop) else: append an array of zeros to `all_y_ttZ`. This is similar to the <span style="color:blue">background</span> append to `all_y` in [the 'Data Preprocessing' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/07-Data_Preprocessing/index.html).
@@ -148,7 +148,7 @@ Definitions of these variables can be found in the [ATLAS published paper studyi
 > {: .solution}
 {: .challenge}
 
-You started from DataFrames and now have a NumPy array consisting of only the DataFrame columns corresponding to `ML_inputs_ttZ`. 
+You started from DataFrames and now have a NumPy array consisting of only the DataFrame columns corresponding to `ML_inputs_ttZ`.
 
 Now we are ready to examine various models $$f$$ for predicting whether an event corresponds to a <span style="color:orange">signal</span> event or a <span style="color:blue">background</span> event.
 
@@ -162,7 +162,7 @@ You've just formatted your dataset as arrays. Lets use these datasets to train a
 > ## Challenge
 > 1. Define a new `RandomForestClassifier` called `RF_clf_ttZ` with `max_depth=8,n_estimators=30` as before. This is similar to defining `RF_clf` in [the 'Model Training' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/09-Model_Training/index.html).
 > 2. `fit` your `RF_clf_ttZ` classifier to `X_ttZ` and `y_ttZ`. This is similar to the `fit` to `RF_clf` in [the 'Model Training' lesson](https://hsf-training.github.io/hsf-training-ml-webpage/09-Model_Training/index.html).
-> 
+>
 > > ## Solution to part 1
 > > ~~~
 > > RF_clf_ttZ = RandomForestClassifier(max_depth=8, n_estimators=30) # initialise your random forest classifier
@@ -179,7 +179,7 @@ You've just formatted your dataset as arrays. Lets use these datasets to train a
 > {: .solution}
 {: .challenge}
 
-1. The classifier is created. 
+1. The classifier is created.
 2. The classifier is trained using the dataset `X_ttZ` and corresponding labels `y_ttZ`. During training, we give the classifier both the features (X_ttZ) and targets (y_ttZ) and it must learn how to map the data to a prediction. The <span style="color:red">fit()</span> method returns the trained classifier. When printed out all the hyper-parameters are listed. Check out this [online article](https://towardsdatascience.com/random-forest-in-python-24d0893d51c0) for more info.
 
 
@@ -208,14 +208,14 @@ determined from data control samples.
 > > ~~~
 > > {: .language-python}
 > {: .solution}
-> 
+>
 > > ## Solution to part 3
 > > ~~~
 > > thresholds_ttZ = [] # define list to hold classifier probability predictions for each sample
 > > ~~~
 > > {: .language-python}
 > {: .solution}
-> 
+>
 > > ## Solution to part 4
 > > ~~~
 > > weights_ttZ = [] # define list to hold weights for each simulated sample
@@ -245,8 +245,8 @@ for s in samples_ttZ: # loop over samples
 mc_stat_err = np.sqrt( mc_stat_err_squared ) # statistical error on the MC bars
 
 # plot simulated data
-mc_heights = plt.hist(thresholds_ttZ, bins=np.arange(0, 1.1, 0.1), weights=weights_ttZ, stacked=True, label=samples_ttZ, 
-                      color=colors_ttZ) 
+mc_heights = plt.hist(thresholds_ttZ, bins=np.arange(0, 1.1, 0.1), weights=weights_ttZ, stacked=True, label=samples_ttZ,
+                      color=colors_ttZ)
 
 mc_tot = mc_heights[0][-1] # stacked simulated data y-axis value
 
@@ -261,7 +261,7 @@ data_hist_ttZ,_ = np.histogram(predicted_prob_data_signal, bins=np.arange(0, 1.1
 data_err_ttZ = np.sqrt(data_hist_ttZ) # get error on experimental data
 plt.errorbar(x=np.arange(0.05, 1.05, 0.1), y=data_hist_ttZ, yerr=data_err_ttZ, label='Data', fmt='ko') # plot the experimental data
 plt.xlabel('Threshold')
-plt.legend() 
+plt.legend()
 ~~~
 {: .language-python}
 
@@ -277,7 +277,7 @@ Here are some suggestions that you could try to go further:
 
 > ## Going further
 > 1. **Add variables into your machine learning models**. Start by adding them in the list of `ML_inputs_ttZ`. See how things look with all variables added.
-> 2. **Add in the other background samples** in `samples_ttZ` by adding the files that aren't currently being processed. See how things look with all added. 
+> 2. **Add in the other background samples** in `samples_ttZ` by adding the files that aren't currently being processed. See how things look with all added.
 > 3. **Modify some Random Forest hyper-parameters** in your definition of `RF_clf_ttZ`. You may find the [sklearn documentation on RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) helpful.
 > 4. **Give your neural network a go!**. Maybe your neural network will perform better on this dataset? You could use PyTorch and/or TensorFlow.
 > 5. **Give a BDT a go!**. In [the ATLAS published paper studying this process](https://journals.aps.org/prd/pdf/10.1103/PhysRevD.99.072009), they used a Boosted Decision Tree (BDT). See if you can use `GradientBoostingClassifier` rather than `RandomForestClassifier`.

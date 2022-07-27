@@ -31,7 +31,7 @@ ML_inputs = ['lep_pt_1','lep_pt_2'] # list of features for ML model
 
 # for sklearn data are usually organised
 # into one 2D array of shape (n_samples x n_features)
-# containing all the data and one array of categories 
+# containing all the data and one array of categories
 # of length n_samples
 
 all_MC = [] # define empty list that will contain all features for the MC
@@ -51,26 +51,26 @@ y = np.concatenate(all_y) # concatenate the list of lables into a single 1D arra
 ~~~
 {: .language-python}
 
-This takes in DataFrames and spits out a NumPy array consisting of only the DataFrame columns corresponding to `ML_inputs`. 
+This takes in DataFrames and spits out a NumPy array consisting of only the DataFrame columns corresponding to `ML_inputs`.
 
 Now we separate our data into a training and test set.
 
 ~~~
-# This will split your data into train-test sets: 67%-33%. 
-# It will also shuffle entries so you will not get the first 67% of X for training 
-# and the last 33% for testing. 
-# This is particularly important in cases where you load all signal events first 
+# This will split your data into train-test sets: 67%-33%.
+# It will also shuffle entries so you will not get the first 67% of X for training
+# and the last 33% for testing.
+# This is particularly important in cases where you load all signal events first
 # and then the background events.
 
-# Here we split our data into two independent samples. 
-# The split is to create a training and testing set. 
+# Here we split our data into two independent samples.
+# The split is to create a training and testing set.
 # The first will be used for classifier training and the second to evaluate its performance.
 
 from sklearn.model_selection import train_test_split
 
 # make train and test sets
-X_train,X_test, y_train,y_test = train_test_split(X, y, 
-                                                  test_size=0.33, 
+X_train,X_test, y_train,y_test = train_test_split(X, y,
+                                                  test_size=0.33,
                                                   random_state=seed_value ) # set the random seed for reproducibility
 ~~~
 {: .language-python}
@@ -86,7 +86,7 @@ scaler.fit(X_train)
 ~~~
 {: .language-python}
 
-Now we will use the scaling to apply the transformations to the data. 
+Now we will use the scaling to apply the transformations to the data.
 
 ~~~
 X_train_scaled = scaler.transform(X_train)
@@ -95,9 +95,9 @@ X_train_scaled = scaler.transform(X_train)
 
 > ## Challenge
 > Apply the same scaler transformation to `X_test` and `X`.
-> 
+>
 > > ## Solution
-> > 
+> >
 > > ~~~
 > > X_test_scaled = scaler.transform(X_test)
 > > X_scaled = scaler.transform(X)
