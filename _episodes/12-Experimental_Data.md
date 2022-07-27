@@ -39,15 +39,22 @@ We first need to get the real experimental data.
 >
 > > ## Solution to part 2
 > > ~~~
-> > DataFrames['data'] = DataFrames['data'][ np.vectorize(cut_lep_type)(DataFrames['data'].lep_type_0,
-> >                                                                     DataFrames['data'].lep_type_1,
-> >                                                                     DataFrames['data'].lep_type_2,
-> >                                                                     DataFrames['data'].lep_type_3) ]
-> > DataFrames['data'] = DataFrames['data'][ np.vectorize(cut_lep_charge)(DataFrames['data'].lep_charge_0,
-> >                                                                       DataFrames['data'].lep_charge_1,
-> >                                                                       DataFrames['data'].lep_charge_2,
-> >                                                                       DataFrames['data'].lep_charge_3) ]
-> > ~~~
+> > DataFrames["data"] = DataFrames["data"][
+> >    np.vectorize(cut_lep_type)(
+> >        DataFrames["data"].lep_type_0,
+> >        DataFrames["data"].lep_type_1,
+> >        DataFrames["data"].lep_type_2,
+> >        DataFrames["data"].lep_type_3,
+> >    )
+> >]
+> >DataFrames["data"] = DataFrames["data"][
+> >    np.vectorize(cut_lep_charge)(
+> >        DataFrames["data"].lep_charge_0,
+> >        DataFrames["data"].lep_charge_1,
+> >        DataFrames["data"].lep_charge_2,
+> >        DataFrames["data"].lep_charge_3,
+> >    )
+]> > ~~~
 > > {: .language-python}
 > {: .solution}
 >
