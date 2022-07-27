@@ -142,7 +142,7 @@ Definitions of these variables can be found in the [ATLAS published paper studyi
 >
 > > ## Solution to part 2
 > > ~~~
-> > y_ttZ = np.concatenate(all_y_ttZ) # concatenate the list of lables into a single 1D array of labels, called y
+> > y_ttZ = np.concatenate(all_y_ttZ) # concatenate the list of labels into a single 1D array of labels, called y
 > > ~~~
 > > {: .language-python}
 > {: .solution}

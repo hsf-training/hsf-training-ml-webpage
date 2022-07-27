@@ -158,7 +158,7 @@ where $$TPR$$ and $$FPR$$ are the true and false positive rates and $$b_r$$ is s
 Other values for $$b_r$$ would also be possible. Once you've plotted AMS for the first time, you may want to play around with the value of $$b_r$$ and see how it affects your selection for the threshold value that maximizes the AMS of the plots. You may see that changing $$b_r$$ doesn't change the AMS much.
 
 > ## Challenge
-> 1. Define a function `AMS` that calculates AMS using the equation above. Call the true positive rate `tpr`, false postive rate `fpr` and $$b_r$$ `b_reg`.
+> 1. Define a function `AMS` that calculates AMS using the equation above. Call the true positive rate `tpr`, false positive rate `fpr` and $$b_r$$ `b_reg`.
 > 2. Use this function to get the AMS score for your random forest classifier, `ams_rf`.
 > 3. Use this function to get the AMS score for your neural network classifier, `ams_nn`.
 >

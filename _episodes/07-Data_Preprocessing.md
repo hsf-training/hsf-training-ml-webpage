@@ -47,7 +47,7 @@ for s in samples: # loop over the different samples
             all_y.append(np.ones(DataFrames[s].shape[0])) # signal events are labelled with 1
         else: # only background MC should pass this
             all_y.append(np.zeros(DataFrames[s].shape[0])) # background events are labelled 0
-y = np.concatenate(all_y) # concatenate the list of lables into a single 1D array of labels, called y
+y = np.concatenate(all_y) # concatenate the list of labels into a single 1D array of labels, called y
 ~~~
 {: .language-python}
 
