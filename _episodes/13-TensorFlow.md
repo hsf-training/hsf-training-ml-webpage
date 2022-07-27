@@ -26,9 +26,10 @@ TensorFlow is also interoperable with other packages discussed so far, datatypes
 Here we will import all the required TensorFlow libraries for the rest of the tutorial.
 
 ~~~
-from tensorflow import keras # tensorflow wrapper
-from tensorflow.random import set_seed # import set_seed function for TensorFlow
-set_seed(seed_value) # set TensorFlow random seed
+from tensorflow import keras  # tensorflow wrapper
+from tensorflow.random import set_seed  # import set_seed function for TensorFlow
+
+set_seed(seed_value)  # set TensorFlow random seed
 ~~~
 {: .language-python}
 
@@ -39,15 +40,25 @@ From the previous pages, we already have our data in NumPy arrays, like `X`, tha
 To use a neural network with TensorFlow, we modularize its construction using a function. We will later pass this function into a Keras wrapper.
 
 ~~~
-def build_model(n_hidden=1, n_neurons=5, learning_rate=1e-3): # function to build a neural network model
+def build_model(
+    n_hidden=1, n_neurons=5, learning_rate=1e-3
+):  # function to build a neural network model
     # Build
-    model = keras.models.Sequential() # initialise the model
-    for layer in range(n_hidden): # loop over hidden layers
-        model.add(keras.layers.Dense(n_neurons, activation="relu")) # add layer to your model
-    model.add(keras.layers.Dense(2, activation='softmax')) # add output layer
+    model = keras.models.Sequential()  # initialise the model
+    for layer in range(n_hidden):  # loop over hidden layers
+        model.add(
+            keras.layers.Dense(n_neurons, activation="relu")
+        )  # add layer to your model
+    model.add(keras.layers.Dense(2, activation="softmax"))  # add output layer
     # Compile
-    optimizer = keras.optimizers.SGD(learning_rate=learning_rate) # define the optimizer
-    model.compile(loss='sparse_categorical_crossentropy', optimizer=optimizer, metrics=['accuracy']) # compile your model
+    optimizer = keras.optimizers.SGD(
+        learning_rate=learning_rate
+    )  # define the optimizer
+    model.compile(
+        loss="sparse_categorical_crossentropy",
+        optimizer=optimizer,
+        metrics=["accuracy"],
+    )  # compile your model
     return model
 ~~~
 {: .language-python}
@@ -57,7 +68,10 @@ For now, ignore all the complicated hyperparameters, but note that the loss used
 We need to keep some events for validation. Validation sets are used to select and tune the final neural network model.
 
 ~~~
-X_valid_scaled, X_train_nn_scaled = X_train_scaled[:100], X_train_scaled[100:] # first 100 events for validation
+X_valid_scaled, X_train_nn_scaled = (
+    X_train_scaled[:100],
+    X_train_scaled[100:],
+)  # first 100 events for validation
 ~~~
 {: .language-python}
 
@@ -75,8 +89,12 @@ X_valid_scaled, X_train_nn_scaled = X_train_scaled[:100], X_train_scaled[100:] #
 With these parameters, the network can be trained as follows:
 
 ~~~
-tf_clf = keras.wrappers.scikit_learn.KerasClassifier(build_model) # call the build_model function defined earlier
-tf_clf.fit(X_train_nn_scaled, y_train_nn, validation_data=(X_valid_scaled, y_valid)) # fit your neural network
+tf_clf = keras.wrappers.scikit_learn.KerasClassifier(
+    build_model
+)  # call the build_model function defined earlier
+tf_clf.fit(
+    X_train_nn_scaled, y_train_nn, validation_data=(X_valid_scaled, y_valid)
+)  # fit your neural network
 ~~~
 {: .language-python}
 

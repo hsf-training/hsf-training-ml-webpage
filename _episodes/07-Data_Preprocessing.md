@@ -20,7 +20,7 @@ keypoints:
 It's almost time to build a machine learning model! First we choose the variables to use in our machine learning model.
 
 ~~~
-ML_inputs = ['lep_pt_1','lep_pt_2'] # list of features for ML model
+ML_inputs = ["lep_pt_1", "lep_pt_2"]  # list of features for ML model
 ~~~
 {: .language-python}
 
@@ -34,20 +34,32 @@ ML_inputs = ['lep_pt_1','lep_pt_2'] # list of features for ML model
 # containing all the data and one array of categories
 # of length n_samples
 
-all_MC = [] # define empty list that will contain all features for the MC
-for s in samples: # loop over the different samples
-    if s!='data': # only MC should pass this
-        all_MC.append(DataFrames[s][ML_inputs]) # append the MC dataframe to the list containing all MC features
-X = np.concatenate(all_MC) # concatenate the list of MC dataframes into a single 2D array of features, called X
+all_MC = []  # define empty list that will contain all features for the MC
+for s in samples:  # loop over the different samples
+    if s != "data":  # only MC should pass this
+        all_MC.append(
+            DataFrames[s][ML_inputs]
+        )  # append the MC dataframe to the list containing all MC features
+X = np.concatenate(
+    all_MC
+)  # concatenate the list of MC dataframes into a single 2D array of features, called X
 
-all_y = [] # define empty list that will contain labels whether an event in signal or background
-for s in samples: # loop over the different samples
-    if s!='data': # only MC should pass this
-        if 'H125' in s: # only signal MC should pass this
-            all_y.append(np.ones(DataFrames[s].shape[0])) # signal events are labelled with 1
-        else: # only background MC should pass this
-            all_y.append(np.zeros(DataFrames[s].shape[0])) # background events are labelled 0
-y = np.concatenate(all_y) # concatenate the list of labels into a single 1D array of labels, called y
+all_y = (
+    []
+)  # define empty list that will contain labels whether an event in signal or background
+for s in samples:  # loop over the different samples
+    if s != "data":  # only MC should pass this
+        if "H125" in s:  # only signal MC should pass this
+            all_y.append(
+                np.ones(DataFrames[s].shape[0])
+            )  # signal events are labelled with 1
+        else:  # only background MC should pass this
+            all_y.append(
+                np.zeros(DataFrames[s].shape[0])
+            )  # background events are labelled 0
+y = np.concatenate(
+    all_y
+)  # concatenate the list of labels into a single 1D array of labels, called y
 ~~~
 {: .language-python}
 
@@ -69,9 +81,9 @@ Now we separate our data into a training and test set.
 from sklearn.model_selection import train_test_split
 
 # make train and test sets
-X_train,X_test, y_train,y_test = train_test_split(X, y,
-                                                  test_size=0.33,
-                                                  random_state=seed_value ) # set the random seed for reproducibility
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.33, random_state=seed_value
+)  # set the random seed for reproducibility
 ~~~
 {: .language-python}
 
@@ -79,7 +91,8 @@ Machine learning models may have difficulty converging before the maximum number
 
 ~~~
 from sklearn.preprocessing import StandardScaler
-scaler = StandardScaler() # initialise StandardScaler
+
+scaler = StandardScaler()  # initialise StandardScaler
 
 # Fit only to the training data
 scaler.fit(X_train)

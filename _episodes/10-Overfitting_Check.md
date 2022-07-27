@@ -24,7 +24,10 @@ The code to plot the overfitting check is a bit long, so once again you can see 
 
 ~~~
 from my_functions import compare_train_test
-compare_train_test(RF_clf, X_train_scaled, y_train, X_test_scaled, y_test, 'Random Forest output')
+
+compare_train_test(
+    RF_clf, X_train_scaled, y_train, X_test_scaled, y_test, "Random Forest output"
+)
 ~~~
 {: .language-python}
 

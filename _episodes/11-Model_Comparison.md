@@ -62,9 +62,9 @@ By default, the threshold was set to 50% in computing the accuracy score when we
 
 ~~~
 from sklearn.metrics import classification_report, roc_auc_score
+
 # Random Forest Report
-print (classification_report(y_test, y_pred_RF,
-                            target_names=["background", "signal"]))
+print(classification_report(y_test, y_pred_RF, target_names=["background", "signal"]))
 ~~~
 {: .language-python}
 
@@ -86,14 +86,18 @@ Out of the box, the random forest performs slightly better than the neural netwo
 Let's get the decisions of the random forest classifier.
 
 ~~~
-decisions_rf = RF_clf.predict_proba(X_test_scaled)[:,1] # get the decisions of the random forest
+decisions_rf = RF_clf.predict_proba(X_test_scaled)[
+    :, 1
+]  # get the decisions of the random forest
 ~~~
 {: .language-python}
 
 The decisions of the neural network classifier, `decisions_nn`, can be obtained like:
 
 ~~~
-decisions_nn = NN_clf(X_test_var)[1][:,1].cpu().detach().numpy() # get the decisions of the neural network
+decisions_nn = (
+    NN_clf(X_test_var)[1][:, 1].cpu().detach().numpy()
+)  # get the decisions of the neural network
 ~~~
 {: .language-python}
 
@@ -101,12 +105,20 @@ decisions_nn = NN_clf(X_test_var)[1][:,1].cpu().detach().numpy() # get the decis
 The Receiver Operating Characteristic (ROC) curve is a plot of the recall (or true positive rate) vs. the false positive rate: the ratio of negative instances incorrectly classified as positive. A classifier may classify many instances as positive (i.e. has a low tolerance for classifying something as positive), but in such an example it will probably also incorrectly classify many negative instances as positive as well. The false positive rate is plotted on the x-axis of the ROC curve and the true positive rate on the y-axis; the threshold is varied to give a parameteric curve. A random classifier results in a line. Before we look at the ROC curve, let's examine the following plot
 
 ~~~
-plt.hist(decisions_rf[y_test==0], histtype='step', bins=50, label='Background Events') # plot background
-plt.hist(decisions_rf[y_test==1], histtype='step', bins=50, linestyle='dashed', label='Signal Events') # plot signal
-plt.xlabel('Threshold') # x-axis label
-plt.ylabel('Number of Events') # y-axis label
-plt.semilogy() # make the y-axis semi-log
-plt.legend() # draw the legend
+plt.hist(
+    decisions_rf[y_test == 0], histtype="step", bins=50, label="Background Events"
+)  # plot background
+plt.hist(
+    decisions_rf[y_test == 1],
+    histtype="step",
+    bins=50,
+    linestyle="dashed",
+    label="Signal Events",
+)  # plot signal
+plt.xlabel("Threshold")  # x-axis label
+plt.ylabel("Number of Events")  # y-axis label
+plt.semilogy()  # make the y-axis semi-log
+plt.legend()  # draw the legend
 ~~~
 {: .language-python}
 
@@ -116,7 +128,10 @@ Suppose we move the threshold from 0 to 1 in steps of 0.01. In doing so, we will
 
 ~~~
 from sklearn.metrics import roc_curve
-fpr_rf, tpr_rf, thresholds_rf = roc_curve(y_test, decisions_rf) # get FPRs, TPRs and thresholds for random forest
+
+fpr_rf, tpr_rf, thresholds_rf = roc_curve(
+    y_test, decisions_rf
+)  # get FPRs, TPRs and thresholds for random forest
 ~~~
 {: .language-python}
 
@@ -134,13 +149,17 @@ fpr_rf, tpr_rf, thresholds_rf = roc_curve(y_test, decisions_rf) # get FPRs, TPRs
 Now we plot the ROC curve:
 
 ~~~
-plt.plot(fpr_rf, tpr_rf, label='Random Forest') # plot random forest ROC
-plt.plot(fpr_nn, tpr_nn, linestyle='dashed', label='Neural Network') # plot neural network ROC
-plt.plot([0, 1], [0, 1], linestyle='dotted', color='grey', label='Luck') # plot diagonal line to indicate luck
-plt.xlabel('False Positive Rate') # x-axis label
-plt.ylabel('True Positive Rate') # y-axis label
-plt.grid() # add a grid to the plot
-plt.legend() # add a legend
+plt.plot(fpr_rf, tpr_rf, label="Random Forest")  # plot random forest ROC
+plt.plot(
+    fpr_nn, tpr_nn, linestyle="dashed", label="Neural Network"
+)  # plot neural network ROC
+plt.plot(
+    [0, 1], [0, 1], linestyle="dotted", color="grey", label="Luck"
+)  # plot diagonal line to indicate luck
+plt.xlabel("False Positive Rate")  # x-axis label
+plt.ylabel("True Positive Rate")  # y-axis label
+plt.grid()  # add a grid to the plot
+plt.legend()  # add a legend
 ~~~
 {: .language-python}
 
@@ -188,12 +207,14 @@ Other values for $$b_r$$ would also be possible. Once you've plotted AMS for the
 Then plot:
 
 ~~~
-plt.plot(thresholds_rf, ams_rf, label='Random Forest') # plot random forest AMS
-plt.plot(thresholds_nn, ams_nn, linestyle='dashed', label='Neural Network') # plot neural network AMS
-plt.xlabel('Threshold') # x-axis label
-plt.ylabel('AMS') # y-axis label
-plt.title('AMS with $b_r=0.001$') # add plot title
-plt.legend() # add legend
+plt.plot(thresholds_rf, ams_rf, label="Random Forest")  # plot random forest AMS
+plt.plot(
+    thresholds_nn, ams_nn, linestyle="dashed", label="Neural Network"
+)  # plot neural network AMS
+plt.xlabel("Threshold")  # x-axis label
+plt.ylabel("AMS")  # y-axis label
+plt.title("AMS with $b_r=0.001$")  # add plot title
+plt.legend()  # add legend
 ~~~
 {: .language-python}
 

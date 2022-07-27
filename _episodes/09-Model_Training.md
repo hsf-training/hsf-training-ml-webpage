@@ -46,9 +46,11 @@ In the previous page we created a training and test dataset. Lets use these data
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
-RF_clf = RandomForestClassifier(criterion='gini', max_depth=8, n_estimators=30, random_state=seed_value) # initialise your random forest classifier
-RF_clf.fit(X_train_scaled, y_train) # fit to the training data
-y_pred_RF = RF_clf.predict(X_test_scaled) # make predictions on the test data
+RF_clf = RandomForestClassifier(
+    criterion="gini", max_depth=8, n_estimators=30, random_state=seed_value
+)  # initialise your random forest classifier
+RF_clf.fit(X_train_scaled, y_train)  # fit to the training data
+y_pred_RF = RF_clf.predict(X_test_scaled)  # make predictions on the test data
 
 # See how well the classifier does
 print(accuracy_score(y_test, y_pred_RF))
@@ -67,49 +69,65 @@ A neural network is a black-box model with many hyperparameters. The mathematica
 First let's import the bits we need to build a neural network in PyTorch.
 
 ~~~
-import torch # import PyTorch
-import torch.nn as nn # import PyTorch neural network
-import torch.nn.functional as F # import PyTorch neural network functional
-from torch.autograd import Variable # create variable from tensor
-import torch.utils.data as Data # create data from tensors
+import torch  # import PyTorch
+import torch.nn as nn  # import PyTorch neural network
+import torch.nn.functional as F  # import PyTorch neural network functional
+from torch.autograd import Variable  # create variable from tensor
+import torch.utils.data as Data  # create data from tensors
 ~~~
 {: .language-python}
 
 Next we make variables for various PyTorch neural network hyper-parameters:
 
 ~~~
-epochs        = 10                       # number of training epochs
-batch_size    = 32                       # number of samples per batch
-input_size    = len(ML_inputs)           # The number of features
-num_classes   = 2                        # The number of output classes. In this case: [signal, background]
-hidden_size   = 5                        # The number of nodes at the hidden layer
-learning_rate = 0.001                    # The speed of convergence
-verbose       = True                     # flag for printing out stats at each epoch
-torch.manual_seed(seed_value)            # set random seed for PyTorch
+epochs = 10  # number of training epochs
+batch_size = 32  # number of samples per batch
+input_size = len(ML_inputs)  # The number of features
+num_classes = 2  # The number of output classes. In this case: [signal, background]
+hidden_size = 5  # The number of nodes at the hidden layer
+learning_rate = 0.001  # The speed of convergence
+verbose = True  # flag for printing out stats at each epoch
+torch.manual_seed(seed_value)  # set random seed for PyTorch
 ~~~
 {: .language-python}
 
 Now we create tensors, variables, datasets and loaders to build our neural network in PyTorch. We need to keep some events for validation. Validation sets are used to select and tune the final neural network model. Here we're making use of the PyTorch `DataLoader` functionality. This is going to be useful later when we want to load data during our training loop.
 
 ~~~
-X_train_tensor = torch.as_tensor(X_train_scaled, dtype=torch.float) # make tensor from X_train_scaled
-y_train_tensor = torch.as_tensor(y_train, dtype=torch.long) # make tensor from y_train
+X_train_tensor = torch.as_tensor(
+    X_train_scaled, dtype=torch.float
+)  # make tensor from X_train_scaled
+y_train_tensor = torch.as_tensor(y_train, dtype=torch.long)  # make tensor from y_train
 
-X_train_var, y_train_var = Variable(X_train_tensor), Variable(y_train_tensor) # make variables from tensors
+X_train_var, y_train_var = Variable(X_train_tensor), Variable(
+    y_train_tensor
+)  # make variables from tensors
 
-X_valid_var, y_valid_var = X_train_var[:100], y_train_var[:100] # get first 100 events for validation
-X_train_nn_var, y_train_nn_var = X_train_var[100:], y_train_var[100:] # get remaining events for training
+X_valid_var, y_valid_var = (
+    X_train_var[:100],
+    y_train_var[:100],
+)  # get first 100 events for validation
+X_train_nn_var, y_train_nn_var = (
+    X_train_var[100:],
+    y_train_var[100:],
+)  # get remaining events for training
 
-train_data = Data.TensorDataset(X_train_nn_var, y_train_nn_var) # create training dataset
-valid_data = Data.TensorDataset(X_valid_var, y_valid_var) # create validation dataset
+train_data = Data.TensorDataset(
+    X_train_nn_var, y_train_nn_var
+)  # create training dataset
+valid_data = Data.TensorDataset(X_valid_var, y_valid_var)  # create validation dataset
 
-train_loader = Data.DataLoader(dataset=train_data, # PyTorch Dataset
-                               batch_size=batch_size, # how many samples per batch to load
-                               shuffle=True) # data reshuffled at every epoch
+train_loader = Data.DataLoader(
+    dataset=train_data,  # PyTorch Dataset
+    batch_size=batch_size,  # how many samples per batch to load
+    shuffle=True,
+)  # data reshuffled at every epoch
 
-valid_loader = Data.DataLoader(dataset=valid_data, # PyTorch Dataset
-                               batch_size=batch_size, # how many samples per batch to load
-                               shuffle=True) # data reshuffled at every epoch
+valid_loader = Data.DataLoader(
+    dataset=valid_data,  # PyTorch Dataset
+    batch_size=batch_size,  # how many samples per batch to load
+    shuffle=True,
+)  # data reshuffled at every epoch
 ~~~
 {: .language-python}
 
@@ -117,20 +135,20 @@ valid_loader = Data.DataLoader(dataset=valid_data, # PyTorch Dataset
 Here we define the neural network that we'll be using. This is a simple fully-connected neural network, otherwise known as a *multi-layer perceptron* (MLP). It has two hidden layers, both with the same number of neurons (`hidden_dim`). The order of the layers for a forward pass through the network is specified in the `forward` function. You can see that each fully-connected layer is followed by a [ReLU activation function](https://ml-cheatsheet.readthedocs.io/en/latest/activation_functions.html#relu). The function then returns an unnormalised vector of outputs (`x`; also referred to as *logits*) and a vector of normalised "probabilities" for `x`, calculated using the [SoftMax function](https://ml-cheatsheet.readthedocs.io/en/latest/activation_functions.html#softmax).
 
 ~~~
-class Classifier_MLP(nn.Module): # define Multi-Layer Perceptron
-    def __init__(self, in_dim, hidden_dim, out_dim): # initialise
-        super().__init__() # lets you avoid referring to the base class explicitly
+class Classifier_MLP(nn.Module):  # define Multi-Layer Perceptron
+    def __init__(self, in_dim, hidden_dim, out_dim):  # initialise
+        super().__init__()  # lets you avoid referring to the base class explicitly
 
-        self.h1  = nn.Linear(in_dim, hidden_dim) # hidden layer 1
-        self.out = nn.Linear(hidden_dim, out_dim) # output layer
-        self.out_dim = out_dim # output layer dimension
+        self.h1 = nn.Linear(in_dim, hidden_dim)  # hidden layer 1
+        self.out = nn.Linear(hidden_dim, out_dim)  # output layer
+        self.out_dim = out_dim  # output layer dimension
 
-    def forward(self, x): # order of the layers
+    def forward(self, x):  # order of the layers
 
-        x = F.relu(self.h1(x)) # relu activation function for hidden layer
-        x = self.out(x) # no activation function for output layer
+        x = F.relu(self.h1(x))  # relu activation function for hidden layer
+        x = self.out(x)  # no activation function for output layer
 
-        return x, F.softmax(x, dim=1) # SoftMax function
+        return x, F.softmax(x, dim=1)  # SoftMax function
 ~~~
 {: .language-python}
 
@@ -139,8 +157,12 @@ Next we need to specify that we're using the `Classifier_MLP` model that we spec
 We also specify which optimizer we'll use to train our network. Here I've implemented a classic [Stochastic Gradient Descent](https://en.wikipedia.org/wiki/Stochastic_gradient_descent) (SGD) optimiser, but there are [a wide range of optimizers available in the PyTorch library](https://pytorch.org/docs/stable/optim.html#algorithms). For most recent applications the [Adam](https://arxiv.org/abs/1412.6980) optimizer is used.
 
 ~~~
-NN_clf = Classifier_MLP(in_dim=input_size, hidden_dim=hidden_size, out_dim=num_classes) # call Classifier_MLP class
-optimizer = torch.optim.SGD(NN_clf.parameters(), lr=learning_rate) # optimize model parameters
+NN_clf = Classifier_MLP(
+    in_dim=input_size, hidden_dim=hidden_size, out_dim=num_classes
+)  # call Classifier_MLP class
+optimizer = torch.optim.SGD(
+    NN_clf.parameters(), lr=learning_rate
+)  # optimize model parameters
 ~~~
 {: .language-python}
 
@@ -151,69 +173,100 @@ The `train_loader` that we specified earlier using the PyTorch `DataLoader` brea
 PyTorch models (`nn.Module`) can be set into either training or evaluation mode. For the loop we've defined here this setting does not make any difference as we do not use any layers that perform differently during evaluation (e.g. dropout, batch normalisation, etc. ) However, it's included here for completeness.
 
 ~~~
-_results = [] # define empty list for epoch, train_loss, valid_loss, accuracy
+_results = []  # define empty list for epoch, train_loss, valid_loss, accuracy
 for epoch in range(epochs):  # loop over the dataset multiple times
 
     # training loop for this epoch
-    NN_clf.train() # set the model into training mode
+    NN_clf.train()  # set the model into training mode
 
-    train_loss = 0. # start training loss counter at 0
-    for batch, (x_train_batch, y_train_batch) in enumerate(train_loader): # loop over train_loader
+    train_loss = 0.0  # start training loss counter at 0
+    for batch, (x_train_batch, y_train_batch) in enumerate(
+        train_loader
+    ):  # loop over train_loader
 
-        NN_clf.zero_grad() # set the gradients to zero before backpropragation because PyTorch accumulates the gradients
-        out, prob = NN_clf(x_train_batch) # get output and probability on this training batch
-        loss = F.cross_entropy(out, y_train_batch) # calculate loss as cross entropy
+        NN_clf.zero_grad()  # set the gradients to zero before backpropragation because PyTorch accumulates the gradients
+        out, prob = NN_clf(
+            x_train_batch
+        )  # get output and probability on this training batch
+        loss = F.cross_entropy(out, y_train_batch)  # calculate loss as cross entropy
 
-        loss.backward() # compute dloss/dx
-        optimizer.step() # updates the parameters
+        loss.backward()  # compute dloss/dx
+        optimizer.step()  # updates the parameters
 
-        train_loss += loss.item() * x_train_batch.size(0) # add to counter for training loss
+        train_loss += loss.item() * x_train_batch.size(
+            0
+        )  # add to counter for training loss
 
-    train_loss /= len(train_loader.dataset) # divide train loss by length of train_loader
+    train_loss /= len(
+        train_loader.dataset
+    )  # divide train loss by length of train_loader
 
-    if verbose: # if verbose flag set to True
-        print('Epoch: {}, Train Loss: {:4f}'.format(epoch, train_loss))
+    if verbose:  # if verbose flag set to True
+        print("Epoch: {}, Train Loss: {:4f}".format(epoch, train_loss))
 
     # validation loop for this epoch:
-    NN_clf.eval() # set the model into evaluation mode
+    NN_clf.eval()  # set the model into evaluation mode
     with torch.no_grad():  # turn off the gradient calculations
 
-        correct = 0; valid_loss = 0 # start counters for number of correct and validation loss
-        for i, (x_valid_batch, y_valid_batch) in enumerate(valid_loader): # loop over validation loader
+        correct = 0
+        valid_loss = 0  # start counters for number of correct and validation loss
+        for i, (x_valid_batch, y_valid_batch) in enumerate(
+            valid_loader
+        ):  # loop over validation loader
 
-            out, prob = NN_clf(x_valid_batch) # get output and probability on this validation batch
-            loss = F.cross_entropy(out, y_valid_batch) # compute loss as cross entropy
+            out, prob = NN_clf(
+                x_valid_batch
+            )  # get output and probability on this validation batch
+            loss = F.cross_entropy(out, y_valid_batch)  # compute loss as cross entropy
 
-            valid_loss += loss.item() * x_valid_batch.size(0) # add to counter for validation loss
+            valid_loss += loss.item() * x_valid_batch.size(
+                0
+            )  # add to counter for validation loss
 
-            preds = prob.argmax(dim=1, keepdim=True) # get predictions
-            correct += preds.eq(y_valid_batch.view_as(preds)).sum().item() # count number of correct
+            preds = prob.argmax(dim=1, keepdim=True)  # get predictions
+            correct += (
+                preds.eq(y_valid_batch.view_as(preds)).sum().item()
+            )  # count number of correct
 
-        valid_loss /= len(valid_loader.dataset) # divide validation loss by length of validation dataset
-        accuracy = correct / len(valid_loader.dataset) # calculate accuracy as number of correct divided by total
+        valid_loss /= len(
+            valid_loader.dataset
+        )  # divide validation loss by length of validation dataset
+        accuracy = correct / len(
+            valid_loader.dataset
+        )  # calculate accuracy as number of correct divided by total
 
-    if verbose: # if verbose flag set to True
-        print('Validation Loss: {:4f}, Validation Accuracy: {:4f}'.format(valid_loss, accuracy))
+    if verbose:  # if verbose flag set to True
+        print(
+            "Validation Loss: {:4f}, Validation Accuracy: {:4f}".format(
+                valid_loss, accuracy
+            )
+        )
 
     # create output row:
     _results.append([epoch, train_loss, valid_loss, accuracy])
 
-results = np.array(_results) # make array of results
-print('Finished Training')
-print("Final validation error: ",100.*(1 - accuracy),"%")
+results = np.array(_results)  # make array of results
+print("Finished Training")
+print("Final validation error: ", 100.0 * (1 - accuracy), "%")
 ~~~
 {: .language-python}
 
 The predicted y values for the neural network, `y_pred_NN` can be obtained like:
 
 ~~~
-X_test_tensor = torch.as_tensor(X_test_scaled, dtype=torch.float) # make tensor from X_test_scaled
-y_test_tensor = torch.as_tensor(y_test, dtype=torch.long) # make tensor from y_test
+X_test_tensor = torch.as_tensor(
+    X_test_scaled, dtype=torch.float
+)  # make tensor from X_test_scaled
+y_test_tensor = torch.as_tensor(y_test, dtype=torch.long)  # make tensor from y_test
 
-X_test_var, y_test_var = Variable(X_test_tensor), Variable(y_test_tensor) # make variables from tensors
+X_test_var, y_test_var = Variable(X_test_tensor), Variable(
+    y_test_tensor
+)  # make variables from tensors
 
-out, prob = NN_clf(X_test_var) # get output and probabilities from X_test
-y_pred_NN = prob.cpu().detach().numpy().argmax(axis=1) # get signal/background predictions
+out, prob = NN_clf(X_test_var)  # get output and probabilities from X_test
+y_pred_NN = (
+    prob.cpu().detach().numpy().argmax(axis=1)
+)  # get signal/background predictions
 ~~~
 {: .language-python}
 

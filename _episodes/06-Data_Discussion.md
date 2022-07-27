@@ -20,9 +20,9 @@ keypoints:
 Here we will import all the required libraries for the rest of the tutorial. All scikit-learn and PyTorch functions will be imported later on when they are required.
 
 ~~~
-import pandas as pd # to store data as dataframe
-import numpy as np # for numerical calculations such as histogramming
-import matplotlib.pyplot as plt # for plotting
+import pandas as pd  # to store data as dataframe
+import numpy as np  # for numerical calculations such as histogramming
+import matplotlib.pyplot as plt  # for plotting
 ~~~
 {: .language-python}
 
@@ -36,9 +36,10 @@ np.__version__
 Let's set the random seed that we'll be using. This reduces the randomness when you re-run the notebook
 
 ~~~
-seed_value = 420 # 42 is the answer to life, the universe and everything
-from numpy.random import seed # import the function to set the random seed in NumPy
-seed(seed_value) # set the seed value for random numbers in NumPy
+seed_value = 420  # 42 is the answer to life, the universe and everything
+from numpy.random import seed  # import the function to set the random seed in NumPy
+
+seed(seed_value)  # set the seed value for random numbers in NumPy
 ~~~
 {: .language-python}
 
@@ -51,7 +52,7 @@ The dataset we will use in this tutorial is simulated ATLAS data. Each event cor
 # In this notebook we only process the main signal ggH125_ZZ4lep and the main background llll,
 # for illustration purposes.
 # You can add other backgrounds after if you wish.
-samples = ['llll','ggH125_ZZ4lep']
+samples = ["llll", "ggH125_ZZ4lep"]
 ~~~
 {: .language-python}
 
@@ -62,11 +63,11 @@ Here we will format the dataset $$(x_i, y_i)$$ so we can explore! First, we need
 ~~~
 # get data from files
 
-DataFrames = {} # define empty dictionary to hold dataframes
-for s in samples: # loop over samples
-    DataFrames[s] = pd.read_csv('/kaggle/input/4lepton/'+s+".csv") # read .csv file
+DataFrames = {}  # define empty dictionary to hold dataframes
+for s in samples:  # loop over samples
+    DataFrames[s] = pd.read_csv("/kaggle/input/4lepton/" + s + ".csv")  # read .csv file
 
-DataFrames['ggH125_ZZ4lep'] # print signal data to take a look
+DataFrames["ggH125_ZZ4lep"]  # print signal data to take a look
 ~~~
 {: .language-python}
 
@@ -74,14 +75,16 @@ Before diving into machine learning, think about whether there are any things yo
 
 ~~~
 # cut on lepton type
-def cut_lep_type(lep_type_0,lep_type_1,lep_type_2,lep_type_3):
-# first lepton is [0], 2nd lepton is [1] etc
-# for an electron lep_type is 11
-# for a muon lep_type is 13
-# only want to keep events where one of eeee, mumumumu, eemumu
+def cut_lep_type(lep_type_0, lep_type_1, lep_type_2, lep_type_3):
+    # first lepton is [0], 2nd lepton is [1] etc
+    # for an electron lep_type is 11
+    # for a muon lep_type is 13
+    # only want to keep events where one of eeee, mumumumu, eemumu
     sum_lep_type = lep_type_0 + lep_type_1 + lep_type_2 + lep_type_3
-    if sum_lep_type==44 or sum_lep_type==48 or sum_lep_type==52: return True
-    else: return False
+    if sum_lep_type == 44 or sum_lep_type == 48 or sum_lep_type == 52:
+        return True
+    else:
+        return False
 ~~~
 {: .language-python}
 
@@ -91,11 +94,15 @@ We then need to apply this function on our DataFrames.
 # apply cut on lepton type
 for s in samples:
     # cut on lepton type using the function cut_lep_type defined above
-    DataFrames[s] = DataFrames[s][ np.vectorize(cut_lep_type)(DataFrames[s].lep_type_0,
-                              		                      DataFrames[s].lep_type_1,
-                                          	              DataFrames[s].lep_type_2,
-                                                  	      DataFrames[s].lep_type_3) ]
-DataFrames['ggH125_ZZ4lep'] # print signal data to take a look
+    DataFrames[s] = DataFrames[s][
+        np.vectorize(cut_lep_type)(
+            DataFrames[s].lep_type_0,
+            DataFrames[s].lep_type_1,
+            DataFrames[s].lep_type_2,
+            DataFrames[s].lep_type_3,
+        )
+    ]
+DataFrames["ggH125_ZZ4lep"]  # print signal data to take a look
 ~~~
 {: .language-python}
 
@@ -131,12 +138,12 @@ DataFrames['ggH125_ZZ4lep'] # print signal data to take a look
 In any analysis searching for <span style="color:orange">signal</span> one wants to optimise the use of various input variables. Often, this optimisation will be to find the best <span style="color:orange">signal</span> to <span style="color:blue">background</span> ratio. Here we define histograms for the variables that we'll look to optimise.
 
 ~~~
-lep_pt_2 = { # dictionary containing plotting parameters for the lep_pt_2 histogram
+lep_pt_2 = {  # dictionary containing plotting parameters for the lep_pt_2 histogram
     # change plotting parameters
-    'bin_width':1, # width of each histogram bin
-    'num_bins':13, # number of histogram bins
-    'xrange_min':7, # minimum on x-axis
-    'xlabel':r'$lep\_pt$[2] [GeV]', # x-axis label
+    "bin_width": 1,  # width of each histogram bin
+    "num_bins": 13,  # number of histogram bins
+    "xrange_min": 7,  # minimum on x-axis
+    "xlabel": r"$lep\_pt$[2] [GeV]",  # x-axis label
 }
 ~~~
 {: .language-python}
@@ -162,7 +169,10 @@ lep_pt_2 = { # dictionary containing plotting parameters for the lep_pt_2 histog
 Now we define a dictionary for the histograms we want to plot.
 
 ~~~
-SoverB_hist_dict = {'lep_pt_2':lep_pt_2,'lep_pt_1':lep_pt_1} # add a histogram here if you want it plotted
+SoverB_hist_dict = {
+    "lep_pt_2": lep_pt_2,
+    "lep_pt_1": lep_pt_1,
+}  # add a histogram here if you want it plotted
 ~~~
 {: .language-python}
 
@@ -172,6 +182,7 @@ We're not doing any machine learning just yet! We're looking at the variables we
 
 ~~~
 from my_functions import plot_SoverB
+
 plot_SoverB(DataFrames, SoverB_hist_dict)
 ~~~
 {: .language-python}
