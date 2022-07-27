@@ -46,15 +46,16 @@ We first need to get the real experimental data.
 > >        DataFrames["data"].lep_type_2,
 > >        DataFrames["data"].lep_type_3,
 > >    )
-> >]
-> >DataFrames["data"] = DataFrames["data"][
+> > ]
+> > DataFrames["data"] = DataFrames["data"][
 > >    np.vectorize(cut_lep_charge)(
 > >        DataFrames["data"].lep_charge_0,
 > >        DataFrames["data"].lep_charge_1,
 > >        DataFrames["data"].lep_charge_2,
 > >        DataFrames["data"].lep_charge_3,
 > >    )
-]> > ~~~
+> > ]
+> > ~~~
 > > {: .language-python}
 > {: .solution}
 >
