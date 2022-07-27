@@ -34,7 +34,7 @@ It is then up to a human user to specify the probability **threshold** at which 
 
 
 > ## Classifiers in Law
-> In criminal law, Blackstone's ratio (also known as the Blackstone ratio or Blackstone's formulation) is the idea that it is better that ten guilty persons escape than that one innocent suffer. This corresponds to the minimum threshold requirement of 91% confidence of a crime being committed for the classification of guilty. It is obviously difficult to get such precise probabilities when dealing with crimes. 
+> In criminal law, Blackstone's ratio (also known as the Blackstone ratio or Blackstone's formulation) is the idea that it is better that ten guilty persons escape than that one innocent suffer. This corresponds to the minimum threshold requirement of 91% confidence of a crime being committed for the classification of guilty. It is obviously difficult to get such precise probabilities when dealing with crimes.
 {: .callout}
 
 Since TP, FP, TN, and FN all depend on the threshold of a classifier, each of these metrics can be considered functions of threshold.
@@ -49,7 +49,7 @@ It is the ratio of all things that were **correctly** classified as positive to 
 
 ## Recall (True Positive Rate)
 
-Recall is defined as 
+Recall is defined as
 
 $$\text{recall}=\frac{\text{TP}}{\text{TP}+\text{FN}}$$
 
@@ -70,12 +70,12 @@ print (classification_report(y_test, y_pred_RF,
 
 > ## Challenge
 > Print the same classification report for your neural network.
-> 
+>
 > > ## Solution
 > > ~~~
 > > # Neural Network Report
 > > print (classification_report(y_test, y_pred_NN,
-> >                             target_names=["background", "signal"]))                      
+> >                             target_names=["background", "signal"]))
 > > ~~~
 > > {: .language-python}
 > {: .solution}
@@ -86,7 +86,7 @@ Out of the box, the random forest performs slightly better than the neural netwo
 Let's get the decisions of the random forest classifier.
 
 ~~~
-decisions_rf = RF_clf.predict_proba(X_test_scaled)[:,1] # get the decisions of the random forest 
+decisions_rf = RF_clf.predict_proba(X_test_scaled)[:,1] # get the decisions of the random forest
 ~~~
 {: .language-python}
 
@@ -122,7 +122,7 @@ fpr_rf, tpr_rf, thresholds_rf = roc_curve(y_test, decisions_rf) # get FPRs, TPRs
 
 > ## Challenge
 > Get the FPRs, TPRs and thresholds for the neural network classifier (`fpr_nn`, `tpr_nn`, `thresholds_nn`).
-> 
+>
 > > ## Solution
 > > ~~~
 > > fpr_nn, tpr_nn, thresholds_nn = roc_curve(y_test, decisions_nn) # get FPRs, TPRs and thresholds for neural network
@@ -150,18 +150,18 @@ We need to decide on an appropriate threshold.
 
 ## What Should My Threshold Be?
 
-As discussed above, the threshold depends on the problem at hand. In this specific example of classifying particles as <span style="color:orange">signal</span> or <span style="color:blue">background</span> events, the primary goal is optimizing the discovery region for statistical significance. As discussed [here](https://higgsml.lal.in2p3.fr/files/2014/04/documentation_v1.8.pdf), this metric is the approximate median significance (AMS) defined as 
+As discussed above, the threshold depends on the problem at hand. In this specific example of classifying particles as <span style="color:orange">signal</span> or <span style="color:blue">background</span> events, the primary goal is optimizing the discovery region for statistical significance. As discussed [here](https://higgsml.lal.in2p3.fr/files/2014/04/documentation_v1.8.pdf), this metric is the approximate median significance (AMS) defined as
 
 $$\text{AMS} = \sqrt{2\left((TPR+FPR+b_r)\ln\left(1+\frac{TPR}{FPR+b_r}\right)-TPR \right)} $$
 
-where $$TPR$$ and $$FPR$$ are the true and false positive rates and $$b_r$$ is some number chosen to reduce the variance of the AMS such that the selection region is not too small. For the purpose of this tutorial we will choose $$b_r=0.001$$. 
+where $$TPR$$ and $$FPR$$ are the true and false positive rates and $$b_r$$ is some number chosen to reduce the variance of the AMS such that the selection region is not too small. For the purpose of this tutorial we will choose $$b_r=0.001$$.
 Other values for $$b_r$$ would also be possible. Once you've plotted AMS for the first time, you may want to play around with the value of $$b_r$$ and see how it affects your selection for the threshold value that maximizes the AMS of the plots. You may see that changing $$b_r$$ doesn't change the AMS much.
 
 > ## Challenge
-> 1. Define a function `AMS` that calculates AMS using the equation above. Call the true positive rate `tpr`, false postive rate `fpr` and $$b_r$$ `b_reg`.
+> 1. Define a function `AMS` that calculates AMS using the equation above. Call the true positive rate `tpr`, false positive rate `fpr` and $$b_r$$ `b_reg`.
 > 2. Use this function to get the AMS score for your random forest classifier, `ams_rf`.
 > 3. Use this function to get the AMS score for your neural network classifier, `ams_nn`.
-> 
+>
 > > ## Solution to part 1
 > > ~~~
 > > def AMS(tpr, fpr, b_reg): # define function to calculate AMS
@@ -171,7 +171,7 @@ Other values for $$b_r$$ would also be possible. Once you've plotted AMS for the
 > {: .solution}
 >
 > > ## Solution to part 2
-> > ~~~ 
+> > ~~~
 > > ams_rf = AMS(tpr_rf, fpr_rf, 0.001) # get AMS for random forest classifier
 > > ~~~
 > > {: .language-python}

@@ -33,4 +33,3 @@ In a **traditional approach** to solving problems, one would study a problem, wr
   For example, consider `$z = x + y_i$` fitting some data \\( (x_i, y_i) \\) to a quadratic curve $y=ax^2+bx+c$. In this case, one might define the error to be the difference of squares: namely $`\sum_i (y_i-(ax_i^2+bx_i+c))`$. This error function depends on 3 input parameters $a$, $`b`$ and $`c`$. Once can tweak these parameters to **minimize the loss function**.
 </ul>
 {% include links.md %}
-

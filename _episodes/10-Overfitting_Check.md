@@ -20,7 +20,7 @@ Comparing a machine learning model's output distribution for the training and te
 
 There are techniques to prevent overfitting.
 
-The code to plot the overfitting check is a bit long, so once again you can see the function definition [-->here<--](https://www.kaggle.com/meirinevans/my-functions/edit) 
+The code to plot the overfitting check is a bit long, so once again you can see the function definition [-->here<--](https://www.kaggle.com/meirinevans/my-functions/edit)
 
 ~~~
 from my_functions import compare_train_test
@@ -32,13 +32,13 @@ If overfitting were present, the dots (test set) would be *very far* from the ba
 
 ![Overfitted](../plots/overfitted.png){:width="40%"}
 
-As discussed in the [Mathematical Foundations lesson](https://hsf-training.github.io/hsf-training-ml-webpage/02-mltechnical/index.html), there are techniques to prevent overfitting. For instance, you could try reduce the number of parameters in your model, e.g. for a neural network reduce the number of neurons. 
+As discussed in the [Mathematical Foundations lesson](https://hsf-training.github.io/hsf-training-ml-webpage/02-mltechnical/index.html), there are techniques to prevent overfitting. For instance, you could try reduce the number of parameters in your model, e.g. for a neural network reduce the number of neurons.
 
 Our <span style="color:orange">orange</span> signal dots (test set) nicely overlap with our <span style="color:orange">orange</span> signal histogram bars (training set). The same goes for the <span style="color:blue">blue</span> background. This overlap indicates that no overtaining is present. Happy days!
 
 > ## Challenge
 > Make the same overfitting check for your neural network and decide whether any overfitting is present.
-> 
+>
 > > ## Solution
 > > ~~~
 > > compare_train_test(NN_clf, X_train_scaled, y_train, X_test_scaled, y_test, 'Neural Network output')
