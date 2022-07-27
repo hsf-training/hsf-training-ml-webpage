@@ -229,38 +229,84 @@ Let's make a plot where we directly compare real, experimental data with all sim
 
 ~~~
 # dictionary to hold colors for each sample
-colors_dict = {'Other':'#79b278', 'Z0HF':'#ce0000', 'Z1HF':'#ffcccc', 'Z2HF':'#ff6666', 'ttbar':'#f8f8f8', 'ttZ':'#00ccfd'}
+colors_dict = {
+    "Other": "#79b278",
+    "Z0HF": "#ce0000",
+    "Z1HF": "#ffcccc",
+    "Z2HF": "#ff6666",
+    "ttbar": "#f8f8f8",
+    "ttZ": "#00ccfd",
+}
 
-mc_stat_err_squared = np.zeros(10) # define array to hold the MC statistical uncertainties, 1 zero for each bin
-for s in samples_ttZ: # loop over samples
-    X_s = DataFrames_ttZ[s][ML_inputs_ttZ] # get ML_inputs_ttZ columns from DataFrame for this sample
-    predicted_prob = RF_clf_ttZ.predict_proba(X_s) # get probability predictions
-    predicted_prob_signal = predicted_prob[:,1] # 2nd column of predicted_prob corresponds to probability of being signal
-    thresholds_ttZ.append(predicted_prob_signal) # append predict probabilities for each sample
-    weights_ttZ.append(DataFrames_ttZ[s]['totalWeight']) # append weights for each sample
-    weights_squared,_ = np.histogram(predicted_prob_signal, bins=np.arange(0, 1.1, 0.1),
-                                     weights=DataFrames_ttZ[s]['totalWeight']**2) # square the totalWeights
-    mc_stat_err_squared = np.add(mc_stat_err_squared,weights_squared) # add weights_squared for s
-    colors_ttZ.append( colors_dict[s] ) # append colors for each sample
-mc_stat_err = np.sqrt( mc_stat_err_squared ) # statistical error on the MC bars
+mc_stat_err_squared = np.zeros(
+    10
+)  # define array to hold the MC statistical uncertainties, 1 zero for each bin
+for s in samples_ttZ:  # loop over samples
+    X_s = DataFrames_ttZ[s][
+        ML_inputs_ttZ
+    ]  # get ML_inputs_ttZ columns from DataFrame for this sample
+    predicted_prob = RF_clf_ttZ.predict_proba(X_s)  # get probability predictions
+    predicted_prob_signal = predicted_prob[
+        :, 1
+    ]  # 2nd column of predicted_prob corresponds to probability of being signal
+    thresholds_ttZ.append(
+        predicted_prob_signal
+    )  # append predict probabilities for each sample
+    weights_ttZ.append(
+        DataFrames_ttZ[s]["totalWeight"]
+    )  # append weights for each sample
+    weights_squared, _ = np.histogram(
+        predicted_prob_signal,
+        bins=np.arange(0, 1.1, 0.1),
+        weights=DataFrames_ttZ[s]["totalWeight"] ** 2,
+    )  # square the totalWeights
+    mc_stat_err_squared = np.add(
+        mc_stat_err_squared, weights_squared
+    )  # add weights_squared for s
+    colors_ttZ.append(colors_dict[s])  # append colors for each sample
+mc_stat_err = np.sqrt(mc_stat_err_squared)  # statistical error on the MC bars
 
 # plot simulated data
-mc_heights = plt.hist(thresholds_ttZ, bins=np.arange(0, 1.1, 0.1), weights=weights_ttZ, stacked=True, label=samples_ttZ,
-                      color=colors_ttZ)
+mc_heights = plt.hist(
+    thresholds_ttZ,
+    bins=np.arange(0, 1.1, 0.1),
+    weights=weights_ttZ,
+    stacked=True,
+    label=samples_ttZ,
+    color=colors_ttZ,
+)
 
-mc_tot = mc_heights[0][-1] # stacked simulated data y-axis value
+mc_tot = mc_heights[0][-1]  # stacked simulated data y-axis value
 
 # plot the statistical uncertainty
-plt.bar(np.arange(0.05, 1.05, 0.1), # x
-        2*mc_stat_err, # heights
-        bottom=mc_tot-mc_stat_err, color='none', hatch="////", width=0.1, label='Stat. Unc.' )
+plt.bar(
+    np.arange(0.05, 1.05, 0.1),  # x
+    2 * mc_stat_err,  # heights
+    bottom=mc_tot - mc_stat_err,
+    color="none",
+    hatch="////",
+    width=0.1,
+    label="Stat. Unc.",
+)
 
-predicted_prob_data = RF_clf_ttZ.predict_proba(X_data_ttZ) # get probability predictions on data
-predicted_prob_data_signal = predicted_prob_data[:, 1] # 2nd column corresponds to probability of being signal
-data_hist_ttZ,_ = np.histogram(predicted_prob_data_signal, bins=np.arange(0, 1.1, 0.1)) # histogram the experimental data
-data_err_ttZ = np.sqrt(data_hist_ttZ) # get error on experimental data
-plt.errorbar(x=np.arange(0.05, 1.05, 0.1), y=data_hist_ttZ, yerr=data_err_ttZ, label='Data', fmt='ko') # plot the experimental data
-plt.xlabel('Threshold')
+predicted_prob_data = RF_clf_ttZ.predict_proba(
+    X_data_ttZ
+)  # get probability predictions on data
+predicted_prob_data_signal = predicted_prob_data[
+    :, 1
+]  # 2nd column corresponds to probability of being signal
+data_hist_ttZ, _ = np.histogram(
+    predicted_prob_data_signal, bins=np.arange(0, 1.1, 0.1)
+)  # histogram the experimental data
+data_err_ttZ = np.sqrt(data_hist_ttZ)  # get error on experimental data
+plt.errorbar(
+    x=np.arange(0.05, 1.05, 0.1),
+    y=data_hist_ttZ,
+    yerr=data_err_ttZ,
+    label="Data",
+    fmt="ko",
+)  # plot the experimental data
+plt.xlabel("Threshold")
 plt.legend()
 ~~~
 {: .language-python}
