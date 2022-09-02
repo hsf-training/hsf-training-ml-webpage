@@ -31,6 +31,8 @@ repos:
         args: ["-I", "codespell.txt"]
         files: '.*\.md'
 
+# === END CENTRALLY MAINTAINED FILE ===
+
   - repo: https://github.com/asottile/blacken-docs
     rev: v1.12.1
     hooks:
