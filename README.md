@@ -13,8 +13,9 @@
 > **Note**
 > Click [here](https://hsf-training.github.io/hsf-training-ml-webpage/) for the training website!
 
+This tutorial explores Machine Learning using scikit-learn and PyTorch for applications in high energy physics.
 
-This is a package
+Extended from a [version developed by Luke Polson for the 2020 USATLAS Computing Bootcamp](https://lukepolson.github.io/HEP_ML_Lessons/).
 
 ## 📅 Past events and videos
 
