@@ -60,6 +60,10 @@ by Scott Chacon.
 Look for the tag [![good_first_issue]][gfi-badge], which marks particularly simple issues to get you started.
 
 <!-- END CENTRALLY MAINTAINED SECTION -->
+
+## Authors
+* Meirin Oan Evans
+
 ## 💖 Authors
 
 <!-- If we have a primary author/maintainer, who kicked off the whole lessen etc, he should get a dedicated shoutout here -->
@@ -67,7 +71,6 @@ Look for the tag [![good_first_issue]][gfi-badge], which marks particularly simp
 Thanks goes to these wonderful people ([emoji key][allcontrib-emoji-key]) who contributed to
 the content of the lesson:
 
-* Meirin Oan Evans
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
