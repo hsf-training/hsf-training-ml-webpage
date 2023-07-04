@@ -25,7 +25,7 @@ repos:
         files: ^(_episodes|code|README.md|setup.md)
 
   - repo: https://github.com/codespell-project/codespell
-    rev: "v2.2.4"
+    rev: "v2.2.5"
     hooks:
       - id: codespell
         args: ["-I", "codespell.txt"]
@@ -33,7 +33,7 @@ repos:
 # === END CENTRALLY MAINTAINED FILE ===
 
   - repo: https://github.com/asottile/blacken-docs
-    rev: 1.13.0
+    rev: 1.14.0
     hooks:
     -   id: blacken-docs
         additional_dependencies: [black==22.6.0]
