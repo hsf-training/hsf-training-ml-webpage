@@ -102,7 +102,7 @@ decisions_nn = (
 {: .language-python}
 
 # The ROC Curve
-The Receiver Operating Characteristic (ROC) curve is a plot of the recall (or true positive rate) vs. the false positive rate: the ratio of negative instances incorrectly classified as positive. A classifier may classify many instances as positive (i.e. has a low tolerance for classifying something as positive), but in such an example it will probably also incorrectly classify many negative instances as positive as well. The false positive rate is plotted on the x-axis of the ROC curve and the true positive rate on the y-axis; the threshold is varied to give a parameteric curve. A random classifier results in a line. Before we look at the ROC curve, let's examine the following plot
+The Receiver Operating Characteristic (ROC) curve is a plot of the recall (or true positive rate) vs. the false positive rate: the ratio of negative instances incorrectly classified as positive. A classifier may classify many instances as positive (i.e. has a low tolerance for classifying something as positive), but in such an example it will probably also incorrectly classify many negative instances as positive as well. The false positive rate is plotted on the x-axis of the ROC curve and the true positive rate on the y-axis; the threshold is varied to give a parametric curve. A random classifier results in a line. Before we look at the ROC curve, let's examine the following plot
 
 ~~~
 plt.hist(
