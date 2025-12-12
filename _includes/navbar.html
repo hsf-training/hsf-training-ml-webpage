@@ -1,110 +1,370 @@
-{% comment %}
-  Lesson navigation bar.
-{% endcomment %}
-
 {% include gh_variables.html %}
 {% include manual_episode_order.html %}
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+<style>
+  .navbar-custom {
+    background: linear-gradient(90deg, #2c5f7c 0%, #1e4a5f 100%);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
 
-      {% comment %} Select what logo to display. {% endcomment %}
+  .nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.2rem;
+    z-index: 1002;
+  }
+
+  .nav-logo-img {
+    height: 32px;
+    width: auto;
+    filter: brightness(0) invert(1);
+  }
+
+  .nav-brand:hover {
+    color: #9fd7dd;
+    text-decoration: none;
+  }
+
+  .nav-center {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .nav-link {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .nav-link:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+  }
+
+  .nav-dropdown {
+    position: relative;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffff;
+    min-width: 220px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border-radius: 12px;
+    padding: 10px 0;
+    z-index: 1100;
+    margin-top: 10px;
+  }
+  
+  .dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    margin-left: -6px;
+    border-width: 0 6px 6px;
+    border-style: solid;
+    border-color: #ffffff transparent;
+  }
+
+  .nav-dropdown:hover .dropdown-menu {
+    display: block;
+    animation: fadeIn 0.2s ease;
+  }
+
+  .dropdown-item {
+    display: block;
+    padding: 8px 20px;
+    color: #333;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+  }
+
+  .dropdown-item:hover {
+    background: #f0f7f9;
+    color: #2c5f7c;
+    text-decoration: none;
+  }
+
+  .dropdown-divider {
+    height: 1px;
+    background: #eee;
+    margin: 8px 0;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 1002;
+  }
+
+  .search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-input {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 6px 15px 6px 35px;
+    color: #fff;
+    font-size: 0.9rem;
+    width: 160px;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+
+  .search-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .search-input:focus {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: #9fd7dd;
+    width: 200px;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    pointer-events: none;
+    font-size: 14px;
+  }
+
+  .action-btn {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .action-btn:hover {
+    color: #9fd7dd;
+  }
+
+  .mobile-toggle {
+    display: none;
+    cursor: pointer;
+    color: white;
+    font-size: 1.5rem;
+    z-index: 1003;
+    user-select: none;
+  }
+
+  #mobile-check {
+    display: none;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, 10px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+  }
+
+  @media (max-width: 992px) {
+    .mobile-toggle {
+      display: block;
+    }
+
+    .nav-center {
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      background: #1e4a5f;
+      flex-direction: column;
+      align-items: stretch;
+      padding: 0;
+      gap: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-in-out;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    #mobile-check:checked ~ .nav-center {
+      max-height: 100vh;
+      padding: 20px 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      overflow-y: auto;
+    }
+
+    .nav-link {
+      border-radius: 0;
+      padding: 15px 30px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      width: 100%;
+      display: block;
+    }
+
+    .nav-dropdown:hover .dropdown-menu {
+      display: none;
+    }
+
+    .nav-dropdown.active .dropdown-menu {
+      display: block;
+      position: static;
+      transform: none;
+      background: rgba(0,0,0,0.2);
+      box-shadow: none;
+      min-width: 100%;
+      margin: 0;
+    }
+
+    .dropdown-menu::before { display: none; }
+    .dropdown-item { padding-left: 50px; color: rgba(255,255,255,0.8); }
+
+    .nav-right { display: none; }
+    
+    .nav-center::after {
+      content: 'Search available on desktop';
+      color: rgba(255,255,255,0.5);
+      padding: 15px 30px;
+      font-size: 0.8rem;
+      text-align: center;
+      display: block;
+    }
+  }
+</style>
+
+<nav class="navbar-custom">
+  <div class="nav-container">
+    
+    <input type="checkbox" id="mobile-check">
+
+    <div class="nav-brand-wrapper">
       {% if site.carpentry == "swc" %}
-      <a href="{{ site.swc_site }}" class="pull-left">
-        <img class="navbar-logo" src="{{ relative_root_path }}{% link /assets/img/swc-icon-blue.svg %}" alt="Software Carpentry logo" />
-      </a>
+        <a href="{{ site.swc_site }}" class="nav-brand">
+          <img class="nav-logo-img" src="{{ relative_root_path }}{% link /assets/img/swc-icon-blue.svg %}" alt="Software Carpentry" />
+        </a>
       {% elsif site.carpentry == "dc" %}
-      <a href="{{ site.dc_site }}" class="pull-left">
-        <img class="navbar-logo" src="{{ relative_root_path }}{% link /assets/img/dc-icon-black.svg %}" alt="Data Carpentry logo" />
-      </a>
+        <a href="{{ site.dc_site }}" class="nav-brand">
+          <img class="nav-logo-img" src="{{ relative_root_path }}{% link /assets/img/dc-icon-black.svg %}" alt="Data Carpentry" />
+        </a>
       {% elsif site.carpentry == "lc" %}
-      <a href="{{ site.lc_site }}" class="pull-left">
-        <img class="navbar-logo" src="{{ relative_root_path }}{% link /assets/img/lc-icon-black.svg %}" alt="Library Carpentry logo" />
-      </a>
+        <a href="{{ site.lc_site }}" class="nav-brand">
+          <img class="nav-logo-img" src="{{ relative_root_path }}{% link /assets/img/lc-icon-black.svg %}" alt="Library Carpentry" />
+        </a>
       {% elsif site.carpentry == "cp" %}
-      <a href="{{ site.carpentries_site }}" class="pull-left">
-        <img class="navbar-logo" src="{{ relative_root_path }}{% link /assets/img/cp-logo-blue.svg %}" alt="The Carpentries logo" />
-      </a>
+        <a href="{{ site.carpentries_site }}" class="nav-brand">
+          <img class="nav-logo-img" src="{{ relative_root_path }}{% link /assets/img/cp-logo-blue.svg %}" alt="The Carpentries" />
+        </a>
       {% elsif site.carpentry == "hsf" %}
-      <a href="{{ site.hsf_site }}" class="pull-left">
-        <img class="navbar-logo" src="{{ relative_root_path }}{% link /assets/img/hsf-logo.png%}" alt="The Carpentries logo" />
-      </a>
+        <a href="{{ site.hsf_site }}" class="nav-brand">
+          <img class="nav-logo-img" src="{{ relative_root_path }}{% link /assets/img/hsf-logo.png %}" alt="HSF" />
+          <span>HSF Training</span>
+        </a>
+      {% endif %}
+    </div>
+
+    <label for="mobile-check" class="mobile-toggle">
+      ☰
+    </label>
+
+    <div class="nav-center">
+      <a class="nav-link" href="{{ relative_root_path }}{% link index.md %}">Home</a>
+      <a class="nav-link" href="{{ relative_root_path }}{% link CODE_OF_CONDUCT.md %}">Code of Conduct</a>
+
+      {% if site.kind == "lesson" %}
+        <a class="nav-link" href="{{ relative_root_path }}{% link setup.md %}">Setup</a>
+
+        {% if lesson_episodes.size > 0 %}
+        <div class="nav-dropdown">
+          <span class="nav-link">Episodes ▾</span>
+          <div class="dropdown-menu">
+            {% for lesson_episode in lesson_episodes %}
+              {% if site.episode_order %}
+                {% assign episode = site.episodes | where: "slug", lesson_episode | first %}
+              {% else %}
+                {% assign episode = lesson_episode %}
+              {% endif %}
+              <a class="dropdown-item" href="{{ relative_root_path }}{{ episode.url }}">{{ episode.title }}</a>
+            {% endfor %}
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{ relative_root_path }}{% link aio.md %}">All in one page (Beta)</a>
+          </div>
+        </div>
+        {% endif %}
+
+        <div class="nav-dropdown">
+          <span class="nav-link">Extras ▾</span>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{ relative_root_path }}{% link reference.md %}">Reference</a>
+            {% for lesson_extra in lesson_extras %}
+              {% if site.extras_order %}
+                {% assign extra = site.extras | where: "slug", lesson_extra | first %}
+              {% else %}
+                {% assign extra = lesson_extra %}
+              {% endif %}
+              <a class="dropdown-item" href="{{ relative_root_path }}{{ extra.url }}">{{ extra.title }}</a>
+            {% endfor %}
+          </div>
+        </div>
       {% endif %}
 
-      {% comment %} Always show link to home page. {% endcomment %}
-      <a class="navbar-brand" href="{{ relative_root_path }}{% link index.md %}">Home</a>
-
+      <a class="nav-link" href="{{ relative_root_path }}{% link LICENSE.md %}">License</a>
     </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
 
-	{% comment %} Always show code of conduct. {% endcomment %}
-        <li><a href="{{ relative_root_path }}{% link CODE_OF_CONDUCT.md %}">Code of Conduct</a></li>
-
-        {% if site.kind == "lesson" %}
-	{% comment %} Show setup instructions. {% endcomment %}
-        <li><a href="{{ relative_root_path }}{% link setup.md %}">Setup</a></li>
-
-        {% comment %} Show lesson episodes for lessons. {% endcomment %}
-        {% if lesson_episodes.size > 0 %}
-        <li class="dropdown">
-          <a href="{{ relative_root_path }}/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            {% for lesson_episode in lesson_episodes %}
-            {% if site.episode_order %}
-              {% assign episode = site.episodes | where: "slug", lesson_episode | first %}
-            {% else %}
-              {% assign episode = lesson_episode %}
-            {% endif %}
-            <li><a href="{{ relative_root_path }}{{ episode.url }}">{{ episode.title }}</a></li>
-            {% endfor %}
-	    <li role="separator" class="divider"></li>
-            <li><a href="{{ relative_root_path }}{% link aio.md %}">All in one page (Beta)</a></li>
-          </ul>
-        </li>
-        {% endif %}
-	{% endif %}
-
-	{% comment %} Show extras for lessons or if this is the main workshop-template repo (where they contain documentation). {% endcomment %}
-	{% if site.kind == "lesson" %}
-        <li class="dropdown">
-          <a href="{{ relative_root_path }}/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="{{ relative_root_path }}{% link reference.md %}">Reference</a></li>
-            {% for lesson_extra in lesson_extras %}
-            {% if site.extras_order %}
-              {% assign extra = site.extras | where: "slug", lesson_extra | first %}
-            {% else %}
-              {% assign extra = lesson_extra %}
-            {% endif %}
-            <li><a href="{{ relative_root_path }}{{ extra.url }}">{{ extra.title }}</a></li>
-            {% endfor %}
-          </ul>
-        </li>
-	{% endif %}
-
-	{% comment %} Always show license. {% endcomment %}
-        <li><a href="{{ relative_root_path }}{% link LICENSE.md %}">License</a></li>
-	{% if page.source %}
-	{% if page.source == "Rmd" %}
-	<li><a href="{{repo_url}}/edit/{{ default_branch }}/{{page.path|replace: "_episodes", "_episodes_rmd" | replace: ".md", ".Rmd"}}" data-checker-ignore>Improve this page <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
-	{% endif %}
-	{% else %}
-	<li><a href="{{repo_url}}/edit/{{ default_branch}}/{{page.path}}" data-checker-ignore>Improve this page <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
-	{% endif %}
-      </ul>
-      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
-        <div class="form-group">
-          <input type="text" id="google-search" placeholder="Search..." aria-label="Google site search">
-        </div>
+    <div class="nav-right">
+      <form role="search" id="search" onsubmit="google_search(); return false;" class="search-wrapper">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="google-search" class="search-input" placeholder="Search..." aria-label="Google site search">
       </form>
+
+      <a class="action-btn" href="https://github.com/hsf-training/hsf-training-ml-webpage/edit/gh-pages/{{ page.path }}" target="_blank" title="Improve this page">
+        ✏️
+      </a>
     </div>
+
   </div>
 </nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    if (window.innerWidth <= 992) {
+      var dropdowns = document.querySelectorAll('.nav-dropdown');
+      dropdowns.forEach(function(d) {
+        d.addEventListener('click', function(e) {
+          this.classList.toggle('active');
+        });
+      });
+    }
+  });
+</script>
