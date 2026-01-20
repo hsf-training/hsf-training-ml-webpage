@@ -1,60 +1,386 @@
-{% comment %}
-  Footer for lesson pages.
-{% endcomment %}
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  footer {
+    background: linear-gradient(135deg, #2c5f7c 0%, #1e4a5f 100%);
+    color: #ffffff;
+    padding: 40px 0 20px;
+    margin-top: 60px;
+    border-top: 4px solid #9fd7dd;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+  }
+
+  footer .footer-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  footer .license-section {
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(159, 215, 221, 0.3);
+    width: 100%;
+  }
+
+  footer .license-text {
+    font-size: 14px;
+    line-height: 1.8;
+    opacity: 0.95;
+  }
+
+  footer .license-text a {
+    color: #9fd7dd;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+    word-break: break-word;
+  }
+
+  footer .license-text a:hover {
+    color: #c5e8ed;
+    border-bottom: 1px solid #c5e8ed;
+  }
+
+  footer .links-section {
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(159, 215, 221, 0.3);
+    width: 100%;
+  }
+
+  footer .help-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    width: 100%;
+  }
+
+  footer .help-links a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 16px;
+    background: rgba(159, 215, 221, 0.15);
+    border: 1px solid rgba(159, 215, 221, 0.3);
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    white-space: nowrap;
+    text-align: center;
+    font-size: 13px;
+  }
+
+  footer .help-links a:hover {
+    background: rgba(159, 215, 221, 0.35);
+    border-color: #9fd7dd;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(159, 215, 221, 0.3);
+  }
+
+  footer .bottom-section {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 13px;
+    opacity: 0.85;
+    width: 100%;
+    border-top: 1px solid rgba(159, 215, 221, 0.2);
+  }
+
+  footer .bottom-section a {
+    color: #9fd7dd;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    word-break: break-word;
+  }
+
+  footer .bottom-section a:hover {
+    color: #c5e8ed;
+    text-decoration: underline;
+  }
+
+  footer .help-links a::before {
+    margin-right: 6px;
+    font-size: 16px;
+  }
+  footer .help-links a[href*="edit"]::before { content: "📝"; }
+  footer .help-links a[href*="CONTRIBUTING"]::before { content: "🤝"; }
+  footer .help-links a[href*="Source"]::before { content: "💻"; }
+  footer .help-links a[href*="CITATION"]::before { content: "📚"; }
+  footer .help-links a[href*="mailto"]::before { content: "✉️"; }
+
+  @media (min-width: 769px) {
+    footer .footer-content {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    footer .license-section {
+      text-align: left;
+    }
+
+    footer .links-section {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    footer .help-links {
+      max-width: 100%;
+      justify-content: flex-end;
+    }
+  }
+
+  @media (max-width: 768px) {
+    footer {
+      padding: 35px 0 18px;
+    }
+
+    footer .container {
+      padding: 0 16px;
+    }
+
+    footer .footer-content {
+      gap: 20px;
+    }
+
+    footer .license-section,
+    footer .links-section {
+      text-align: center;
+      padding-bottom: 20px;
+    }
+
+    footer .license-text {
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    footer .help-links {
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 8px;
+    }
+
+    footer .help-links a {
+      padding: 10px 12px;
+      font-size: 12px;
+    }
+
+    footer .bottom-section {
+      font-size: 12px;
+      padding-top: 15px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    footer {
+      padding: 30px 0 15px;
+      margin-top: 40px;
+    }
+
+    footer .container {
+      padding: 0 12px;
+    }
+
+    footer .footer-content {
+      gap: 15px;
+    }
+
+    footer .license-section,
+    footer .links-section {
+      padding-bottom: 15px;
+    }
+
+    footer .license-text {
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    footer .help-links {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      max-width: 280px;
+      margin: 0 auto;
+    }
+
+    footer .help-links a {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 13px;
+    }
+
+    footer .bottom-section {
+      font-size: 11px;
+      padding-top: 12px;
+      line-height: 1.5;
+    }
+  }
+
+  @media (max-width: 360px) {
+    footer {
+      padding: 25px 0 12px;
+    }
+
+    footer .container {
+      padding: 0 10px;
+    }
+
+    footer .license-text {
+      font-size: 11px;
+    }
+
+    footer .help-links a {
+      padding: 10px 14px;
+      font-size: 12px;
+    }
+
+    footer .help-links a::before {
+      font-size: 14px;
+      margin-right: 4px;
+    }
+  }
+
+  @media (max-height: 500px) and (orientation: landscape) {
+    footer {
+      padding: 20px 0 10px;
+    }
+
+    footer .license-section,
+    footer .links-section {
+      padding-bottom: 15px;
+    }
+
+    footer .help-links {
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+
+    footer .help-links a {
+      padding: 8px 12px;
+      font-size: 12px;
+    }
+  }
+
+  @media print {
+    footer {
+      background: #ffffff;
+      color: #000000;
+      border-top: 2px solid #9fd7dd;
+      box-shadow: none;
+      page-break-inside: avoid;
+    }
+
+    footer .license-text,
+    footer .bottom-section {
+      opacity: 1;
+    }
+
+    footer .help-links a {
+      background: transparent;
+      border: 1px solid #9fd7dd;
+      color: #000000;
+    }
+
+    footer .help-links a::before {
+      display: none;
+    }
+  }
+
+  @media (prefers-contrast: high) {
+    footer {
+      border-top-width: 6px;
+    }
+
+    footer .help-links a {
+      border-width: 2px;
+    }
+
+    footer .license-text a,
+    footer .bottom-section a {
+      text-decoration: underline;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    footer .help-links a {
+      transition: none;
+    }
+
+    footer .help-links a:hover {
+      transform: none;
+    }
+  }
+</style>
 
 {% include gh_variables.html %}
 
 <footer>
-  <div class="row">
-    <div class="col-md-6 license" id="license-info" align="left">
-	{% if site.carpentry == "swc" %}
-	Licensed under <a href="{{ site.cc_by_human }}">CC-BY 4.0</a> 2018–{{ 'now' | date: "%Y" }}
-	by <a href="{{ site.carpentries_site }}">The Carpentries</a>
-        <br>
-        Licensed under <a href="{{ site.cc_by_human }}">CC-BY 4.0</a> 2016–2018
-	by <a href="{{ site.swc_site }}">Software Carpentry Foundation</a>
-	{% elsif site.carpentry == "dc" %}
-	Licensed under <a href="{{ site.cc_by_human }}">CC-BY 4.0</a> 2018–{{ 'now' | date: "%Y" }}
-	by <a href="{{ site.carpentries_site }}">The Carpentries</a>
-        <br>
-        Licensed under <a href="{{ site.cc_by_human }}">CC-BY 4.0</a> 2016–2018
-	by <a href="{{ site.dc_site }}">Data Carpentry</a>
-	{% elsif site.carpentry == "lc" %}
-	Licensed under <a href="{{ site.cc_by_human }}">CC-BY 4.0</a> 2016–{{ 'now' | date: "%Y" }}
-	by <a href="{{ site.lc_site }}">Library Carpentry</a>
-	{% elsif site.carpentry == "cp" %}
-	Licensed under <a href="{{ site.cc_by_human }}">CC-BY 4.0</a> 2018–{{ 'now' | date: "%Y" }}
-	by <a href="{{ site.carpentries_site }}">The Carpentries</a>
-    {% elsif site.carpentry == "hsf" %}
-	Content licensed under <a href="{{ site.cc_by_human }}">CC-BY 4.0</a> 2020–{{ 'now' | date: "%Y" }}
-	by <a href="{{ site.hsf_site }}">HEP Software foundation</a>
-    <br>
-	Lesson setup licensed under <a href="{{ site.cc_by_human }}">CC-BY 4.0</a> 2018–{{ 'now' | date: "%Y" }}
-	by <a href="{{ site.carpentries_site }}">The Carpentries</a>
-	{% endif %}
+  <div class="container">
+    <div class="footer-content">
+      <div class="license-section">
+        <div class="license-text">
+          {% if site.carpentry == "swc" %}
+            Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> 2018–{{ 'now' | date: "%Y" }}
+            by <a href="https://carpentries.org/">The Carpentries</a>.
+            <br>
+            Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> 2016–2018
+            by <a href="https://software-carpentry.org">Software Carpentry Foundation</a>.
+          {% elsif site.carpentry == "dc" %}
+            Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> 2018–{{ 'now' | date: "%Y" }}
+            by <a href="https://carpentries.org/">The Carpentries</a>.
+            <br>
+            Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> 2016–2018
+            by <a href="https://datacarpentry.org">Data Carpentry</a>.
+          {% elsif site.carpentry == "lc" %}
+            Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> 2016–{{ 'now' | date: "%Y" }}
+            by <a href="https://librarycarpentry.org/">Library Carpentry</a>.
+          {% elsif site.carpentry == "cp" %}
+            Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> 2018–{{ 'now' | date: "%Y" }}
+            by <a href="https://carpentries.org/">The Carpentries</a>.
+          {% elsif site.carpentry == "hsf" %}
+            Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> 2020–{{ 'now' | date: "%Y" }}
+            by <a href="https://hepsoftwarefoundation.org/">HEP Software Foundation</a>.
+            <br>
+            Lesson setup licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> 2018–{{ 'now' | date: "%Y" }}
+            by <a href="https://carpentries.org/">The Carpentries</a>.
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="links-section">
+        <div class="help-links">
+          {% if page.source %}
+            {% if page.source == "Rmd" %}
+              <a href="{{ repo_url }}/edit/{{ page.root }}/{{ page.path | replace: "_episodes_rmd", "_episodes_rmd" }}">Edit on GitHub</a>
+            {% endif %}
+          {% else %}
+            <a href="{{ repo_url }}/edit/{{ page.root }}/{{ page.path }}">Edit on GitHub</a>
+          {% endif %}
+          
+          <a href="{{ repo_url }}/blob/{{ page.root }}/CONTRIBUTING.md">Contributing</a>
+          <a href="{{ repo_url }}/">Source</a>
+          <a href="{{ repo_url }}/blob/{{ page.root }}/CITATION">Cite</a>
+          <a href="mailto:{{ site.email }}">Contact</a>
+        </div>
+      </div>
     </div>
-    <div class="col-md-6 help-links" align="right">
-	{% if page.source %}
-	{% if page.source == "Rmd" %}
-	<a href="{{repo_url}}/edit/{{ default_branch }}/{{page.path|replace: "_episodes", "_episodes_rmd" | replace: ".md", ".Rmd"}}" data-checker-ignore>Edit on GitHub</a>
-	{% endif %}
-	{% else %}
-	<a href="{{repo_url}}/edit/{{ default_branch }}/{{page.path}}" data-checker-ignore>Edit on GitHub</a>
-	{% endif %}
-	/
-	<a href="{{ repo_url }}/blob/{{ source_branch }}/CONTRIBUTING.md" data-checker-ignore>Contributing</a>
-	/
-	<a href="{{ repo_url }}/">Source</a>
-	/
-	<a href="{{ repo_url }}/blob/{{ source_branch }}/CITATION" data-checker-ignore>Cite</a>
-	/
-	<a href="mailto:{{ site.email }}">Contact (public mailing list)</a>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12" align="center">
-      Using <a href="https://github.com/carpentries/styles/">The Carpentries style</a>
-      version <a href="https://github.com/carpentries/styles/releases/tag/v9.5.3">9.5.3</a>.
+
+    <div class="bottom-section">
+      Using <a href="https://github.com/carpentries/styles/">The Carpentries style</a> version {{ site.carpentry_style_version }}.
     </div>
   </div>
 </footer>
