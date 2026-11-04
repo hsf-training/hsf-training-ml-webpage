@@ -1,0 +1,12 @@
+# Known broken links, left for the lesson maintainers to decide on
+# (see hsf-training/hsf-training-ai-maintenance#4).
+# Feedback form linked at the end of every episode and in setup.md no longer exists.
+https://forms\.gle/XBeULpKXVHF8CKC17
+# HiggsML challenge documentation in 11-Model_Comparison.md: the host times out.
+https://higgsml\.lal\.in2p3\.fr/
+# Placeholder "Fixme Sample event" entry in the README's past events list.
+indico\.cern\.ch/?$
+
+# Hosts that block automated requests (they return 403/404/500 to bots).
+https://www\.oreilly\.com/
+https://www\.amazon\.ca/
