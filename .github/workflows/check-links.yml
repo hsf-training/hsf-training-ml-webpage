@@ -1,0 +1,25 @@
+name: Check links
+
+on:
+  pull_request:
+  push:
+    branches: [gh-pages]
+  schedule:
+    - cron: "0 4 1 * *" # monthly, to catch links that break over time
+  workflow_dispatch:
+
+jobs:
+  lychee:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Check links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # Lesson content only, not the vendored Carpentries theme files.
+          args: --no-progress "./*.md" "./_episodes/*.md" "./_extras/*.md"
+          fail: true
+        env:
+          # Authenticated requests avoid GitHub rate limits.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

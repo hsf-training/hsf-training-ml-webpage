@@ -1,0 +1,22 @@
+# Known broken links, left for the lesson maintainers to decide on
+# (see hsf-training/hsf-training-ai-maintenance#4).
+# Feedback form linked at the end of every episode and in setup.md no longer exists.
+https://forms\.gle/XBeULpKXVHF8CKC17
+# HiggsML challenge documentation in 11-Model_Comparison.md: the host times out.
+^https://higgsml\.lal\.in2p3\.fr/files/2014/04/documentation_v1\.8\.pdf$
+# Placeholder "Fixme Sample event" entry in the README's past events list.
+indico\.cern\.ch/?$
+
+# Links on hosts that block automated requests. Each is excluded by exact URL,
+# so other links on the same hosts are still checked.
+# O'Reilly book pages (Akamai 403 to bots).
+^https://www\.oreilly\.com/library/view/hands-on-machine-learning/9781492032632/$
+^https://www\.oreilly\.com/library/view/python-for-data/9781491957653/$
+# Amazon book page (404/500 to bots).
+^https://www\.amazon\.ca/Python-Data-Analysis-Wrangling-IPython-ebook/dp/B075X4LT6K/ref=sr_1_1\?crid=WLIHOCVH891S&dchild=1&keywords=python\+for\+data\+analysis%2C\+2nd\+edition&qid=1593460237&sprefix=python\+for\+data\+%2Caps%2C196&sr=8-1$
+# Cloudflare bot challenge (403, cf-mitigated: challenge).
+^https://www\.sciencedirect\.com/science/article/pii/S037026931200857X$
+# Cloudflare 403 to bots.
+^https://towardsdatascience\.com/random-forest-in-python-24d0893d51c0$
+# Cloudflare 403 from GitHub runners (loads locally).
+^https://journals\.aps\.org/prd/pdf/10\.1103/PhysRevD\.99\.072009$

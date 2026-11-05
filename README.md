@@ -24,9 +24,6 @@ Extended from a [version developed by Luke Polson for the 2020 USATLAS Computing
 Emoji key: 🎥 (full video recordings available), ⛏️ (hackathon)
 
 ## 🤗 Contributing
-<!-- CENTRALLY MAINTAINED SECTION -->
-<!-- Remove the above marker to disable having this section be overwritten -->
-
 We welcome all contributions to improve the lesson! Maintainers will do their best to help you if you have any
 questions, concerns, or experience any difficulties along the way.
 
@@ -60,8 +57,6 @@ nicely explained in the chapter [Contributing to a Project][progit] in Pro Git
 by Scott Chacon.
 Look for the tag [![good_first_issue]][gfi-badge], which marks particularly simple issues to get you started.
 
-<!-- END CENTRALLY MAINTAINED SECTION -->
-
 ## Authors
 * Meirin Oan Evans
 
@@ -94,7 +89,7 @@ Instead, all regular contributors are listed on our [HSF Training Community page
 [issues]: https://github.com/hsf-training/hsf-training-ml-webpage/issues
 [progit]: http://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project
 [jekyll]: https://jekyllrb.com/
-[allcontrib-emoji-key]: https://allcontributors.org/docs/en/emoji-key
+[allcontrib-emoji-key]: https://allcontributors.org/en/reference/emoji-key/
 [gfi-badge]: https://img.shields.io/badge/-good%20first%20issue-gold.svg
 [schools-badge]: https://img.shields.io/badge/upcoming%20events-browse-ff69b4
 [twitter-badge]: https://img.shields.io/twitter/follow/hsftraining?style=social
